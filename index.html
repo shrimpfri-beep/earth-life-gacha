@@ -152,7 +152,7 @@
                             <span>참여자 <strong id="headerOnlineCount" class="font-mono">1</strong>명</span>
                         </button>
                     </div>
-                    <p class="text-xs text-slate-400">UNFPA · World Bank · WHO 실제 통계 기반 80억 분의 1 랜덤 인생 시뮬레이터</p>
+                    <p class="text-xs text-slate-400">UN · World Bank · WHO 실측 통계 기반 80억 분의 1 인생 시뮬레이터</p>
                 </div>
             </div>
 
@@ -272,7 +272,7 @@
                             <text x="246" y="398" text-anchor="middle" font-family="Inter, sans-serif" font-size="7.5" font-weight="700" fill="#fbbf24" letter-spacing="1">INSERT SOUL</text>
                             <!-- base -->
                             <rect x="26" y="410" width="288" height="34" rx="10" fill="#020617"/>
-                            <text x="170" y="431" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#64748b">인형 수 = UNFPA 권역별 출생 비중</text>
+                            <text x="170" y="431" text-anchor="middle" font-family="Noto Sans KR, sans-serif" font-size="10" fill="#64748b">확률 = 권역별 실제 출생아 비중</text>
                         </svg>
                         <p id="clawStatus" class="text-xs text-slate-400 text-center min-h-[1rem]">인형마다 한 권역의 아기가 들어 있어요. 집게가 운명을 고릅니다.</p>
                     </div>
@@ -281,19 +281,19 @@
                     <div class="lg:col-span-7 space-y-5">
                         <div id="startIntro" class="space-y-3">
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                                🌍 연간 신생아 약 1억 3,400만 명 확률 분포 적용
+                                🌍 연간 출생아 약 1억 3,370만 명 · World Bank 출생률 기준
                             </span>
                             <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight leading-tight">
                                 당신은 지구 80억 명 중<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">어디에서 태어나게 될까요?</span>
                             </h2>
                             <p class="text-sm text-slate-300 leading-relaxed">
-                                선진국 중산층 이상으로 태어날 확률은 10% 미만입니다. 실제 국가별 기대수명, 구매력 평가(PPP) 기준 일일 소득, 식수·전력 인프라, 연령대별 사망 원인이 매 순간 당신의 삶을 결정합니다.
+                                유럽·북미에서 태어날 확률은 약 8%뿐입니다. 성별 기대수명, 2021 PPP 빈곤선 구간, 식수·전기·인터넷 보급률, 5세 미만 사망률 같은 실측 통계가 당신의 삶을 만듭니다. 이름과 사건은 창작입니다.
                             </p>
                         </div>
 
                         <div id="regionProbabilityWrap">
                             <div class="flex items-center justify-between mb-2">
-                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">UNFPA 권역별 출생 가챠 확률표</h3>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">권역별 출생 확률표 (World Bank WDI 2024)</h3>
                                 <span class="text-[11px] text-slate-500">1분 = 1년 (배속 조절 가능)</span>
                             </div>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="regionProbabilityPreview"></div>
@@ -318,9 +318,9 @@
                     <span class="text-[10px] font-black px-2 py-0.5 rounded bg-rose-500 text-slate-950 tracking-wider">NEWS</span>
                     <span id="newsYearLabel" class="text-xs font-black text-white font-mono">----년</span>
                     <div class="flex items-center gap-1 bg-slate-950 p-1 rounded-lg border border-slate-800">
-                        <button onclick="setNewsTab('global')" id="newsTab_global" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">🌐 국제</button>
-                        <button onclick="setNewsTab('local')" id="newsTab_local" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">📍 <span id="newsLocalLabel">내 나라</span></button>
-                        <button onclick="setNewsTab('compare')" id="newsTab_compare" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">👤 나와 비교</button>
+                        <button onclick="setNewsTab('live')" id="newsTab_live" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">📡 실시간 뉴스</button>
+                        <button onclick="setNewsTab('local')" id="newsTab_local" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">📍 <span id="newsLocalLabel">사실 카드</span></button>
+                        <button onclick="setNewsTab('compare')" id="newsTab_compare" class="px-2.5 py-1 rounded-md text-[11px] font-bold transition">👤 <span id="newsCompareLabel">나와 비교 (한국)</span></button>
                     </div>
                     <button onclick="openNewsArchive()" class="ml-auto text-[11px] font-bold text-cyan-300 hover:underline">🗂️ 지난 뉴스 다시 보기 →</button>
                 </div>
@@ -328,7 +328,7 @@
                     <div id="newsTicker" class="ticker-track">뉴스 수신 대기 중...</div>
                 </div>
                 <div id="newsPanel" class="p-3 sm:p-4 text-xs"></div>
-                <div class="px-4 pb-2.5 text-[10px] text-slate-500">※ 실제 보도가 아닌, 국제기구 통계·추세를 바탕으로 만든 시나리오 뉴스입니다. 비교 수치는 게임 모델 기준 또래 평균입니다.</div>
+                <div class="px-4 pb-2.5 text-[10px] text-slate-500">※ 📡 실시간 뉴스는 실제 기사(GDELT, 확인 시각 표시), 📍 사실 카드와 👤 한국 비교는 World Bank WDI 실측 통계(기준연도 표시, 2026-10-16 조회)입니다.</div>
             </div>
 
             <!-- Row 1: Character Identity & Real-Time Age Progress Bar -->
@@ -354,7 +354,7 @@
                             </div>
                         </div>
                         <div class="text-right bg-slate-950/80 px-3.5 py-2 rounded-xl border border-slate-800">
-                            <div class="text-[11px] text-slate-400">통계적 기대수명 (WHO)</div>
+                            <div class="text-[11px] text-slate-400">성별 기대수명 (UN WPP 2024)</div>
                             <div class="text-base font-black text-cyan-400"><span id="charLifeExpectancy">00.0</span>세</div>
                             <div id="charSurvivalRiskLabel" class="text-[11px] text-slate-400">연간 사망위험: 낮음</div>
                         </div>
@@ -363,19 +363,19 @@
                     <!-- Infrastructure Access Pills -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-slate-800/80 text-xs">
                         <div class="bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80">
-                            <div class="text-slate-400 text-[11px]">💧 안전 식수 접근성</div>
+                            <div class="text-slate-400 text-[11px]">💧 안전한 식수 (가구·국가)</div>
                             <div id="infraWater" class="font-bold text-slate-200 mt-0.5">-</div>
                         </div>
                         <div class="bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80">
-                            <div class="text-slate-400 text-[11px]">⚡ 일일 전력 공급</div>
+                            <div class="text-slate-400 text-[11px]">⚡ 전기 (가구·국가)</div>
                             <div id="infraPower" class="font-bold text-slate-200 mt-0.5">-</div>
                         </div>
                         <div class="bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80">
-                            <div class="text-slate-400 text-[11px]">🏥 지역 의료 인프라</div>
+                            <div class="text-slate-400 text-[11px]">💉 홍역 예방접종 (나·국가)</div>
                             <div id="infraHealth" class="font-bold text-slate-200 mt-0.5">-</div>
                         </div>
                         <div class="bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80">
-                            <div class="text-slate-400 text-[11px]">🌐 인터넷/디지털</div>
+                            <div class="text-slate-400 text-[11px]">🌐 인터넷 (가구·국가)</div>
                             <div id="infraNet" class="font-bold text-slate-200 mt-0.5">-</div>
                         </div>
                     </div>
@@ -700,6 +700,8 @@
                 <p id="milestoneDesc" class="text-sm text-slate-300 leading-relaxed">상황 설명 텍스트</p>
             </div>
 
+            <div id="msFacts" class="hidden bg-slate-950 border border-cyan-500/30 rounded-2xl p-3"></div>
+
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-950 p-3 rounded-2xl border border-slate-800 text-xs">
                 <div><span class="text-slate-400 block">❤️ 건강</span><span id="msStatHealth" class="font-bold text-rose-300">80/100</span></div>
                 <div><span class="text-slate-400 block">📘 인지·교육</span><span id="msStatEdu" class="font-bold text-sky-300">30/100</span></div>
@@ -764,11 +766,12 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
+            <div class="grid grid-cols-3 sm:grid-cols-5 gap-1.5 bg-slate-950 p-1.5 rounded-xl border border-slate-800">
                 <button onclick="switchReportTab('summary')" id="rtab_summary" class="py-2 rounded-lg text-[11px] sm:text-xs font-bold transition">📋 생애 결산</button>
                 <button onclick="switchReportTab('forks')" id="rtab_forks" class="py-2 rounded-lg text-[11px] sm:text-xs font-bold transition">⚖️ 갈림길 비교</button>
                 <button onclick="switchReportTab('parallel')" id="rtab_parallel" class="py-2 rounded-lg text-[11px] sm:text-xs font-bold transition">🌌 평행세계의 나</button>
                 <button onclick="switchReportTab('baseline')" id="rtab_baseline" class="py-2 rounded-lg text-[11px] sm:text-xs font-bold transition">🎲 같은 출생 100번</button>
+                <button onclick="switchReportTab('method')" id="rtab_method" class="py-2 rounded-lg text-[11px] sm:text-xs font-bold transition">🔎 근거·출처</button>
             </div>
 
             <div id="rpanel_summary" class="space-y-3">
@@ -781,9 +784,11 @@
             <div id="rpanel_forks" class="hidden space-y-3 text-xs"></div>
             <div id="rpanel_parallel" class="hidden space-y-3 text-xs"></div>
             <div id="rpanel_baseline" class="hidden space-y-3 text-xs"></div>
+            <div id="rpanel_method" class="hidden space-y-3 text-xs"></div>
 
             <div class="flex flex-col sm:flex-row gap-3 pt-1">
-                <button onclick="copyLifeReport()" id="btnCopyReport" class="sm:w-48 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-bold text-sm transition">📋 보고서 복사</button>
+                <button onclick="saveReportImage()" id="btnSaveImage" class="sm:w-48 py-3.5 rounded-2xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 border border-purple-500/40 font-bold text-sm transition">🖼️ 이미지로 저장</button>
+                <button onclick="copyLifeReport()" id="btnCopyReport" class="sm:w-40 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 font-bold text-sm transition">📋 텍스트 복사</button>
                 <button onclick="resetToStartGacha()" class="flex-grow py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-sm shadow-lg transition">
                     🕹️ 80억 분의 1 확률로 다시 태어나기 (환생 가챠)
                 </button>
@@ -793,25 +798,12 @@
 
     <!-- MODAL 3: DATA SOURCE & METHODOLOGY -->
     <div id="dataModal" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+        <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h3 class="text-lg font-black text-white">📊 시뮬레이션 적용 실제 통계 출처</h3>
+                <h3 class="text-lg font-black text-white">📊 통계 근거 · 출처 등록부</h3>
                 <button onclick="closeDataModal()" class="text-slate-400 hover:text-white text-sm font-bold px-2.5 py-1 rounded-lg bg-slate-800">닫기 ✕</button>
             </div>
-            <div class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                    <div class="font-bold text-emerald-400 mb-1">1. 출생 권역 확률 및 합계출산율 (UNFPA)</div>
-                    <p>전 세계 연간 출생아 약 1억 3,400만 명의 지리적 비중(사하라 이남 아프리카 29.5%, 남아시아 26.8%, 동아시아·태평양 16.2% 등)과 국가별 합계출산율(TFR)을 반영해 출생 국가와 형제자매 수가 결정됩니다.</p>
-                </div>
-                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                    <div class="font-bold text-cyan-400 mb-1">2. 소득·빈곤선 및 인프라 지표 (World Bank)</div>
-                    <p>구매력 평가(PPP) 기준 국제 빈곤선($2.15/일, $3.65/일, $6.85/일)과 식수·전력·인터넷 보급률을 기반으로 가계 예산과 엥겔지수가 산출됩니다.</p>
-                </div>
-                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
-                    <div class="font-bold text-rose-400 mb-1">3. 연령별 기대수명 및 사망 원인 (WHO)</div>
-                    <p>5세 미만 영유아 사망률(수인성 감염·말라리아·폐렴), 청년기 비의도적 사고, 중노년기 만성 비감염성 질환(허혈성 심장질환·뇌졸중·만성폐쇄성폐질환) 확률이 매년 반영됩니다.</p>
-                </div>
-            </div>
+            <div id="dataModalBody" class="space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed"></div>
         </div>
     </div>
 
@@ -860,9 +852,41 @@
                     </div>
                 </div>
 
-                <div class="text-[11px] text-slate-400 bg-slate-950/60 border border-slate-800 rounded-xl px-3 py-2">
-                    📍 데이터 범위: <strong class="text-slate-200">이 기기·브라우저에서 열린 모든 탭</strong>이 초 단위로 기록됩니다. 여러 사람의 기기를 합산하려면 서버(예: Firebase) 연동이 필요합니다.
-                </div>
+                <div id="adminScope" class="text-[11px] text-slate-400 bg-slate-950/60 border border-slate-800 rounded-xl px-3 py-2"></div>
+
+                <details id="cloudSetup" class="bg-slate-950 rounded-2xl border border-cyan-500/30 p-4">
+                    <summary class="cursor-pointer text-xs font-extrabold text-cyan-300">☁️ 다른 기기·다른 네트워크 접속자까지 집계하기 — 클라우드(Firebase) 연동 설정</summary>
+                    <div class="mt-3 grid grid-cols-1 lg:grid-cols-2 gap-4 text-[11px] text-slate-300 leading-relaxed">
+                        <div class="space-y-2">
+                            <p class="text-slate-400">GitHub Pages는 파일만 보여주는 곳이라 접속 기록을 모을 수 없습니다. 무료 Firebase 데이터베이스를 연결하면 모든 참여자의 기록이 이 화면에 실시간으로 모입니다. (약 10분, 한 번만)</p>
+                            <ol class="list-decimal list-inside space-y-1.5">
+                                <li><a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline font-bold">console.firebase.google.com</a> → <strong>프로젝트 만들기</strong> (이름 예: earth-life, 애널리틱스는 꺼도 됨)</li>
+                                <li>왼쪽 <strong>빌드 → Realtime Database → 데이터베이스 만들기</strong> → 위치 <strong>싱가포르(asia-southeast1)</strong> → <strong>잠금 모드로 시작</strong></li>
+                                <li>Realtime Database의 <strong>규칙</strong> 탭 → 내용을 모두 지우고 아래 규칙 붙여넣기 → <strong>게시</strong></li>
+                                <li><strong>빌드 → Authentication → 시작하기 → 로그인 방법 → 익명</strong> 사용 설정 → 저장</li>
+                                <li>⚙️ <strong>프로젝트 설정 → 내 앱 → 웹(&lt;/&gt;) 아이콘</strong> → 앱 등록 → 나오는 <code>firebaseConfig</code> 코드를 통째로 복사해 오른쪽 칸에 붙여넣기</li>
+                                <li><strong>저장하고 연결</strong> → 위 상태줄이 ☁️ 연결됨으로 바뀌면 <strong>설정이 들어간 index.html 받기</strong> → GitHub에 같은 이름으로 덮어쓰기 업로드</li>
+                            </ol>
+                            <div class="relative">
+                                <pre id="fbRulesText" class="bg-slate-900 border border-slate-800 rounded-xl p-3 text-[10px] text-emerald-200 overflow-x-auto"></pre>
+                                <button onclick="copyFbRules()" id="btnCopyRules" class="absolute top-2 right-2 px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 text-[10px] font-bold">규칙 복사</button>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block font-bold text-slate-200" for="fbConfigInput">firebaseConfig 붙여넣기</label>
+                            <textarea id="fbConfigInput" rows="9" spellcheck="false" placeholder="const firebaseConfig = {&#10;  apiKey: &quot;...&quot;,&#10;  authDomain: &quot;...&quot;,&#10;  databaseURL: &quot;https://...firebasedatabase.app&quot;,&#10;  projectId: &quot;...&quot;,&#10;  appId: &quot;...&quot;&#10;};" oninput="autofillDbUrl()" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none text-white font-mono text-[11px]"></textarea>
+                            <label class="block font-bold text-slate-200" for="fbDbUrlInput">Database URL <span class="font-normal text-slate-500">(코드에 없으면 Realtime Database 화면 맨 위 주소를 복사)</span></label>
+                            <input id="fbDbUrlInput" type="text" placeholder="https://프로젝트-default-rtdb.asia-southeast1.firebasedatabase.app" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 focus:border-cyan-400 focus:outline-none text-white font-mono text-[11px]">
+                            <div class="flex flex-wrap gap-2 pt-1">
+                                <button onclick="saveCloudConfig()" class="px-3 py-2 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black transition">💾 저장하고 연결</button>
+                                <button onclick="downloadStandaloneIndexHtml()" class="px-3 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 font-bold transition">⬇️ 설정이 들어간 index.html 받기</button>
+                                <button onclick="clearCloudConfig()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold transition">연동 해제(이 브라우저)</button>
+                            </div>
+                            <p id="fbSetupMsg" class="min-h-[1rem] font-bold"></p>
+                            <p class="text-slate-500">firebaseConfig 값은 원래 공개되는 식별자라 파일에 들어가도 괜찮습니다. 데이터는 위 규칙으로 보호되며, IP 주소는 수집하지 않습니다.</p>
+                        </div>
+                    </div>
+                </details>
 
                 <div id="adminKpis" class="grid grid-cols-2 lg:grid-cols-4 gap-3"></div>
 
@@ -1003,16 +1027,17 @@
     <script>
         /* ============================================================================
            1. REGIONAL BIRTH DATA (UNFPA 권역별 출생 비중 · WHO 기대수명 · World Bank 소득)
-           under5MortalityRate = 0~4세 동안 매년 적용되는 연간 사망 확률(5세 미만 사망률 ÷ 5 근사)
+           국가별 미리보기 값(기대수명·출산율·5세 미만 사망률)은 아래 1.5의 실측 통계로 덮어씁니다. 직업·이름은 합성 페르소나용 예시입니다.
         ============================================================================ */
         const REGIONS_DATA = [
             {
                 id: 'ssa',
                 name: '사하라 이남 아프리카',
-                weight: 29.5,
+                weight: 32.3,
                 badgeColor: 'text-amber-300 bg-amber-500/15 border-amber-500/30',
                 countries: [
                     {
+                        iso3: 'NGA',
                         country: '나이지리아 (카노 근교 농촌)',
                         urban: '농촌 마을',
                         tfr: 5.1,
@@ -1029,6 +1054,7 @@
                         surnames: ['오콘쿼', '벨로', '아데예미', '무함마드']
                     },
                     {
+                        iso3: 'ETH',
                         country: '에티오피아 (암하라 고원지대)',
                         urban: '고원 농촌',
                         tfr: 4.0,
@@ -1045,6 +1071,7 @@
                         surnames: ['게브레', '타데세', '하일레', '월데']
                     },
                     {
+                        iso3: 'COD',
                         country: '콩고민주공화국 (킨샤사 외곽)',
                         urban: '과밀 비공식 정착지',
                         tfr: 6.0,
@@ -1065,10 +1092,11 @@
             {
                 id: 'sa',
                 name: '남아시아',
-                weight: 26.8,
+                weight: 27.0,
                 badgeColor: 'text-rose-300 bg-rose-500/15 border-rose-500/30',
                 countries: [
                     {
+                        iso3: 'IND',
                         country: '인도 (우타르프라데시 농촌)',
                         urban: '북부 평야 농촌',
                         tfr: 2.0,
@@ -1085,6 +1113,7 @@
                         surnames: ['쿠마르', '야다브', '싱', '샤르마']
                     },
                     {
+                        iso3: 'PAK',
                         country: '파키스탄 (펀자브 라호르 근교)',
                         urban: '도시 근교 공업지대',
                         tfr: 3.4,
@@ -1101,6 +1130,7 @@
                         surnames: ['칸', '말릭', '버트', '초드리']
                     },
                     {
+                        iso3: 'BGD',
                         country: '방글라데시 (다카 미르푸르)',
                         urban: '과밀 대도시',
                         tfr: 1.9,
@@ -1121,10 +1151,11 @@
             {
                 id: 'eap',
                 name: '동아시아 및 태평양',
-                weight: 16.2,
+                weight: 16.4,
                 badgeColor: 'text-cyan-300 bg-cyan-500/15 border-cyan-500/30',
                 countries: [
                     {
+                        iso3: 'IDN',
                         country: '인도네시아 (중부 자바 소도시)',
                         urban: '중소도시',
                         tfr: 2.1,
@@ -1141,6 +1172,7 @@
                         surnames: ['산토소', '위자야', '푸르노모', '하디']
                     },
                     {
+                        iso3: 'CHN',
                         country: '중국 (쓰촨성 청두 근교)',
                         urban: '신흥 대도시권',
                         tfr: 1.0,
@@ -1157,6 +1189,7 @@
                         surnames: ['왕', '리', '장', '류']
                     },
                     {
+                        iso3: 'KOR',
                         country: '대한민국 (수도권 다세대 주택)',
                         urban: '고밀도 대도시',
                         tfr: 0.75,
@@ -1177,10 +1210,11 @@
             {
                 id: 'mena',
                 name: '중동 및 북아프리카',
-                weight: 9.8,
+                weight: 7.7,
                 badgeColor: 'text-orange-300 bg-orange-500/15 border-orange-500/30',
                 countries: [
                     {
+                        iso3: 'EGY',
                         country: '이집트 (카이로 나일강 삼각주)',
                         urban: '과밀 대도시권',
                         tfr: 2.8,
@@ -1197,6 +1231,7 @@
                         surnames: ['하산', '알리', '이브라힘', '사이이드']
                     },
                     {
+                        iso3: 'DZA',
                         country: '알제리 (오랑 해안 도시)',
                         urban: '지중해 연안 도시',
                         tfr: 2.7,
@@ -1217,10 +1252,11 @@
             {
                 id: 'lac',
                 name: '중남미 및 카리브해',
-                weight: 7.5,
+                weight: 7.0,
                 badgeColor: 'text-purple-300 bg-purple-500/15 border-purple-500/30',
                 countries: [
                     {
+                        iso3: 'BRA',
                         country: '브라질 (상파울루 외곽 지대)',
                         urban: '대도시 주변 노동자 구역',
                         tfr: 1.6,
@@ -1237,6 +1273,7 @@
                         surnames: ['실바', '산토스', '올리베이라', '소우자']
                     },
                     {
+                        iso3: 'MEX',
                         country: '멕시코 (과달라하라 근교)',
                         urban: '산업 도시권',
                         tfr: 1.8,
@@ -1256,11 +1293,12 @@
             },
             {
                 id: 'high',
-                name: '유럽 및 북미 선진권',
-                weight: 6.8,
+                name: '유럽 및 북미',
+                weight: 8.3,
                 badgeColor: 'text-sky-300 bg-sky-500/15 border-sky-500/30',
                 countries: [
                     {
+                        iso3: 'USA',
                         country: '미국 (오하이오주 교외 중소도시)',
                         urban: '선진국 교외 주택가',
                         tfr: 1.6,
@@ -1277,6 +1315,7 @@
                         surnames: ['스미스', '존슨', '윌리엄스', '브라운']
                     },
                     {
+                        iso3: 'DEU',
                         country: '독일 (노르트라인베스트팔렌주)',
                         urban: '유럽 중소 산업도시',
                         tfr: 1.5,
@@ -1297,10 +1336,11 @@
             {
                 id: 'ca',
                 name: '중앙아시아 및 기타',
-                weight: 3.4,
+                weight: 1.4,
                 badgeColor: 'text-teal-300 bg-teal-500/15 border-teal-500/30',
                 countries: [
                     {
+                        iso3: 'UZB',
                         country: '우즈베키스탄 (사마르칸트 외곽)',
                         urban: '내륙 농공 복합도시',
                         tfr: 3.1,
@@ -1319,6 +1359,201 @@
                 ]
             }
         ];
+
+
+        /* ============================================================================
+           1.5 실측 통계 — World Bank WDI Indicators API v2로 2026-10-16 조회
+               값 형식: [값, 기준연도]  ·  null = 해당 자료 없음(게임에 적용하지 않거나 가정으로 대체)
+        ============================================================================ */
+        const DATA_ACCESSED = '2026-10-16';
+        const SOURCES = {
+            wdi: { org: 'World Bank', title: 'World Development Indicators — Indicators API v2 (국가별 지표 일괄 조회)', url: 'https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-about-the-indicators-api-documentation' },
+            wpp: { org: 'UN DESA', title: 'World Population Prospects 2024 — 성별 기대수명·합계출산율·조출생률·인구', url: 'https://population.un.org/wpp/' },
+            igme: { org: 'UN IGME (UNICEF·WHO·World Bank·UN DESA)', title: '5세 미만 사망률 (출생 1,000명당)', url: 'https://childmortality.org/' },
+            pip: { org: 'World Bank', title: 'Poverty and Inequality Platform — 2021 PPP, $3.00·$4.20·$8.30 빈곤선 인구 비율', url: 'https://pip.worldbank.org/home' },
+            pipglobal: { org: 'World Bank', title: 'June 2025 Update to Global Poverty Lines — 세계 극빈율 10.5%(2022), $8.30 미만 약 38억 명(2022)', url: 'https://www.worldbank.org/en/news/factsheet/2025/06/05/june-2025-update-to-global-poverty-lines' },
+            gni: { org: 'World Bank', title: '1인당 국민총소득, PPP (current international $)', url: 'https://data.worldbank.org/indicator/NY.GNP.PCAP.PP.CD' },
+            uis: { org: 'UNESCO UIS', title: '중학교 과정 이수율(성별)·고등교육 총취학률(성별)', url: 'https://databrowser.uis.unesco.org/' },
+            jmp: { org: 'WHO/UNICEF JMP', title: '안전하게 관리되는 식수 서비스 이용률', url: 'https://washdata.org/' },
+            elec: { org: 'World Bank · SEforALL', title: '전기 접근률', url: 'https://trackingsdg7.esmap.org/' },
+            itu: { org: 'ITU', title: '인터넷 이용률', url: 'https://datahub.itu.int/' },
+            wuenic: { org: 'WHO/UNICEF WUENIC', title: '홍역 예방접종률 (12~23개월)', url: 'https://immunizationdata.who.int/' },
+            ilo: { org: 'ILO 모델 추정', title: '15세 이상 경제활동참가율(성별)', url: 'https://ilostat.ilo.org/' },
+            unicef: { org: 'UNICEF', title: '18세 이전 첫 혼인 여성 비율 (20~24세 여성 중)', url: 'https://data.unicef.org/topic/child-protection/child-marriage/' },
+            ghe: { org: 'WHO Global Health Estimates', title: '사인 구성(감염성·손상)·30~70세 4대 만성질환 사망확률(성별)·도로교통 사망률', url: 'https://www.who.int/data/gho/data/themes/mortality-and-global-health-estimates' },
+            urban: { org: 'UN DESA (WDI)', title: '도시 인구 비율', url: 'https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS' },
+            births: { org: '게임 계산 (WDI 자료)', title: '권역별 출생아 수 = 2025년 인구 × 2024년 조출생률. 세계 약 1억 3,370만 명', url: 'https://data.worldbank.org/indicator/SP.DYN.CBRT.IN' },
+            kostat: { org: '통계청', title: '2024년 혼인·이혼 통계 (2025-03-20 발표) — 평균 초혼연령 남 33.9세 · 여 31.6세', url: 'https://www.newsis.com/view/NISX20250320_0003106157' },
+            gdelt: { org: 'The GDELT Project', title: 'GDELT DOC 2.0 API — 실시간 기사 목록(제목·언론사·수집 시각)', url: 'https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/' }
+        };
+
+        const COUNTRY_STATS = {
+            NGA: { name: '나이지리아', en: 'Nigeria', le_f: [54.9, 2024], le_m: [54.3, 2024], tfr: [4.38, 2024], u5: [115.6, 2024], pov3: [41.8, 2022], pov42: [64.0, 2022], pov83: [92.9, 2022], gni: [9230, 2025], lsc_f: [41.1, 2010], lsc_m: [47.2, 2010], ter_f: [8.0, 2011], ter_m: [11.5, 2011], water: [29.9, 2024], elec: [62.5, 2024], net: [41.2, 2024], lfp_f: [80.7, 2025], lfp_m: [84.3, 2025], cm18: [33.4, 2024], urban: [63.8, 2025], road: [20.7, 2019], measles: [57, 2024], ncd_f: [16.9, 2021], ncd_m: [18.5, 2021], comm: [63.7, 2021], inj: [7.8, 2021] },
+            ETH: { name: '에티오피아', en: 'Ethiopia', le_f: [71.0, 2024], le_m: [64.4, 2024], tfr: [3.91, 2024], u5: [44.5, 2024], pov3: [38.6, 2021], pov42: [63.7, 2021], pov83: [93.5, 2021], gni: [3620, 2025], lsc_f: [21.1, 2023], lsc_m: [21.7, 2023], ter_f: [3.6, 2014], ter_m: [8.2, 2014], water: [13.5, 2024], elec: [56.6, 2024], net: [21.9, 2024], lfp_f: [58.5, 2025], lfp_m: [78.6, 2025], cm18: [40.3, 2016], urban: [24.1, 2025], road: [28.2, 2019], measles: [72, 2024], ncd_f: [17.2, 2021], ncd_m: [16.4, 2021], comm: [48.1, 2021], inj: [11.5, 2021] },
+            COD: { name: '콩고민주공화국', en: '"Democratic Republic of Congo"', le_f: [64.2, 2024], le_m: [60.0, 2024], tfr: [5.98, 2024], u5: [89.7, 2024], pov3: [85.3, 2020], pov42: [92.5, 2020], pov83: [98.0, 2020], gni: [1850, 2025], lsc_f: [50.0, 2020], lsc_m: [61.8, 2020], ter_f: [4.7, 2020], ter_m: [8.0, 2020], water: [11.9, 2024], elec: [22.5, 2024], net: [19.7, 2024], lfp_f: [61.8, 2025], lfp_m: [66.8, 2025], cm18: [29.9, 2024], urban: [45.1, 2025], road: [34.9, 2019], measles: [55, 2024], ncd_f: [23.9, 2021], ncd_m: [26.4, 2021], comm: [56.0, 2021], inj: [8.0, 2021] },
+            IND: { name: '인도', en: 'India', le_f: [73.9, 2024], le_m: [70.7, 2024], tfr: [1.96, 2024], u5: [26.6, 2024], pov3: [2.6, 2023], pov42: [16.1, 2023], pov83: [80.0, 2023], gni: [11600, 2025], lsc_f: [89.1, 2025], lsc_m: [86.9, 2025], ter_f: [35.7, 2025], ter_m: [33.3, 2025], water: [76.4, 2024], elec: [99.9, 2024], net: [70.0, 2025], lfp_f: [32.4, 2025], lfp_m: [77.6, 2025], cm18: [22.3, 2021], urban: [35.7, 2025], road: [15.6, 2019], measles: [97, 2024], ncd_f: [23.0, 2021], ncd_m: [24.1, 2021], comm: [38.4, 2021], inj: [7.0, 2021] },
+            PAK: { name: '파키스탄', en: 'Pakistan', le_f: [70.3, 2024], le_m: [65.5, 2024], tfr: [3.55, 2024], u5: [56.0, 2024], pov3: [23.0, 2024], pov42: [47.9, 2024], pov83: [87.1, 2024], gni: [6430, 2025], lsc_f: [54.5, 2024], lsc_m: [57.0, 2024], ter_f: [11.0, 2024], ter_m: [10.7, 2024], water: [45.0, 2024], elec: [95.7, 2024], net: [57.3, 2024], lfp_f: [24.0, 2025], lfp_m: [80.1, 2025], cm18: [18.3, 2018], urban: [39.5, 2025], road: [13.0, 2019], measles: [86, 2024], ncd_f: [25.0, 2021], ncd_m: [26.0, 2021], comm: [37.3, 2021], inj: [7.7, 2021] },
+            BGD: { name: '방글라데시', en: 'Bangladesh', le_f: [76.7, 2024], le_m: [73.3, 2024], tfr: [2.14, 2024], u5: [30.5, 2024], pov3: [5.9, 2022], pov42: [20.5, 2022], pov83: [71.5, 2022], gni: [10710, 2025], lsc_f: [84.7, 2024], lsc_m: [63.9, 2024], ter_f: [20.8, 2024], ter_m: [27.0, 2024], water: [59.1, 2024], elec: [99.5, 2024], net: [53.4, 2024], lfp_f: [38.6, 2025], lfp_m: [80.4, 2025], cm18: [47.2, 2025], urban: [33.2, 2025], road: [15.3, 2019], measles: [96, 2024], ncd_f: [16.3, 2021], ncd_m: [19.8, 2021], comm: [26.9, 2021], inj: [6.9, 2021] },
+            IDN: { name: '인도네시아', en: 'Indonesia', le_f: [73.4, 2024], le_m: [69.2, 2024], tfr: [2.12, 2024], u5: [17.7, 2024], pov3: [3.7, 2025], pov42: [15.5, 2025], pov83: [64.1, 2025], gni: [17190, 2025], lsc_f: [98.8, 2025], lsc_m: [100.4, 2025], ter_f: [49.9, 2023], ter_m: [40.1, 2023], water: [30.5, 2024], elec: [99.9, 2024], net: [72.8, 2024], lfp_f: [53.7, 2025], lfp_m: [82.3, 2025], cm18: [16.3, 2017], urban: [59.4, 2025], road: [11.3, 2019], measles: [85, 2024], ncd_f: [21.0, 2021], ncd_m: [22.8, 2021], comm: [34.7, 2021], inj: [3.1, 2021] },
+            CHN: { name: '중국', en: 'China', le_f: [81.0, 2024], le_m: [75.2, 2024], tfr: [1.01, 2024], u5: [5.7, 2024], pov3: [0.0, 2022], pov42: [0.5, 2022], pov83: [21.3, 2022], gni: [29160, 2025], lsc_f: [106.0, 2012], lsc_m: [101.6, 2012], ter_f: [83.1, 2024], ter_m: [71.6, 2024], water: null, elec: [100, 2024], net: [91.6, 2025], lfp_f: [59.1, 2025], lfp_m: [69.9, 2025], cm18: [2.8, 2020], urban: [66.3, 2025], road: [17.4, 2019], measles: [95, 2024], ncd_f: [11.6, 2021], ncd_m: [20.1, 2021], comm: [3.2, 2021], inj: [6.0, 2021] },
+            KOR: { name: '대한민국', en: 'South Korea', le_f: [86.6, 2024], le_m: [80.8, 2024], tfr: [0.75, 2024], u5: [2.8, 2024], pov3: [0.1, 2021], pov42: [0.2, 2021], pov83: [0.5, 2021], gni: [64210, 2025], lsc_f: [97.0, 2024], lsc_m: [97.5, 2024], ter_f: [105.2, 2024], ter_m: [118.0, 2024], water: [99.3, 2024], elec: [100, 2024], net: [97.9, 2024], lfp_f: [56.8, 2025], lfp_m: [72.0, 2025], cm18: null, urban: [81.2, 2025], road: [8.6, 2019], measles: [97, 2024], ncd_f: [4.3, 2021], ncd_m: [9.6, 2021], comm: [14.7, 2021], inj: [8.2, 2021], marry_f: [31.6, 2024], marry_m: [33.9, 2024] },
+            EGY: { name: '이집트', en: 'Egypt', le_f: [74.0, 2024], le_m: [69.7, 2024], tfr: [2.74, 2024], u5: [22.4, 2024], pov3: [1.4, 2021], pov42: [7.1, 2021], pov83: [58.5, 2021], gni: [19330, 2025], lsc_f: [85.7, 2024], lsc_m: [82.1, 2024], ter_f: [38.6, 2025], ter_m: [37.5, 2025], water: [78.9, 2024], elec: [100, 2024], net: [74.6, 2024], lfp_f: [18.5, 2025], lfp_m: [70.5, 2025], cm18: [15.8, 2021], urban: [42.9, 2025], road: [10.1, 2019], measles: [97, 2024], ncd_f: [21.4, 2021], ncd_m: [30.8, 2021], comm: [25.3, 2021], inj: [3.4, 2021] },
+            DZA: { name: '알제리', en: 'Algeria', le_f: [77.9, 2024], le_m: [75.1, 2024], tfr: [2.72, 2024], u5: [21.6, 2024], pov3: [0.0, 2011], pov42: [4.7, 2011], pov83: [41.8, 2011], gni: [18240, 2025], lsc_f: [87.3, 2025], lsc_m: [71.1, 2025], ter_f: [66.1, 2024], ter_m: [43.2, 2024], water: [69.0, 2024], elec: [100, 2024], net: [77.4, 2024], lfp_f: [14.1, 2025], lfp_m: [66.4, 2025], cm18: [3.8, 2019], urban: [75.8, 2025], road: [20.9, 2019], measles: [94, 2024], ncd_f: [12.8, 2021], ncd_m: [13.8, 2021], comm: [17.1, 2021], inj: [6.7, 2021] },
+            BRA: { name: '브라질', en: 'Brazil', le_f: [79.1, 2024], le_m: [73.0, 2024], tfr: [1.61, 2024], u5: [14.2, 2024], pov3: [3.0, 2024], pov42: [6.2, 2024], pov83: [20.6, 2024], gni: [22670, 2025], lsc_f: null, lsc_m: null, ter_f: [85.3, 2024], ter_m: [55.0, 2024], water: [88.6, 2024], elec: [99.8, 2024], net: [84.5, 2024], lfp_f: [53.4, 2025], lfp_m: [73.4, 2025], cm18: [26.2, 2006], urban: [88.2, 2025], road: [16.0, 2019], measles: [93, 2024], ncd_f: [12.0, 2021], ncd_m: [17.3, 2021], comm: [34.1, 2021], inj: [8.5, 2021] },
+            MEX: { name: '멕시코', en: 'Mexico', le_f: [78.0, 2024], le_m: [72.4, 2024], tfr: [1.89, 2024], u5: [13.1, 2024], pov3: [1.6, 2024], pov42: [4.1, 2024], pov83: [21.4, 2024], gni: [25070, 2025], lsc_f: [88.5, 2024], lsc_m: [84.8, 2024], ter_f: [52.4, 2024], ter_m: [44.0, 2024], water: [43.0, 2024], elec: [99.8, 2024], net: [83.1, 2024], lfp_f: [47.5, 2025], lfp_m: [77.1, 2025], cm18: [18.2, 2023], urban: [80.0, 2025], road: [12.8, 2019], measles: [80, 2024], ncd_f: [13.8, 2021], ncd_m: [19.1, 2021], comm: [38.8, 2021], inj: [7.6, 2021] },
+            USA: { name: '미국', en: '"United States"', le_f: [81.4, 2024], le_m: [76.5, 2024], tfr: [1.63, 2024], u5: [6.5, 2024], pov3: [1.1, 2024], pov42: [1.2, 2024], pov83: [1.8, 2024], gni: [89490, 2025], lsc_f: [100.6, 2022], lsc_m: [102.1, 2022], ter_f: [94.9, 2022], ter_m: [64.5, 2022], water: [97.6, 2024], elec: [100, 2024], net: [94.7, 2024], lfp_f: [56.3, 2025], lfp_m: [67.1, 2025], cm18: null, urban: [80.2, 2025], road: [12.7, 2019], measles: [92, 2024], ncd_f: [10.9, 2021], ncd_m: [16.4, 2021], comm: [16.5, 2021], inj: [6.1, 2021] },
+            DEU: { name: '독일', en: 'Germany', le_f: [83.2, 2024], le_m: [78.5, 2024], tfr: [1.36, 2024], u5: [3.7, 2024], pov3: [0.7, 2022], pov42: [0.9, 2022], pov83: [1.6, 2022], gni: [78140, 2025], lsc_f: [72.9, 2024], lsc_m: [70.0, 2024], ter_f: [80.9, 2024], ter_m: [72.8, 2024], water: [99.9, 2024], elec: [100, 2024], net: [93.5, 2024], lfp_f: [55.3, 2025], lfp_m: [66.1, 2025], cm18: null, urban: [82.1, 2025], road: [3.8, 2019], measles: [96, 2024], ncd_f: [8.5, 2021], ncd_m: [14.7, 2021], comm: [10.7, 2021], inj: [4.3, 2021] },
+            UZB: { name: '우즈베키스탄', en: 'Uzbekistan', le_f: [75.5, 2024], le_m: [69.6, 2024], tfr: [3.49, 2024], u5: [13.4, 2024], pov3: [2.3, 2025], pov42: [4.0, 2025], pov83: [12.4, 2025], gni: [13640, 2025], lsc_f: [97.6, 2025], lsc_m: [97.6, 2025], ter_f: [64.6, 2025], ter_m: [55.3, 2025], water: [81.9, 2024], elec: [100, 2024], net: [89.5, 2024], lfp_f: [41.2, 2025], lfp_m: [73.9, 2025], cm18: [3.4, 2022], urban: [51.0, 2025], road: [11.7, 2019], measles: [99, 2024], ncd_f: [21.2, 2021], ncd_m: [28.4, 2021], comm: [12.4, 2021], inj: [4.8, 2021] }
+        };
+        const STAT_META = {
+            le: { label: '기대수명', unit: '세', src: 'wpp', sex: true },
+            u5: { label: '5세 미만 사망률', unit: '‰ (1,000명당)', src: 'igme' },
+            tfr: { label: '합계출산율', unit: '명', src: 'wpp' },
+            pov3: { label: '극빈율 ($3.00/일 미만)', unit: '%', src: 'pip' },
+            pov42: { label: '$4.20/일 미만 인구', unit: '%', src: 'pip' },
+            pov83: { label: '$8.30/일 미만 인구', unit: '%', src: 'pip' },
+            gni: { label: '1인당 국민총소득(PPP)', unit: '$', src: 'gni' },
+            lsc: { label: '중학교 과정 이수율', unit: '%', src: 'uis', sex: true },
+            ter: { label: '고등교육 총취학률', unit: '%', src: 'uis', sex: true },
+            water: { label: '안전하게 관리되는 식수 이용', unit: '%', src: 'jmp' },
+            elec: { label: '전기 접근', unit: '%', src: 'elec' },
+            net: { label: '인터넷 이용', unit: '%', src: 'itu' },
+            measles: { label: '홍역 예방접종률', unit: '%', src: 'wuenic' },
+            lfp: { label: '경제활동참가율(15세+)', unit: '%', src: 'ilo', sex: true },
+            cm18: { label: '18세 전 결혼한 20~24세 여성', unit: '%', src: 'unicef' },
+            ncd: { label: '30~70세 4대 만성질환 사망확률', unit: '%', src: 'ghe', sex: true },
+            urban: { label: '도시 인구 비율', unit: '%', src: 'urban' },
+            road: { label: '도로교통 사망률', unit: '명/10만 명', src: 'ghe' }
+        };
+        const GLOBAL_FACTS = {
+            pov3: [10.5, 2022], pov83People: [38, 2022], birthsMillion: [133.7, 2024],
+            regionShare: { ssa: 32.3, sa: 27.0, eap: 16.4, high: 8.3, mena: 7.7, lac: 7.0, ca: 1.4 }
+        };
+
+        function sexKey(c) { return c && c.gender === '여성' ? 'f' : 'm'; }
+        function statOf(iso3, key, sex) {
+            const s = COUNTRY_STATS[iso3];
+            if (!s) return null;
+            const v = STAT_META[key] && STAT_META[key].sex ? s[key + '_' + (sex || 'f')] : s[key];
+            return v ? { v: v[0], y: v[1] } : null;
+        }
+        function fmtStatVal(key, st) {
+            if (!st) return '자료 없음';
+            const unit = STAT_META[key] ? STAT_META[key].unit : '';
+            if (key === 'gni') return '$' + Math.round(st.v).toLocaleString();
+            if ((key === 'lsc' || key === 'ter') && st.v > 100) return `${st.v.toFixed(1)}%*`;
+            return `${(Math.round(st.v * 10) / 10).toLocaleString()}${unit.startsWith('%') ? '%' : (unit.startsWith('‰') ? '‰' : unit)}`;
+        }
+        function srcTag(key, st) {
+            const meta = STAT_META[key];
+            if (!meta || !st) return '';
+            return `${SOURCES[meta.src].org} ${st.y}`;
+        }
+
+        // 2021 PPP 기준 1인당 하루 소비를 세계은행 빈곤선 3개 구간 비율에 맞춰 추첨 (상위 구간 분포는 게임 모델 가정)
+        function incomeModel(iso3) {
+            const s = COUNTRY_STATS[iso3];
+            const p3 = s.pov3[0] / 100, p42 = Math.max(p3, s.pov42[0] / 100), p83 = Math.max(p42, s.pov83[0] / 100);
+            const mean = s.gni[0] / 365 * 0.55;
+            const top = Math.max(0.0001, 1 - p83);
+            let T = (mean - (p3 * 2.0 + (p42 - p3) * 3.6 + (p83 - p42) * 6.2)) / top;
+            T = Math.max(10, top < 0.5 ? Math.min(T, 40) : T);
+            return { p3, p42, p83, T };
+        }
+        function sampleDailyIncome(iso3) {
+            const m = incomeModel(iso3);
+            const u = Math.random();
+            if (u < m.p3) return +(1.0 * Math.pow(3.0 / 1.0, Math.random())).toFixed(2);
+            if (u < m.p42) return +(3.0 + Math.random() * 1.2).toFixed(2);
+            if (u < m.p83) return +(4.2 + Math.random() * 4.1).toFixed(2);
+            return +(8.3 - (m.T - 8.3) * Math.log(1 - Math.random() * 0.995)).toFixed(2);
+        }
+        function shareBelowIncome(iso3, x) {
+            const m = incomeModel(iso3);
+            if (x < 3.0) return m.p3 * Math.max(0, Math.log(Math.max(x, 1)) / Math.log(3));
+            if (x < 4.2) return m.p3 + (m.p42 - m.p3) * (x - 3.0) / 1.2;
+            if (x < 8.3) return m.p42 + (m.p83 - m.p42) * (x - 4.2) / 4.1;
+            return m.p83 + (1 - m.p83) * (1 - Math.exp(-(x - 8.3) / (m.T - 8.3)));
+        }
+        function incomeBandLabel(x) {
+            if (x < 3.0) return '극빈선 $3.00 미만';
+            if (x < 4.2) return '$3.00~$4.20 구간';
+            if (x < 8.3) return '$4.20~$8.30 구간';
+            return '$8.30 이상';
+        }
+
+        // 성별 기대수명에 맞춘 연령별 사망 위험(Gompertz + 손상 + 5세 미만 사망률)
+        function baseHazards(c, x) {
+            const U = c.u5mr / 1000;
+            if (x === 0) return { inf: U * 0.65, inj: 0, g: 0 };
+            if (x <= 4) return { inf: U * 0.35 / 4, inj: 0, g: 0 };
+            if (x <= 14) return { inf: Math.max(0.0002, U * 0.02), inj: 0.0002, g: 0 };
+            const inj = c.roadRate / 1e5 * (x < 40 ? 1.4 : 0.9) + 0.0004;
+            return { inf: 0, inj, g: c.gompA * Math.exp(0.09 * (x - 15)) };
+        }
+        function calibrateMortality(c) {
+            const target = c.lifeExpectancy;
+            const e0For = (a) => {
+                c.gompA = a;
+                let l = 1, e = 0.5;
+                for (let x = 0; x < 110; x++) {
+                    const h = baseHazards(c, x);
+                    const q = Math.min(1, h.inf + h.inj + h.g);
+                    l *= (1 - q);
+                    e += l;
+                }
+                return e;
+            };
+            let lo = 1e-7, hi = 0.05;
+            for (let i = 0; i < 60; i++) {
+                const mid = Math.sqrt(lo * hi);
+                if (e0For(mid) > target) lo = mid; else hi = mid;
+            }
+            c.gompA = Math.sqrt(lo * hi);
+        }
+
+        const CAUSES = {
+            neonatal: { title: '신생아기 합병증 (조산·출생 시 질식·감염)', desc: 'UN IGME에 따르면 5세 미만 사망의 절반 가까이가 생후 28일 안에 일어나며, 숙련된 분만 돌봄과 신생아 치료가 생존을 크게 좌우합니다.' },
+            pneumonia: { title: '하기도 감염 (폐렴)', desc: 'WHO 통계에서 폐렴 등 하기도 감염은 어린이와 노인의 주요 사망 원인입니다. 예방접종·영양·실내 공기 질과 항생제 접근성이 영향을 줍니다.' },
+            diarrhoea: { title: '설사병', desc: '안전하지 않은 식수와 위생 시설 부족은 설사병의 주된 원인입니다. 경구수액(ORS)과 깨끗한 물로 대부분 예방·치료할 수 있습니다.' },
+            malaria: { title: '말라리아', desc: 'WHO에 따르면 말라리아 사망의 대부분은 사하라 이남 아프리카의 5세 미만 어린이에게서 발생합니다.' },
+            tb: { title: '결핵', desc: '결핵은 치료 가능한 감염병이지만, 진단과 6개월 이상의 치료를 끝까지 받기 어려운 환경에서 여전히 많은 사망을 낳습니다.' },
+            road: { title: '도로 교통사고', desc: 'WHO는 도로 교통사고를 5~29세 사망 원인 1위로 꼽습니다. 이 나라의 도로교통 사망률이 위험 계산에 반영되었습니다.' },
+            injury: { title: '기타 손상 (추락·익사·산업재해 등)', desc: '손상에 의한 사망은 작업 환경, 안전 설비, 응급 이송 체계의 영향을 크게 받습니다.' },
+            ihd: { title: '허혈성 심장질환 (심근경색 등)', desc: 'WHO 세계 사망 원인 1위인 허혈성 심장질환으로 생을 마쳤습니다. 고혈압·흡연·식습관·당뇨 관리가 위험을 좌우합니다.' },
+            stroke: { title: '뇌졸중', desc: '뇌졸중은 세계 사망 원인 상위권 질환으로, 혈압 관리와 응급 치료 접근성이 예후를 결정합니다.' },
+            cancer: { title: '암 (폐암·간암·위암 등)', desc: '고소득·고령 사회일수록 암이 사망 원인에서 차지하는 비중이 커집니다. 조기 검진과 치료 접근성이 생존율을 가릅니다.' },
+            copd: { title: '만성 폐쇄성 폐질환 (COPD)', desc: '흡연과 실내·외 대기오염, 작업장 분진 노출이 누적되어 생기는 만성 호흡기 질환입니다.' },
+            diabetes: { title: '당뇨병·만성 신장질환', desc: '당뇨와 그 합병증인 신장질환은 치료·관리 비용 부담이 큰 곳에서 더 치명적입니다.' }
+        };
+        function pickWeighted(pairs) {
+            const tot = pairs.reduce((a, p) => a + p[1], 0);
+            let r = Math.random() * tot;
+            for (const [k, w] of pairs) { if (r < w) return k; r -= w; }
+            return pairs[pairs.length - 1][0];
+        }
+        function pickCause(c, x, h) {
+            if (x === 0) return Math.random() < 0.47 ? 'neonatal' : pickWeighted([['pneumonia', 4], ['diarrhoea', 3], ['malaria', c.regionId === 'ssa' ? 4 : 0]]);
+            if (x <= 4) return pickWeighted([['pneumonia', 4], ['diarrhoea', c.household && !c.household.safeWater ? 4 : 2], ['malaria', c.regionId === 'ssa' ? 5 : 0]]);
+            const tot = h.inf + h.inj + h.g;
+            const r = Math.random() * tot;
+            if (r < h.inj) return x < 45 && Math.random() < 0.6 ? 'road' : 'injury';
+            const st = COUNTRY_STATS[c.iso3];
+            const comm = st.comm[0], ncd = Math.max(5, 100 - st.comm[0] - st.inj[0]);
+            const commW = comm * (x < 50 ? 1.4 : 0.6);
+            if (Math.random() < commW / (commW + ncd)) return pickWeighted([['pneumonia', 4], ['tb', c.regionId === 'ssa' || c.regionId === 'sa' ? 3 : 1], ['diarrhoea', c.household && !c.household.safeWater ? 2 : 0.5], ['malaria', c.regionId === 'ssa' ? 2 : 0]]);
+            const rich = ['KOR', 'USA', 'DEU', 'CHN'].includes(c.iso3);
+            return pickWeighted([['ihd', 30], ['stroke', c.iso3 === 'CHN' ? 28 : 18], ['cancer', rich ? 34 : 22], ['copd', 10], ['diabetes', 12]]);
+        }
+
+        // 국가 미리보기 값도 실측치로 교체 (형제자매 수 = 합계출산율)
+        REGIONS_DATA.forEach(r => r.countries.forEach(co => {
+            const s = COUNTRY_STATS[co.iso3];
+            if (!s) return;
+            co.tfr = s.tfr[0];
+            co.lifeExpectancy = +((s.le_f[0] + s.le_m[0]) / 2).toFixed(1);
+            co.under5MortalityRate = s.u5[0] / 1000;
+        }));
 
         /* ============================================================================
            2. GAME STATE, AUDIO ALARM & RUNTIME VARIABLES
@@ -1408,8 +1643,14 @@
                 if (res.ok) fullHtml = await res.text();
             } catch (e) {}
             if (!fullHtml) {
-                alert('원본 파일을 읽을 수 없어 다운로드를 중단했습니다. 처음 받은 index.html 파일을 그대로 업로드해 주세요.');
+                alert('원본 파일을 읽을 수 없어 다운로드를 중단했습니다. GitHub Pages 주소로 접속한 상태에서 다시 눌러 주세요.');
                 return;
+            }
+            const cfg = getCloudConfig();
+            const M1 = '/*FB_' + 'CONFIG*/', M2 = '/*FB_' + 'CONFIG_END*/';
+            const i1 = fullHtml.indexOf(M1), i2 = fullHtml.indexOf(M2);
+            if (cfg && i1 > -1 && i2 > i1) {
+                fullHtml = fullHtml.slice(0, i1 + M1.length) + JSON.stringify(cfg) + fullHtml.slice(i2);
             }
             const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
             const url = URL.createObjectURL(blob);
@@ -1651,9 +1892,9 @@
         function getContextualRoutineMessages(c) {
             if (c.age < 6) {
                 return [
-                    `${c.infra.water.split(' ')[0]} 식수로 이유식과 식사를 해결했습니다.`,
+                    `${c.household && c.household.safeWater ? '정수된 수돗물' : '우물·공동 수도에서 길어 온 물'}로 이유식과 식사를 해결했습니다.`,
                     `동네 골목에서 또래 아이들과 뛰어놀며 시간을 보냈습니다.`,
-                    `${c.infra.power.split(' ')[0]} 전력 환경 속에서 가족들과 저녁을 보냈습니다.`,
+                    `${c.household && c.household.electricity ? '전등 아래에서' : '등유 램프·태양광 랜턴 불빛 아래에서'} 가족들과 저녁을 보냈습니다.`,
                     `계절 변화에 맞춰 부모님이 구해온 옷가지를 입었습니다.`
                 ];
             } else if (c.age < 18) {
@@ -1757,7 +1998,7 @@
 
         function applyAnnualEnvironmentEffects(c) {
             // Clean water & power impact on young children & elderly
-            if (c.regionId === 'ssa' || c.regionId === 'sa') {
+            if (c.household && !c.household.safeWater) {
                 if (c.age <= 5 && !c.vaccinated) {
                     c.health = clampStat(c.health - 2);
                 }
@@ -1768,7 +2009,7 @@
                 c.health = clampStat(c.health - Math.round(ageDecay * c.chronicRiskMod));
             }
             // Extreme poverty sanity pressure
-            if (c.dailyBudget < 2.50 && c.age > 12) {
+            if (c.dailyBudget < 3.00 && c.age > 12) {
                 c.sanity = clampStat(c.sanity - 1);
             }
         }
@@ -1778,13 +2019,13 @@
 
             // Age 1: Universal Immunization Program check
             if (c.age === 1) {
-                const vaxChance = c.regionId === 'ssa' ? 0.72 : (c.regionId === 'sa' ? 0.88 : 0.98);
+                const vaxChance = c.measlesCov || 0.9;
                 if (Math.random() < vaxChance) {
                     c.vaccinated = true;
                     c.health = clampStat(c.health + 5);
                     addLog(c.age, '예방접종', `지역 보건소에서 기초 영유아 백신(BCG, 홍역, 소아마비) 접종을 완료해 감염병 사망 위험이 크게 줄었습니다.`, 'cyan', 'crisis');
                 } else {
-                    addLog(c.age, '미접종', `거주지 보건 인프라 부족으로 영유아 필수 예방접종 시기를 놓쳤습니다. (영유아 감염병 주의)`, 'amber', 'crisis');
+                    addLog(c.age, '미접종', `필수 예방접종 시기를 놓쳤습니다. 이 나라 아이의 약 ${Math.round((1 - (c.measlesCov || 0.9)) * 100)}%가 홍역 백신을 맞지 못합니다(WHO/UNICEF 2024).`, 'amber', 'crisis');
                 }
                 return;
             }
@@ -1798,7 +2039,7 @@
             const eventPool = [];
 
             // Waterborne / Monsoon / Infectious events in developing regions
-            if ((c.regionId === 'ssa' || c.regionId === 'sa') && c.age < 15) {
+            if (c.household && !c.household.safeWater && c.age < 15) {
                 eventPool.push({
                     tag: '수인성 질환',
                     color: 'rose',
@@ -1982,7 +2223,7 @@
                                     c.highlights.push('14세: 가계 난관 속 상급 중등교육(고교) 진학');
                                 }
                             },
-                            {
+                            c.gender === '여성' ? female14Option(c) : {
                                 title: '🔧 학업 중단 후 지역 오토바이 수리점/공방 견습공 취업',
                                 risk: '정규 교육 성장 정체, 분진·소음 노출로 만성질환 위험 소폭 증가',
                                 reward: '일일 소득 예산 +$1.80 즉시 상승, 현장 수리 기술 습득',
@@ -2180,12 +2421,12 @@
                         {
                             title: '🏥 종합 정밀 검진 및 만성질환 예방 치료 집중',
                             risk: `의료비 지출 (-$${Math.round(c.dailyBudget * 25)})`,
-                            reward: '건강 +16, 노년기 중증 만성질환 발병 위험 35% 감소',
+                            reward: '건강 +16, 이후 만성질환 사망 위험 12% 감소 (게임 가정)',
                             effect: () => {
                                 const medCost = Math.round(c.dailyBudget * 25);
                                 c.wealth -= medCost;
                                 c.health = clampStat(c.health + 16);
-                                c.chronicRiskMod = Math.max(0.5, c.chronicRiskMod - 0.35);
+                                c.chronicRiskMod = Math.max(0.7, c.chronicRiskMod - 0.12);
                                 addLog(c.age, '중대 결정', `의료비 $${medCost}를 투자해 중년기 정밀 검진과 만성질환 예방 관리를 받았습니다.`, 'emerald');
                                 c.highlights.push('42세: 만성질환 예방 정밀 치료 완료');
                             }
@@ -2252,83 +2493,6 @@
         /* ============================================================================
            8. WHO MORTALITY SYSTEM (연령·지역·건강 기반 사망 판정)
         ============================================================================ */
-        function checkMortalityRoll(c) {
-            // 1. Direct Health Depletion
-            if (c.health <= 0) {
-                return {
-                    died: true,
-                    title: '극심한 영양실조 및 다발성 장기 부전',
-                    desc: '건강 수치가 0에 도달하여 신체가 더 이상 버티지 못했습니다. 기초 의료 접근성 및 영양 불균형이 누적된 결과입니다.'
-                };
-            }
-
-            // 2. Age 0-4: WHO Under-5 Mortality Check
-            if (c.age <= 4) {
-                let u5Prob = c.under5MortalityRate;
-                if (c.vaccinated) u5Prob *= 0.45;
-                if (c.health < 50) u5Prob *= 1.8;
-
-                if (Math.random() < u5Prob) {
-                    const isAfrica = c.regionId === 'ssa';
-                    return {
-                        died: true,
-                        title: isAfrica ? '영유아 급성 말라리아 및 중증 호흡기 감염' : '수인성 급성 설사병 및 폐렴 합병증',
-                        desc: `WHO 통계에 따르면 저개발 권역 영유아 사망의 주요 원인은 예방 및 치료가 가능한 감염성 질환과 식수 위생 문제입니다.`
-                    };
-                }
-            }
-
-            // 3. Age 15-39: Youth / Adult Unintentional Injury & Maternal/Industrial Risk
-            if (c.age >= 15 && c.age <= 39) {
-                let youthHazard = c.dailyBudget < 10 ? 0.0022 : 0.0006;
-                if (c.inventory.includes('생계형 오토바이')) youthHazard += 0.0015;
-                if (Math.random() < youthHazard) {
-                    return {
-                        died: true,
-                        title: '도로 교통사고 및 산업 현장 안전사고',
-                        desc: 'WHO 청년기 사망 원인 상위권인 도로 인프라 미비 교통사고 및 응급 외상 처치 지연으로 생을 마감했습니다.'
-                    };
-                }
-            }
-
-            // 4. Age 45+: Non-Communicable Diseases (NCDs) & Life Expectancy Curve
-            if (c.age >= 45) {
-                const ageRatio = c.age / c.lifeExpectancy;
-                let annualDeathProb = 0.003;
-
-                if (ageRatio >= 0.85 && ageRatio < 1.0) {
-                    annualDeathProb = 0.025 * c.chronicRiskMod;
-                } else if (ageRatio >= 1.0 && ageRatio < 1.15) {
-                    annualDeathProb = 0.085 * c.chronicRiskMod;
-                } else if (ageRatio >= 1.15) {
-                    annualDeathProb = 0.22 * c.chronicRiskMod;
-                }
-
-                // Low health amplifies risk
-                if (c.health < 35) annualDeathProb *= 2.2;
-
-                if (Math.random() < annualDeathProb || c.age >= 102) {
-                    const causes = [
-                        {
-                            title: '허혈성 심장질환 (급성 심근경색)',
-                            desc: 'WHO 전 세계 사망 원인 1위 질환인 허혈성 심장질환으로 인해 향년 ' + c.age + '세로 별세했습니다.'
-                        },
-                        {
-                            title: '뇌졸중 및 뇌혈관 합병증',
-                            desc: 'WHO 글로벌 사망 원인 2위 질환인 뇌혈관 질환이 발병하여 가족들이 지켜보는 가운데 눈을 감았습니다.'
-                        },
-                        {
-                            title: '만성 폐쇄성 폐질환 (COPD) 및 호흡기 부전',
-                            desc: '평생 노출된 대기오염과 작업장 분진, 노화가 겹치며 발생한 만성 호흡기 질환으로 생을 마감했습니다.'
-                        }
-                    ];
-                    const picked = causes[Math.floor(Math.random() * causes.length)];
-                    return { died: true, title: picked.title, desc: picked.desc };
-                }
-            }
-
-            return { died: false };
-        }
 
 
         /* ============================================================================
@@ -2587,24 +2751,11 @@
             document.getElementById('yearProgressBar').style.width = `${pct}%`;
         }
 
-        function estimateGlobalPercentile(dailyBudget, wealth) {
-            // Based on World Bank global income distribution (PPP USD/day)
-            const score = dailyBudget + (wealth / 1200);
-            if (score < 2.15) return '글로벌 하위 9% (절대빈곤)';
-            if (score < 3.65) return '글로벌 하위 24%';
-            if (score < 6.85) return '글로벌 하위 47% (중하위)';
-            if (score < 15.0) return '글로벌 상위 38% (중산층)';
-            if (score < 40.0) return '글로벌 상위 18%';
-            return '글로벌 상위 7% (선진 고소득)';
-        }
 
         function clampStat(val) {
             return Math.max(0, Math.min(100, Math.round(val)));
         }
 
-        function openDataModal() {
-            document.getElementById('dataModal').classList.remove('hidden');
-        }
 
         function closeDataModal() {
             document.getElementById('dataModal').classList.add('hidden');
@@ -2686,9 +2837,6 @@
         function fmtMoney(v) {
             const n = Math.round(v || 0);
             return (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString();
-        }
-        function genderLifeExpectancy(c) {
-            return +(c.lifeExpectancy + (c.gender === '여성' ? 2.5 : -2.5)).toFixed(1);
         }
 
         /* ---------- 10.1 인형뽑기 (Claw Machine) ---------- */
@@ -2909,8 +3057,7 @@
             const firstName = firstPool[Math.floor(Math.random() * firstPool.length)];
             const lastName = countryObj.surnames[Math.floor(Math.random() * countryObj.surnames.length)];
             const fullName = countryObj.country.includes('대한민국') ? `${lastName}${firstName}` : `${firstName} ${lastName}`;
-            const [minB, maxB] = countryObj.dailyBudgetRange;
-            const dailyBudget = +(minB + Math.random() * (maxB - minB)).toFixed(2);
+            const dailyBudget = sampleDailyIncome(countryObj.iso3);
             const initialWealth = +(dailyBudget * (12 + Math.random() * 25)).toFixed(0);
             const familyBg = generateFamilyBackground(countryObj, lastName, gender, dailyBudget);
             const isHighIncome = region.id === 'high' || countryObj.country.includes('대한민국');
@@ -2955,6 +3102,8 @@
                 highlights: [],
                 completedMilestones: {}
             };
+            applyCountryStats(charState, countryObj);
+            charState.infra = infraText(charState);
             pendingBirth = { region, countryObj };
             renderBirthCard();
         }
@@ -2979,13 +3128,19 @@
                         <div class="text-xl sm:text-2xl font-black text-white">${escapeHtml(c.name)} <span class="text-sm text-emerald-400 font-semibold">(${c.gender})</span></div>
                         <div class="text-xs text-slate-300">${escapeHtml(c.country)} · ${escapeHtml(c.urban)}</div>
                         <div class="text-[11px] text-slate-500 mt-0.5">이 나라·지역으로 태어날 확률 약 ${c.countryPct}% (게임 내 권역 표본 기준)</div>
+                        <span class="inline-block mt-1 text-[10px] font-bold px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300 border border-purple-500/30">합성 페르소나 · 이름·가족은 창작, 생활조건은 통계 기반</span>
                     </div>
                 </div>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
-                    <div class="bg-slate-900 rounded-lg p-2 border border-slate-800"><div class="text-slate-400">기대수명(${c.gender})</div><div class="font-black text-cyan-300">${genderLifeExpectancy(c)}세</div></div>
+                    <div class="bg-slate-900 rounded-lg p-2 border border-slate-800"><div class="text-slate-400">${c.gender} 기대수명 (UN WPP 2024)</div><div class="font-black text-cyan-300">${genderLifeExpectancy(c)}세</div></div>
                     <div class="bg-slate-900 rounded-lg p-2 border border-slate-800"><div class="text-slate-400">가구 일일 예산</div><div class="font-black text-emerald-300">$${c.dailyBudget.toFixed(2)}</div></div>
                     <div class="bg-slate-900 rounded-lg p-2 border border-slate-800"><div class="text-slate-400">형제자매</div><div class="font-black text-purple-300">손위 ${olderSib} · 동생 ${youngerSib}</div></div>
                     <div class="bg-slate-900 rounded-lg p-2 border border-slate-800"><div class="text-slate-400">글로벌 위치</div><div class="font-black text-amber-300">${estimateGlobalPercentile(c.dailyBudget, c.wealth).replace('글로벌 ', '')}</div></div>
+                </div>
+                <div class="text-[11px] text-slate-300 leading-relaxed bg-slate-900 border border-slate-800 rounded-lg px-2.5 py-2 space-y-0.5">
+                    <div>📊 가구 1인당 하루 소비 <strong class="text-emerald-300">$${c.dailyBudget.toFixed(2)}</strong> (2021 PPP · ${incomeBandLabel(c.dailyBudget)}) — ${escapeHtml(COUNTRY_STATS[c.iso3].name)} 인구의 약 <strong class="text-white">${c.incomeShareBelow}%</strong>보다 높은 수준</div>
+                    <div>🏠 이 가구: 안전한 식수 ${c.household.safeWater ? '✓' : '✗'} · 전기 ${c.household.electricity ? '✓' : '✗'} · 인터넷 ${c.household.internet ? '✓' : '✗'} <span class="text-slate-500">(국가 보급률 ${COUNTRY_STATS[c.iso3].water ? COUNTRY_STATS[c.iso3].water[0] + '%' : '자료 없음'} · ${COUNTRY_STATS[c.iso3].elec[0]}% · ${COUNTRY_STATS[c.iso3].net[0]}%)</span></div>
+                    <div class="text-[10px] text-slate-500">World Bank PIP·JMP·ITU 등 실측 비율로 추첨 · 조회 ${DATA_ACCESSED}</div>
                 </div>
                 <p class="text-[11px] text-slate-400 leading-relaxed">👨 ${escapeHtml(f.father.name)} · ${escapeHtml(f.father.job)}　👩 ${escapeHtml(f.mother.name)} · ${escapeHtml(f.mother.job)}</p>
                 <div>
@@ -3075,8 +3230,9 @@
             playerLivesCount += 1;
 
             switchRightTab('live');
-            activeNewsTab = 'global';
+            activeNewsTab = 'live';
             generateYearNews(c);
+            refreshLiveNews(true);
             updateDashboardUI();
             syncAutoWatchUI();
             anSyncNow();
@@ -3237,6 +3393,7 @@
 
         /* ---------- 10.5 중대 기로: 성향 추천 · 자동 카운트다운 · 기록 ---------- */
         function getChoiceTags(age, idx, c) {
+            if (age === 14 && idx === 1 && c.gender === '여성' && c.dailyBudget < 10) return ['family', 'money'];
             const row = CHOICE_TAGS[age];
             if (!row) return [];
             const list = row.all || (c.dailyBudget < 10 ? row.dev : row.rich);
@@ -3266,6 +3423,7 @@
             document.getElementById('milestoneAgeBadge').textContent = `${milestone.age}세 분기점`;
             document.getElementById('milestoneTitle').textContent = milestone.title;
             document.getElementById('milestoneDesc').textContent = milestone.desc;
+            renderMilestoneFacts(milestone.age);
             document.getElementById('msStatHealth').textContent = `${c.health}/100`;
             document.getElementById('msStatEdu').textContent = `${c.edu}/100`;
             document.getElementById('msStatWealth').textContent = fmtMoney(c.wealth);
@@ -3433,6 +3591,10 @@
             if (!charState) return;
             const container = document.getElementById('historyTimelineContainer');
             if (activeHistoryFilter === 'news') {
+                renderNewsHistory(container);
+                return;
+            }
+            if (false) {
                 if (newsArchive.length === 0) {
                     container.innerHTML = `<div class="p-6 text-center text-slate-500">아직 쌓인 뉴스가 없습니다.</div>`;
                     return;
@@ -3534,195 +3696,11 @@
         /* ============================================================================
            11. 상단 뉴스 데스크 (국제 · 내 나라 · 나와 비교) — 통계·추세 기반 시나리오 뉴스
         ============================================================================ */
-        const NEWS_GLOBAL = [
-            { tag: '기후', t: '{Y}년 여름, 세계 곳곳 기록적 폭염', d: '고온이 길어지면서 냉방·식수 접근성이 낮은 지역 주민과 야외 노동자의 건강 위험이 커졌다는 경고가 잇따랐습니다.' },
-            { tag: '식량', t: '국제 곡물 가격 다시 출렁', d: '주요 산지 작황 부진과 물류 차질로 밀·쌀 값이 올라, 소득의 절반 이상을 식비로 쓰는 가구의 부담이 커졌습니다.' },
-            { tag: '보건', t: 'WHO, 국경 넘는 감염병 감시 강화 요청', d: '새 호흡기 감염병 확산 가능성에 대비해 각국에 조기 경보와 백신 공급망 협력을 강화하자고 촉구했습니다.' },
-            { tag: '기술', t: '생성형 AI 확산, 일자리 지형 흔들려', d: '사무·상담 업무 자동화가 빨라지는 가운데, 디지털 접근성이 낮은 지역과의 격차가 더 벌어질 수 있다는 우려가 나왔습니다.' },
-            { tag: '이주', t: '기후·분쟁으로 고향 떠난 사람 역대 최대 수준', d: '유엔난민기구는 강제 이주 인구가 계속 늘고 있다며 국제사회의 분담을 호소했습니다.' },
-            { tag: '에너지', t: '재생에너지 투자, 화석연료 추월 흐름', d: '태양광 패널 가격 하락으로 전력망이 닿지 않던 농촌에도 소형 태양광이 빠르게 보급되고 있습니다.' },
-            { tag: '경제', t: '고금리 장기화… 개발도상국 부채 경고', d: '국제통화기금(IMF)은 이자 부담이 커진 저소득국이 보건·교육 예산을 줄일 위험이 있다고 지적했습니다.' },
-            { tag: '교육', t: '유네스코 "학교 밖 아동, 여전히 많다"', d: '분쟁·빈곤·조혼 등으로 학교에 다니지 못하는 아동이 여전히 많아 국제 교육 목표 달성이 어렵다고 밝혔습니다.' },
-            { tag: '보건', t: '말라리아 백신 접종 지역 확대', d: '아프리카 여러 나라에서 영유아 말라리아 백신 접종이 늘며 5세 미만 사망 감소 기대가 커지고 있습니다.' },
-            { tag: '물', t: '세계 물의 날, 안전한 식수 격차 조명', d: '아직 수많은 사람이 안전하게 관리되는 식수를 이용하지 못한다는 사실이 다시 주목받았습니다.' },
-            { tag: '인구', t: '세계 고령화 가속… 연금 개혁 논쟁 확산', d: '고소득국을 중심으로 은퇴 연령과 연금 재정을 둘러싼 논쟁이 뜨거워지고 있습니다.' },
-            { tag: '분쟁', t: '장기화된 지역 분쟁, 인도적 지원 요청 급증', d: '식량·의료 지원이 필요한 사람이 늘었지만 국제 지원 예산은 부족하다는 호소가 이어졌습니다.' },
-            { tag: '디지털', t: '저가 스마트폰·위성 인터넷, 농촌 연결성 개선', d: '모바일 송금과 원격 교육이 늘며 외딴 지역 주민의 금융·학습 기회가 넓어지고 있습니다.' },
-            { tag: '인구', t: '세계 인구 증가세 둔화, 저출산 국가 늘어', d: '합계출산율이 인구 유지 수준(2.1명)을 밑도는 나라가 계속 늘고 있다는 분석이 나왔습니다.' },
-            { tag: '도시', t: '세계 인구 절반 이상 도시 거주… 과밀 주거 과제', d: '도시로 몰린 인구 가운데 상당수가 상하수도가 부족한 비공식 정착지에 살고 있습니다.' },
-            { tag: '스포츠', t: '국제 축구대회 열기, 전 세계 수십억 명 시청', d: '동네 공터부터 대형 스크린 앞까지, 지구촌이 같은 경기를 보며 들썩였습니다.' },
-            { tag: '우주', t: '민간 우주 탐사 경쟁 가열', d: '재사용 로켓과 소형 위성 발사가 늘며 위성 기반 통신·기상 관측 서비스가 빠르게 확대되고 있습니다.' },
-            { tag: '환경', t: '국제 플라스틱 협약 협상 이어져', d: '해양 쓰레기와 미세플라스틱 문제를 두고 생산 감축과 재활용 확대를 둘러싼 각국 입장이 엇갈렸습니다.' }
-        ];
 
-        const NEWS_REGION = {
-            ssa: [
-                { tag: '기후', t: '{C} 일대 우기 홍수, 농경지 침수', d: '수확을 앞둔 작물이 물에 잠기고 우물이 오염되며 수인성 질환 경보가 내려졌습니다.' },
-                { tag: '보건', t: '{C} 보건소 영유아 예방접종 캠페인', d: '이동 접종팀이 마을을 돌며 홍역·소아마비 백신을 놓고 있습니다.' },
-                { tag: '경제', t: '{C}, 연료·생필품 가격 급등에 시민 부담', d: '환율 약세와 보조금 축소가 겹쳐 시장 물가가 크게 올랐습니다.' },
-                { tag: '디지털', t: '{C} 모바일 머니 이용자 급증', d: '은행 계좌가 없던 사람들도 휴대전화로 송금·저축을 시작했습니다.' },
-                { tag: '교육', t: '{C} 교실 부족 여전… 한 반에 학생 수십 명', d: '학생 수는 빠르게 늘지만 교사와 교실 확충은 따라가지 못하고 있습니다.' },
-                { tag: '에너지', t: '{C} 농촌 태양광 미니그리드 확대', d: '밤에도 불을 켜고 휴대폰을 충전할 수 있는 마을이 늘고 있습니다.' }
-            ],
-            sa: [
-                { tag: '기후', t: '{C} 몬순 폭우와 폭염 번갈아', d: '집중호우로 저지대가 잠긴 뒤 곧바로 40도 안팎의 폭염이 이어졌습니다.' },
-                { tag: '경제', t: '{C} 청년 일자리 경쟁 치열', d: '공무원·대기업 정규직 시험에 지원자가 몰리고, 많은 청년이 비공식 일자리에 머물고 있습니다.' },
-                { tag: '환경', t: '{C} 대도시 겨울철 대기오염 비상', d: '미세먼지 농도가 기준치를 크게 넘어 학교 휴교와 차량 운행 제한이 시행됐습니다.' },
-                { tag: '디지털', t: '{C} 모바일 결제 일상화', d: '노점 상인까지 QR 결제를 받으며 현금 없는 거래가 빠르게 늘고 있습니다.' },
-                { tag: '이주', t: '{C} 출신 해외 이주노동자 송금 사상 최대', d: '중동·동남아에서 일하는 가족이 보낸 돈이 많은 가계의 생명줄이 되고 있습니다.' },
-                { tag: '사회', t: '{C}, 여아 교육 지원 정책 확대', d: '여학생 장학금과 자전거 지원으로 중등학교 진학률을 높이려는 노력이 이어지고 있습니다.' }
-            ],
-            eap: [
-                { tag: '경제', t: '{C} 제조업 공급망 재편 수혜 논쟁', d: '해외 공장 이전으로 일자리가 늘었지만 임금·노동 환경 개선 요구도 커지고 있습니다.' },
-                { tag: '인구', t: '{C} 출생아 감소세 이어져', d: '결혼·출산을 미루는 청년이 늘며 학교 통폐합과 인력 부족 우려가 커졌습니다.' },
-                { tag: '기후', t: '{C} 태풍 경로에 비상', d: '해안 지역 주민 대피령이 내려지고 항공·해운 운항이 중단됐습니다.' },
-                { tag: '기술', t: '{C} 전기차·배터리 산업 급성장', d: '도심 거리에서 전기 오토바이와 전기차를 보는 일이 흔해졌습니다.' },
-                { tag: '교육', t: '{C} 입시 경쟁과 사교육비 부담 논란', d: '학부모들의 교육비 지출이 가계 소비에서 차지하는 비중이 다시 높아졌습니다.' }
-            ],
-            mena: [
-                { tag: '물', t: '{C} 물 부족 심화, 담수화 설비 확대', d: '강수량 감소와 인구 증가로 지하수가 고갈되며 바닷물을 민물로 바꾸는 설비가 늘고 있습니다.' },
-                { tag: '경제', t: '{C} 물가 상승에 빵값 논쟁', d: '주식인 빵 가격과 보조금 정책이 가계의 최대 관심사로 떠올랐습니다.' },
-                { tag: '고용', t: '{C} 청년 실업률 여전히 높아', d: '대졸 청년들도 일자리를 찾지 못해 해외 취업과 창업으로 눈을 돌리고 있습니다.' },
-                { tag: '기후', t: '{C} 사막 모래폭풍·폭염 잦아져', d: '야외 노동 시간을 제한하는 폭염 대책이 시행됐습니다.' },
-                { tag: '사회', t: '{C} 여성 경제활동 참여 확대 정책', d: '보육 지원과 유연근무 도입으로 여성 취업을 늘리려는 정책이 발표됐습니다.' }
-            ],
-            lac: [
-                { tag: '치안', t: '{C} 도시 치안 대책 강화', d: '대도시 외곽 지역의 범죄 예방을 위해 지역 공동체 순찰과 조명 확충이 추진됐습니다.' },
-                { tag: '경제', t: '{C} 물가 안정에도 비공식 노동 비중 높아', d: '노동자 상당수가 사회보험 없이 일하고 있어 노후 대비가 과제로 꼽혔습니다.' },
-                { tag: '기후', t: '{C} 가뭄·산불로 농가 피해', d: '커피·옥수수 작황이 나빠지며 농촌 가구의 소득이 줄었습니다.' },
-                { tag: '보건', t: '{C} 공공의료 대기 시간 단축 추진', d: '지역 보건소 확충과 원격 진료 도입이 발표됐습니다.' },
-                { tag: '문화', t: '{C} 축제와 축구, 지역 공동체의 버팀목', d: '어려운 경제 속에서도 동네 축제와 축구 리그가 주민들을 이어주고 있습니다.' }
-            ],
-            high: [
-                { tag: '주거', t: '{C} 청년 주거비 부담 사상 최고 수준', d: '월세와 집값 상승으로 부모 집에서 독립하는 나이가 점점 늦어지고 있습니다.' },
-                { tag: '보건', t: '{C} 의료비·약값 논쟁 가열', d: '만성질환 치료비와 보험 보장 범위를 두고 정치권 공방이 이어졌습니다.' },
-                { tag: '인구', t: '{C} 고령화로 돌봄 인력 부족', d: '요양·간호 인력 확보를 위해 이민 확대와 처우 개선이 논의되고 있습니다.' },
-                { tag: '기술', t: '{C} AI 도입으로 사무직 재교육 확대', d: '기업과 정부가 직원 디지털 역량 재교육 프로그램을 늘리고 있습니다.' },
-                { tag: '에너지', t: '{C} 에너지 요금 인상에 가계 긴장', d: '난방비와 전기요금이 오르며 저소득층 지원책이 발표됐습니다.' }
-            ],
-            ca: [
-                { tag: '이주', t: '{C} 해외 계절근로 송금, 가계 소득의 큰 축', d: '러시아·한국 등에서 일하는 가족이 보낸 송금이 지역 경제를 떠받치고 있습니다.' },
-                { tag: '물', t: '{C} 관개용수 부족, 면화 농사 전환 논의', d: '아랄해 축소 이후 물을 덜 쓰는 작물로 바꾸자는 목소리가 커졌습니다.' },
-                { tag: '관광', t: '{C} 실크로드 관광 붐', d: '고대 도시를 찾는 해외 관광객이 늘며 숙박·공예 일자리가 생겨나고 있습니다.' },
-                { tag: '교육', t: '{C} 외국어·IT 교육 열풍', d: '청년들이 해외 취업을 위해 영어·한국어·코딩 학원으로 몰리고 있습니다.' },
-                { tag: '에너지', t: '{C} 겨울철 가스·전력 공급 차질', d: '한파로 난방 수요가 급증하며 일부 지역에서 단전이 이어졌습니다.' }
-            ]
-        };
-        const NEWS_KR = [
-            { tag: '인구', t: '대한민국 합계출산율 세계 최저 수준 지속', d: '정부가 육아휴직·주거 지원 확대를 내놨지만 청년들은 일·가정 양립의 현실적 어려움을 호소합니다.' },
-            { tag: '교육', t: '수능·입시 경쟁과 사교육비 다시 화두', d: '초등학생부터 학원 일정을 소화하는 아이들이 많아 교육 격차 논쟁이 이어졌습니다.' },
-            { tag: '주거', t: '수도권 집값·전세 시장 출렁', d: '청년·신혼부부의 내 집 마련 부담이 커지며 공공주택 공급 확대 요구가 나왔습니다.' },
-            { tag: '문화', t: 'K-콘텐츠 해외 인기 계속', d: '드라마·음악·게임이 세계 각지에서 사랑받으며 관련 일자리가 늘고 있습니다.' },
-            { tag: '노동', t: '고령 노동 늘어나는 한국', d: '연금만으로 생활이 어려운 60대 이상이 경비·돌봄 등 일자리를 이어가고 있습니다.' }
-        ];
 
-        let newsUsed = { g: new Set(), l: new Set() };
 
-        function pickFromPool(pool, usedSet) {
-            if (usedSet.size >= pool.length) usedSet.clear();
-            const free = pool.map((_, i) => i).filter(i => !usedSet.has(i));
-            const idx = free[Math.floor(Math.random() * free.length)];
-            usedSet.add(idx);
-            return pool[idx];
-        }
 
-        function incomeTier(c) {
-            const b = c.birthBudget || c.dailyBudget;
-            return b < 6 ? 'low' : (b < 20 ? 'mid' : 'high');
-        }
-        function peerEdu(age, tier) {
-            const f = { low: 0.6, mid: 0.8, high: 1 }[tier];
-            let e = tier === 'high' ? 10 : 4;
-            if (age <= 5) return Math.round(e + age * 1.2);
-            e += 6;
-            e += (Math.min(age, 18) - 5) * 3.6 * f;
-            if (age > 18) e += Math.min(age - 18, 6) * 2.2 * f;
-            if (age > 24) e += Math.min(age - 24, 30) * 0.35;
-            return Math.min(95, Math.round(e));
-        }
-        function peerWealth(age, c) {
-            const b = c.birthBudget || c.dailyBudget;
-            const ratio = b < 4 ? 0.06 : (b < 15 ? 0.11 : 0.18);
-            // 게임 원장과 같은 방식: 가구 순저축이 출생부터 누적되고, 성인기 이후 소득이 점차 오른다고 가정
-            const adult = Math.max(0, age - 19);
-            return Math.round(b * 25 + b * 365 * ratio * age * 0.8 * (1 + Math.min(adult, 40) * 0.015));
-        }
-        function peerHealth(age, tier) {
-            const base = { low: 74, mid: 84, high: 92 }[tier];
-            return Math.max(15, Math.round(base - Math.max(0, age - 45) * 1.9));
-        }
-        function computeCompare(c) {
-            const tier = incomeTier(c);
-            return {
-                edu: { me: c.edu, peer: peerEdu(c.age, tier) },
-                health: { me: c.health, peer: peerHealth(c.age, tier) },
-                wealth: { me: c.wealth, peer: peerWealth(c.age, c) },
-                le: genderLifeExpectancy(c),
-                pct: estimateGlobalPercentile(c.dailyBudget, c.wealth)
-            };
-        }
 
-        function realityLine(c) {
-            const C = countryShort(c), tier = incomeTier(c), a = c.age, female = c.gender === '여성';
-            const kr = c.country.includes('대한민국');
-            if (a <= 4) {
-                return c.under5MortalityRate >= 0.008
-                    ? `${C}에서는 다섯 살 생일을 맞기 전에 숨지는 아이의 비율이 고소득국보다 훨씬 높습니다. 예방접종과 깨끗한 물이 생존을 좌우합니다.`
-                    : `${C}의 영유아 대부분은 필수 예방접종과 의료 서비스의 보호를 받으며 자랍니다.`;
-            }
-            if (a <= 11) {
-                return tier === 'low'
-                    ? `${C}의 ${a}세 또래 중 상당수는 교실·교사가 부족한 학교에 다니거나, 물 긷기와 동생 돌보기로 하루를 보냅니다.`
-                    : (tier === 'mid' ? `${C}의 ${a}세 또래 대부분은 학교에 다니지만, 방과 후에는 가업이나 집안일을 돕는 경우가 많습니다.`
-                        : `${C}의 ${a}세 또래 대부분은 무상 의무교육을 받으며 방과후 활동과 학원을 오갑니다.`);
-            }
-            if (a <= 17) {
-                if (kr) return `한국의 ${a}세 또래는 입시 경쟁과 긴 학습 시간 속에 있습니다. 청소년 정신건강이 중요한 사회 과제로 꼽힙니다.`;
-                const vulnerable = ['ssa', 'sa', 'mena'].includes(c.regionId) && tier !== 'high';
-                if (vulnerable && female) return `${C}의 10대 여성은 가사 부담이나 조혼 압력으로 남학생보다 학교를 일찍 떠날 위험이 큰 편입니다.`;
-                if (vulnerable || tier === 'low') return `${C}의 10대 상당수는 가계 소득을 보태기 위해 학업과 일을 병행하거나 일찍 일터로 나갑니다.`;
-                if (tier === 'mid') return `${C}의 ${a}세 또래는 상급학교 진학 경쟁과 가업·아르바이트 사이에서 진로를 고민합니다.`;
-                return `${C}의 ${a}세 또래에게는 진로 선택, 아르바이트, 정신건강이 주요 관심사입니다.`;
-            }
-            if (a <= 29) {
-                let s = tier === 'low' ? `${C}의 20대 상당수는 계약서나 사회보험 없는 비공식 일자리에서 일합니다.`
-                    : (tier === 'mid' ? `${C}의 20대는 도시 취업과 해외 이주 사이에서 기회를 찾고 있습니다.`
-                        : `${C}의 20대에게는 첫 일자리 진입과 높은 주거비가 가장 큰 고민입니다.`);
-                if (female && (c.regionId === 'mena' || c.regionId === 'sa')) s += ' 이 지역 여성의 경제활동 참여율은 남성보다 크게 낮은 편입니다.';
-                return s;
-            }
-            if (a <= 49) {
-                return tier === 'low'
-                    ? `${C}의 ${a}세 가장에게는 한 번의 큰 병원비가 가계를 빈곤선 아래로 밀어낼 수 있는 위험입니다.`
-                    : `${C}의 ${a}세 또래는 자녀 교육비와 부모 부양을 동시에 짊어진 '샌드위치 세대'인 경우가 많습니다.`;
-            }
-            let s = tier === 'high'
-                ? `${C}의 ${a}세 또래에게는 만성질환 관리와 연금이 노년의 핵심 과제입니다.`
-                : `${C}에서는 공적 연금이 없거나 적어, ${a}세가 넘어서도 자녀의 부양이나 계속된 노동에 기대는 경우가 많습니다.`;
-            if (female) s += ' 여성은 평균적으로 남성보다 몇 년 더 오래 삽니다.';
-            return s;
-        }
-
-        function generateYearNews(c) {
-            const year = (c.birthYear || BIRTH_YEAR_BASE) + c.age;
-            const C = countryShort(c);
-            const fill = (item) => ({ tag: item.tag, t: item.t.replace(/\{C\}/g, C).replace(/\{Y\}/g, year), d: item.d.replace(/\{C\}/g, C).replace(/\{Y\}/g, year) });
-            const g = fill(pickFromPool(NEWS_GLOBAL, newsUsed.g));
-            const regionPool = NEWS_REGION[c.regionId] || NEWS_GLOBAL;
-            const localPool = c.country.includes('대한민국') ? NEWS_KR.concat(regionPool) : regionPool;
-            if (newsArchive.length === 0) newsUsed.l = new Set();
-            const l = fill(pickFromPool(localPool, newsUsed.l));
-            newsArchive.push({
-                year, age: c.age, gender: c.gender, countryShort: C,
-                global: g, local: l, reality: realityLine(c), cmp: computeCompare(c)
-            });
-            renderNewsBar();
-        }
-
-        function setNewsTab(tab) {
-            activeNewsTab = tab;
-            renderNewsBar();
-        }
 
         function openNewsArchive() {
             switchRightTab('history');
@@ -3731,73 +3709,7 @@
             if (panel) panel.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
         }
 
-        function compareBar(label, me, peer, max, fmt) {
-            const pm = Math.max(0, Math.min(100, me / max * 100));
-            const pp = Math.max(0, Math.min(100, peer / max * 100));
-            const diff = me - peer;
-            const good = diff >= 0;
-            return `
-                <div class="bg-slate-950 rounded-xl border border-slate-800 p-3 space-y-1.5">
-                    <div class="flex items-center justify-between text-[11px]">
-                        <span class="font-bold text-slate-300">${label}</span>
-                        <span class="font-mono font-bold ${good ? 'text-emerald-300' : 'text-rose-300'}">${good ? '▲' : '▼'} ${fmt(Math.abs(diff))}</span>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex items-center gap-2"><span class="w-7 text-[10px] text-slate-400">나</span><div class="flex-grow h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-emerald-400 rounded-full" style="width:${pm}%"></div></div><span class="w-16 text-right text-[10px] font-mono text-slate-200">${fmt(me)}</span></div>
-                        <div class="flex items-center gap-2"><span class="w-7 text-[10px] text-slate-400">또래</span><div class="flex-grow h-2 bg-slate-800 rounded-full overflow-hidden"><div class="h-full bg-slate-500 rounded-full" style="width:${pp}%"></div></div><span class="w-16 text-right text-[10px] font-mono text-slate-400">${fmt(peer)}</span></div>
-                    </div>
-                </div>`;
-        }
 
-        function renderNewsBar() {
-            const e = newsArchive[newsArchive.length - 1];
-            if (!e || !charState) return;
-            document.getElementById('newsYearLabel').textContent = `${e.year}년 · ${e.age}세`;
-            document.getElementById('newsLocalLabel').textContent = e.countryShort;
-            ['global', 'local', 'compare'].forEach(t => {
-                document.getElementById('newsTab_' + t).className = t === activeNewsTab
-                    ? 'px-2.5 py-1 rounded-md text-[11px] font-extrabold bg-emerald-500 text-slate-950 transition'
-                    : 'px-2.5 py-1 rounded-md text-[11px] font-bold text-slate-300 hover:bg-slate-800 transition';
-            });
-            const recent = newsArchive.slice(-3).reverse();
-            document.getElementById('newsTicker').textContent = recent.map(n => `[${n.year}] 🌐 ${n.global.t}   ·   📍 ${n.countryShort}: ${n.local.t}`).join('      ◆      ');
-
-            const prev = newsArchive[newsArchive.length - 2];
-            const panel = document.getElementById('newsPanel');
-            if (activeNewsTab === 'global' || activeNewsTab === 'local') {
-                const item = activeNewsTab === 'global' ? e.global : e.local;
-                const prevItem = prev ? (activeNewsTab === 'global' ? prev.global : prev.local) : null;
-                panel.innerHTML = `
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                        <div class="md:col-span-2 space-y-1.5">
-                            <span class="text-[10px] font-bold px-1.5 py-0.5 rounded ${activeNewsTab === 'global' ? 'bg-sky-500/15 text-sky-300' : 'bg-amber-500/15 text-amber-300'}">${activeNewsTab === 'global' ? '🌐 국제' : '📍 ' + escapeHtml(e.countryShort)} · ${escapeHtml(item.tag)}</span>
-                            <div class="text-sm sm:text-base font-extrabold text-white leading-snug">${escapeHtml(item.t)}</div>
-                            <p class="text-slate-300 leading-relaxed">${escapeHtml(item.d)}</p>
-                        </div>
-                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-3 space-y-1">
-                            <div class="text-[10px] font-bold text-slate-500">👤 지금 ${e.age}세 ${e.gender}인 나에게</div>
-                            <p class="text-[11px] text-amber-100/90 leading-relaxed">${escapeHtml(e.reality)}</p>
-                            ${prevItem ? `<div class="pt-1.5 mt-1.5 border-t border-slate-800 text-[10px] text-slate-500">지난해(${prev.year}): ${escapeHtml(prevItem.t)}</div>` : ''}
-                        </div>
-                    </div>`;
-            } else {
-                const m = e.cmp;
-                panel.innerHTML = `
-                    <div class="space-y-2.5">
-                        <div class="flex flex-wrap items-center gap-2 text-[11px]">
-                            <span class="font-bold text-white">${escapeHtml(e.countryShort)} · ${e.age}세 · ${e.gender} 또래와 비교</span>
-                            <span class="px-1.5 py-0.5 rounded bg-slate-800 text-cyan-300 font-bold">${escapeHtml(m.pct)}</span>
-                            <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">${e.gender} 기대수명 ${m.le}세 (남녀 평균 ${charState.lifeExpectancy}세)</span>
-                        </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                            ${compareBar('📘 인지·교육', m.edu.me, m.edu.peer, 100, v => Math.round(v))}
-                            ${compareBar('❤️ 건강', m.health.me, m.health.peer, 100, v => Math.round(v))}
-                            ${compareBar('💵 순자산', Math.max(0, m.wealth.me), m.wealth.peer, Math.max(1, Math.max(m.wealth.me, m.wealth.peer) * 1.15), v => fmtMoney(v))}
-                        </div>
-                        <p class="text-[11px] text-amber-100/90 leading-relaxed bg-amber-500/5 border border-amber-500/20 rounded-lg px-2.5 py-1.5">👤 ${escapeHtml(e.reality)}</p>
-                    </div>`;
-            }
-        }
 
         /* ============================================================================
            12. 최종 보고서 — 갈림길 비교 · 평행세계 · 같은 출생 100번
@@ -3867,7 +3779,7 @@
 
         function switchReportTab(tab) {
             activeReportTab = tab;
-            ['summary', 'forks', 'parallel', 'baseline'].forEach(t => {
+            ['summary', 'forks', 'parallel', 'baseline', 'method'].forEach(t => {
                 document.getElementById('rpanel_' + t).classList.toggle('hidden', t !== tab);
                 document.getElementById('rtab_' + t).className = t === tab
                     ? 'py-2 rounded-lg text-[11px] sm:text-xs font-extrabold bg-emerald-500 text-slate-950 transition'
@@ -3904,6 +3816,7 @@
             document.getElementById('finalHighlightsList').innerHTML = c.highlights.map(h => `<li>${escapeHtml(h)}</li>`).join('');
             document.getElementById('reportVerdict').textContent = '같은 출생 조건 100회 시뮬레이션 계산 중...';
             renderReportSummary();
+            renderReportMethod();
             const loading = `<div class="p-6 text-center text-slate-400 bg-slate-950 rounded-2xl border border-slate-800">🔄 가지 않은 길을 시뮬레이션하는 중입니다...</div>`;
             ['forks', 'parallel', 'baseline'].forEach(t => { document.getElementById('rpanel_' + t).innerHTML = loading; });
             switchReportTab('summary');
@@ -3979,9 +3892,9 @@
             renderReportParallel();
             renderReportBaseline();
             const pos = earlier >= 50
-                ? `<strong class="text-emerald-300">상위 ${Math.max(1, 100 - earlier)}%</strong>의 장수`
-                : `<strong class="text-rose-300">하위 ${earlier + 1}%</strong>의 이른 작별`;
-            document.getElementById('reportVerdict').innerHTML = `같은 부모·같은 나라에서 100번 태어났다면, 당신은 그중 <strong class="text-white">${earlier}명</strong>보다 오래 살았습니다. ${pos}였습니다.`;
+                ? `<strong class="text-emerald-300">상위 ${Math.max(1, 100 - earlier)}%</strong>에 드는 장수였습니다.`
+                : `<strong class="text-rose-300">하위 ${earlier + 1}%</strong>에 드는 이른 작별이었습니다.`;
+            document.getElementById('reportVerdict').innerHTML = `같은 부모·같은 나라에서 100번 태어났다면, 당신은 그중 <strong class="text-white">${earlier}명</strong>보다 오래 살았습니다. ${pos}`;
         }
 
         function renderReportForks() {
@@ -4153,15 +4066,612 @@
         }
 
         /* ============================================================================
-           13. 접속 분석 (실시간 · 체류 · 동시 접속 · 이탈) — localStorage 세션 기록
+           15. v3 — 통계 기반 페르소나 · 사망 모형 · 실시간 뉴스 · 한국인 비교 · 근거 · 이미지 저장
         ============================================================================ */
+        function genderLifeExpectancy(c) {
+            return +(c.lifeExpectancy || 0).toFixed(1);
+        }
+
+        function estimateGlobalPercentile(dailyBudget) {
+            if (dailyBudget < 3.0) return '세계 극빈층 ($3.00 미만 · 세계 하위 10.5%)';
+            if (dailyBudget < 4.2) return '세계 빈곤층 ($4.20 미만)';
+            if (dailyBudget < 8.3) return '세계 하위 48% ($8.30 미만)';
+            if (dailyBudget < 30) return '세계 상위 52% ($8.30 이상)';
+            return '세계 상위권 소비 ($30 이상)';
+        }
+
+        function checkMortalityRoll(c) {
+            if (c.health <= 0) {
+                return { died: true, title: '극심한 영양실조 및 다발성 장기 부전', desc: '건강 수치가 0에 도달했습니다. 영양 결핍과 치료 지연이 누적된 결과이며, 이 판정은 게임 모델의 건강 수치에 따른 것입니다.' };
+            }
+            if (c.gompA === undefined) calibrateMortality(c);
+            const x = c.age - 1;
+            const h = baseHazards(c, x);
+            let inf = h.inf, inj = h.inj, g = h.g * (x >= 30 ? c.chronicRiskMod : 1);
+            if (x <= 4) {
+                const cov = c.measlesCov || 0.9;
+                const a = 1 / (cov + (1 - cov) * 1.8);
+                inf *= c.vaccinated ? a : a * 1.8;
+            }
+            if (c.inventory.includes('생계형 오토바이')) inj *= 2;
+            // 건강 수치 보정(게임 가정): 평균적으로 1에 가깝도록 대칭 설계
+            let mult = 1;
+            if (x < 60) { if (c.health < 40) mult = 1.5; else if (c.health < 60) mult = 1.15; }
+            else if (c.health < 20) mult = 1.2;
+            const q = Math.min(1, (inf + inj + g) * mult);
+            if (Math.random() < q || c.age >= 105) {
+                const key = pickCause(c, x, { inf, inj, g });
+                return { died: true, title: CAUSES[key].title, desc: CAUSES[key].desc };
+            }
+            return { died: false };
+        }
+
+        function applyCountryStats(c, countryObj) {
+            const st = COUNTRY_STATS[countryObj.iso3];
+            const sx = sexKey(c);
+            c.iso3 = countryObj.iso3;
+            c.lifeExpectancy = st['le_' + sx][0];
+            c.u5mr = st.u5[0];
+            c.under5MortalityRate = st.u5[0] / 1000;
+            c.roadRate = st.road[0];
+            c.measlesCov = st.measles[0] / 100;
+            const x = c.dailyBudget;
+            const f = x < 3 ? 0.55 : (x < 4.2 ? 0.75 : (x < 8.3 ? 0.95 : 1.15));
+            const draw = (rate) => Math.random() < Math.max(0, Math.min(1, rate * f));
+            c.household = {
+                safeWater: st.water ? draw(st.water[0] / 100) : draw(0.9),
+                waterAssumed: !st.water,
+                electricity: draw(st.elec[0] / 100),
+                internet: draw(st.net[0] / 100)
+            };
+            c.incomeShareBelow = Math.round(shareBelowIncome(c.iso3, x) * 100);
+            c.personaSynthetic = true;
+            calibrateMortality(c);
+        }
+
+        function infraText(c) {
+            const st = COUNTRY_STATS[c.iso3];
+            const hh = c.household || {};
+            const pct = (k) => st[k] ? `${st[k][0]}%` : '자료 없음';
+            return {
+                water: `${hh.safeWater ? '✓ 가구 이용' : '✗ 가구 미이용'} · 국가 ${pct('water')}`,
+                power: `${hh.electricity ? '✓ 가구 연결' : '✗ 가구 미연결'} · 국가 ${pct('elec')}`,
+                health: `${c.vaccinated ? '✓ 접종 완료' : (c.age >= 1 ? '✗ 미접종' : '접종 예정')} · 국가 ${pct('measles')}`,
+                net: `${hh.internet ? '✓ 가구 이용' : '✗ 가구 미이용'} · 국가 ${pct('net')}`
+            };
+        }
+
+        const _v2UpdateDashboardUI = updateDashboardUI;
+        updateDashboardUI = function () {
+            if (charState && charState.iso3) charState.infra = infraText(charState);
+            _v2UpdateDashboardUI();
+            if (!charState || !charState.iso3) return;
+            const riskLabel = document.getElementById('charSurvivalRiskLabel');
+            if (charState.age <= 4 && charState.u5mr >= 30) {
+                riskLabel.textContent = `5세 미만 사망률 ${charState.u5mr}‰ (UN IGME 2024)`;
+                riskLabel.className = 'text-[11px] font-bold text-amber-400';
+            }
+            document.getElementById('charFamilyTier').textContent = `${charState.familyDesc} · 합성 페르소나`;
+        };
+
+        /* ---------- 중대 기로 통계 박스 (선택 국가·성별 vs 한국 같은 성별) ---------- */
+        const MILESTONE_FACT_KEYS = {
+            6: ['lsc', 'net', 'water'], 11: ['lsc', 'net', 'elec'], 14: ['lsc', 'cm18', 'lfp'], 19: ['ter', 'lfp', 'urban'],
+            27: ['lfp', 'tfr', 'ter'], 35: ['le', 'ncd', 'gni'], 42: ['ncd', 'le', 'pov83'], 60: ['le', 'ncd', 'gni']
+        };
+        function factRow(c, key) {
+            const sx = sexKey(c);
+            const meta = STAT_META[key];
+            const mine = statOf(c.iso3, key, sx);
+            const kor = statOf('KOR', key, sx);
+            return { key, label: meta.label + (meta.sex ? ` (${c.gender})` : ''), mine, kor, mineTxt: fmtStatVal(key, mine), korTxt: fmtStatVal(key, kor), src: srcTag(key, mine || kor) };
+        }
+        function milestoneFacts(age, c) {
+            let keys = (MILESTONE_FACT_KEYS[age] || []).slice();
+            if (age === 14 && c.gender !== '여성') keys = ['lsc', 'lfp', 'ter'];
+            const rows = keys.map(k => factRow(c, k)).filter(r => r.mine || r.kor);
+            const notes = [];
+            if (age === 27) notes.push(`한국 ${c.gender} 평균 초혼연령 ${COUNTRY_STATS.KOR['marry_' + sexKey(c)][0]}세 (통계청 2024 혼인 통계)`);
+            if (age === 42) {
+                const s = COUNTRY_STATS[c.iso3];
+                notes.push(`${s.name} 사망 원인 구성: 감염성·모성·영양 ${s.comm[0]}% · 손상 ${s.inj[0]}% · 그 밖의 만성질환 약 ${Math.round(100 - s.comm[0] - s.inj[0])}% (WHO GHE 2021, 코로나19 유행기 포함)`);
+            }
+            return { rows, notes };
+        }
+        function renderMilestoneFacts(age) {
+            const el = document.getElementById('msFacts');
+            if (!el || !charState) return;
+            const c = charState;
+            const { rows, notes } = milestoneFacts(age, c);
+            if (!rows.length) { el.classList.add('hidden'); return; }
+            el.classList.remove('hidden');
+            el.innerHTML = `
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                    <span class="text-[11px] font-black text-cyan-300">📊 현실 통계 — ${escapeHtml(COUNTRY_STATS[c.iso3].name)} ${c.gender} vs 한국 ${c.gender}</span>
+                    <span class="text-[10px] text-slate-500">WDI 조회 ${DATA_ACCESSED}</span>
+                </div>
+                <table class="w-full text-[11px]">
+                    <thead><tr class="text-slate-500"><th class="text-left font-semibold py-1">지표</th><th class="text-right font-semibold">${escapeHtml(COUNTRY_STATS[c.iso3].name)}</th><th class="text-right font-semibold">한국</th><th class="text-right font-semibold pl-2">출처·연도</th></tr></thead>
+                    <tbody>${rows.map(r => `<tr class="border-t border-slate-800/70"><td class="py-1 text-slate-300">${escapeHtml(r.label)}</td><td class="text-right font-mono font-bold text-white">${escapeHtml(r.mineTxt)}</td><td class="text-right font-mono text-slate-400">${escapeHtml(r.korTxt)}</td><td class="text-right text-[10px] text-slate-500 pl-2">${escapeHtml(r.src)}</td></tr>`).join('')}</tbody>
+                </table>
+                ${notes.map(n => `<p class="text-[10px] text-slate-400 mt-1">• ${escapeHtml(n)}</p>`).join('')}
+                <p class="text-[10px] text-slate-500 mt-1.5">* 이수율·총취학률은 제 나이가 아닌 학생도 포함해 100%를 넘을 수 있습니다. 통계는 집단 평균이며 개인의 운명을 정하지 않습니다. 선택지의 스탯 변화는 게임 모델의 가정입니다.</p>`;
+        }
+        function female14Option(c) {
+            return {
+                title: '🏠 학업을 멈추고 집안일·동생 돌봄과 가계 부업 전담',
+                risk: '정규 교육 중단, 행복도 -5, 이후 고등교육 진입이 어려워짐',
+                reward: '가계 비상금 +$40, 사회 연결망 +8, 일일 예산 +$0.60',
+                effect: () => {
+                    c.edu = clampStat(c.edu + 3);
+                    c.sanity = clampStat(c.sanity - 5);
+                    c.network = clampStat(c.network + 8);
+                    c.wealth += 40;
+                    c.dailyBudget = +(c.dailyBudget + 0.6).toFixed(2);
+                    c.occupation = '가사·돌봄 전담 및 가계 부업';
+                    c.occupationSub = '집안일과 동생 돌봄, 바느질·식품 가공 같은 부업을 맡고 있습니다.';
+                    addLog(c.age, '중대 결정', '[선택: 학업 중단 후 가사·돌봄 전담] 학교를 그만두고 집안일과 동생 돌봄, 가계 부업을 맡았습니다.', 'amber');
+                    c.highlights.push('14세: 학업 중단, 가사·돌봄 전담');
+                }
+            };
+        }
+
+        /* ---------- 한국인(같은 성별) 비교 ---------- */
+        function koreanStageLine(age, c) {
+            const K = COUNTRY_STATS.KOR, sx = sexKey(c), w = c.gender === '여성' ? '여성' : '남성';
+            const kid = c.gender === '여성' ? '여자아이' : '남자아이';
+            if (age <= 5) return `한국에서 태어난 아기는 1,000명 중 약 ${K.u5[0]}명이 5세 전에 숨집니다(UN IGME ${K.u5[1]}). ${COUNTRY_STATS[c.iso3].name}은 ${COUNTRY_STATS[c.iso3].u5[0]}명입니다.`;
+            if (age <= 11) return `같은 나이의 한국 ${kid}는 초등학생입니다. 한국 ${w}의 중학교 과정 이수율은 ${K['lsc_' + sx][0]}%입니다(UNESCO UIS ${K['lsc_' + sx][1]}).`;
+            if (age <= 14) return `같은 나이의 한국 ${kid}는 중학생입니다. 의무교육 과정으로, 한국 ${w}의 이수율은 ${K['lsc_' + sx][0]}%입니다.`;
+            if (age <= 18) return `같은 나이의 한국 ${w}은 대부분 고등학생입니다. 한국 ${w}의 고등교육 총취학률은 ${K['ter_' + sx][0]}%로 대학 진학이 일반적입니다(UNESCO UIS ${K['ter_' + sx][1]}).`;
+            if (age <= 24) return `같은 나이의 한국 ${w}은 대학 재학·취업 준비 중인 경우가 많습니다(고등교육 총취학률 ${K['ter_' + sx][0]}%).`;
+            const mAge = K['marry_' + sx][0];
+            if (age < mAge) return `한국 ${w}의 평균 초혼연령은 ${mAge}세(통계청 2024)로, ${age}세 한국 ${w}은 아직 미혼인 경우가 많습니다. 15세 이상 ${w}의 경제활동참가율은 ${K['lfp_' + sx][0]}%입니다(ILO 2025).`;
+            if (age < 60) return `${age}세 한국 ${w}은 일과 가족 부양의 한가운데에 있습니다. 15세 이상 ${w} 경제활동참가율 ${K['lfp_' + sx][0]}%, 30~70세 4대 만성질환 사망확률 ${K['ncd_' + sx][0]}%(WHO 2021).`;
+            return `한국 ${w}의 기대수명은 ${K['le_' + sx][0]}세(UN WPP ${K['le_' + sx][1]})입니다. ${COUNTRY_STATS[c.iso3].name} ${w}은 ${COUNTRY_STATS[c.iso3]['le_' + sx][0]}세입니다.`;
+        }
+        const COMPARE_KEYS = ['le', 'u5', 'lsc', 'ter', 'lfp', 'ncd', 'pov3', 'pov83', 'gni', 'water', 'elec', 'net', 'measles', 'cm18', 'tfr', 'urban'];
+        function renderKoreaCompare(panel) {
+            const c = charState;
+            const rows = COMPARE_KEYS.filter(k => k !== 'cm18' || c.gender === '여성').map(k => factRow(c, k));
+            const korGniDay = Math.round(COUNTRY_STATS.KOR.gni[0] / 365);
+            panel.innerHTML = `
+                <div class="space-y-2.5">
+                    <div class="flex flex-wrap items-center gap-2 text-[11px]">
+                        <span class="font-bold text-white">👤 ${c.age}세 ${c.gender}인 나 vs 같은 성별의 한국인</span>
+                        <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">통계 조회 ${DATA_ACCESSED} · World Bank WDI</span>
+                    </div>
+                    <p class="text-[11px] text-amber-100/90 leading-relaxed bg-amber-500/5 border border-amber-500/20 rounded-lg px-2.5 py-1.5">🇰🇷 ${escapeHtml(koreanStageLine(c.age, c))}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]">
+                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-2.5"><div class="text-slate-400">나의 1인당 하루 소비 (2021 PPP)</div><div class="font-black text-emerald-300 font-mono">$${c.dailyBudget.toFixed(2)}</div><div class="text-[10px] text-slate-500">참고: 한국 1인당 국민총소득 하루 환산 $${korGniDay} (GNI·PPP 2025, 소비와 다른 지표)</div></div>
+                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-2.5"><div class="text-slate-400">출생국 ${c.gender} 기대수명</div><div class="font-black text-cyan-300 font-mono">${c.lifeExpectancy}세</div><div class="text-[10px] text-slate-500">한국 ${c.gender} ${COUNTRY_STATS.KOR['le_' + sexKey(c)][0]}세 · 차이 ${(COUNTRY_STATS.KOR['le_' + sexKey(c)][0] - c.lifeExpectancy).toFixed(1)}년</div></div>
+                        <div class="bg-slate-950 rounded-xl border border-slate-800 p-2.5"><div class="text-slate-400">이 소비 수준의 위치</div><div class="font-black text-amber-300">${escapeHtml(COUNTRY_STATS[c.iso3].name)} 인구 약 ${c.incomeShareBelow}%보다 높음</div><div class="text-[10px] text-slate-500">출생 시 가구 기준 · 빈곤선 구간 비율(PIP) + 게임 모델 보간</div></div>
+                    </div>
+                    <div class="overflow-x-auto bg-slate-950 rounded-xl border border-slate-800">
+                        <table class="w-full text-[11px]">
+                            <thead><tr class="text-slate-500 border-b border-slate-800"><th class="text-left py-1.5 px-2.5 font-semibold">지표</th><th class="text-right px-2 font-semibold">${escapeHtml(COUNTRY_STATS[c.iso3].name)}</th><th class="text-right px-2 font-semibold">한국</th><th class="text-right px-2.5 font-semibold">출처·연도</th></tr></thead>
+                            <tbody>${rows.map(r => `<tr class="border-b border-slate-800/60"><td class="py-1.5 px-2.5 text-slate-300">${escapeHtml(r.label)}</td><td class="text-right px-2 font-mono font-bold text-white">${escapeHtml(r.mineTxt)}</td><td class="text-right px-2 font-mono text-slate-400">${escapeHtml(r.korTxt)}</td><td class="text-right px-2.5 text-[10px] text-slate-500">${escapeHtml(r.src)}</td></tr>`).join('')}</tbody>
+                        </table>
+                    </div>
+                    <p class="text-[10px] text-slate-500">* 이수율·총취학률은 제 나이가 아닌 학생도 포함해 100%를 넘을 수 있습니다. 출처 표기의 연도는 각 지표의 최신 자료 기준연도입니다.</p>
+                </div>`;
+        }
+
+        /* ---------- 연도별 사실 카드 (통계 기반, 지어낸 사건 없음) ---------- */
+        let factUsed = new Set();
+        function factCandidates(c) {
+            const s = COUNTRY_STATS[c.iso3], K = COUNTRY_STATS.KOR, sx = sexKey(c), a = c.age, n = s.name, w = c.gender;
+            const out = [];
+            const add = (id, weight, tag, t, d, src) => out.push({ id, weight, tag, t, d, src });
+            add('le', 1, '수명', `${n} ${w} 기대수명 ${s['le_' + sx][0]}세`, `같은 성별 한국인(${K['le_' + sx][0]}세)과 ${(K['le_' + sx][0] - s['le_' + sx][0]).toFixed(1)}년 차이가 납니다.`, `UN WPP · ${s['le_' + sx][1]}`);
+            add('u5', a <= 6 ? 5 : 0.5, '아동 생존', `5세 미만 사망률 1,000명당 ${s.u5[0]}명`, `한국은 ${K.u5[0]}명입니다. 이 차이는 예방접종·분만 돌봄·식수 위생의 차이를 반영합니다.`, `UN IGME · ${s.u5[1]}`);
+            add('measles', a <= 3 ? 4 : 0.3, '예방접종', `홍역 예방접종률 ${s.measles[0]}%`, `12~23개월 아이 기준입니다. 게임에서는 이 비율로 접종 여부를 추첨했습니다.`, `WHO/UNICEF · ${s.measles[1]}`);
+            if (s.water) add('water', 1.5, '식수', `안전하게 관리되는 식수 이용 ${s.water[0]}%`, `집 안이나 근처에서, 필요할 때, 오염되지 않은 물을 쓸 수 있는 인구 비율입니다. 한국 ${K.water[0]}%.`, `WHO/UNICEF JMP · ${s.water[1]}`);
+            add('elec', s.elec[0] < 99 ? 1.5 : 0.2, '전기', `전기 접근 ${s.elec[0]}%`, `전기가 없는 집에서는 밤 공부·휴대폰 충전·냉장 보관이 어렵습니다.`, `World Bank · ${s.elec[1]}`);
+            add('net', 1, '디지털', `인터넷 이용 ${s.net[0]}%`, `한국 ${K.net[0]}%. 온라인 학습과 모바일 금융 접근 격차로 이어집니다.`, `ITU · ${s.net[1]}`);
+            const lsc = s['lsc_' + sx];
+            if (lsc) add('lsc', a >= 6 && a <= 16 ? 4 : 0.3, '교육', `${w}의 중학교 과정 이수율 ${lsc[0]}%`, `한국 ${w} ${K['lsc_' + sx][0]}%.${lsc[1] < 2015 ? ` (자료 기준연도 ${lsc[1]}년으로 오래됨)` : ''}`, `UNESCO UIS · ${lsc[1]}`);
+            const ter = s['ter_' + sx];
+            if (ter) add('ter', a >= 15 && a <= 26 ? 4 : 0.3, '고등교육', `${w}의 고등교육 총취학률 ${ter[0]}%`, `한국 ${w} ${K['ter_' + sx][0]}%. 총취학률은 연령 외 학생도 포함해 100%를 넘을 수 있습니다.${ter[1] < 2015 ? ` (자료 기준연도 ${ter[1]}년)` : ''}`, `UNESCO UIS · ${ter[1]}`);
+            add('lfp', a >= 16 && a <= 60 ? 3 : 0.3, '일', `15세 이상 ${w} 경제활동참가율 ${s['lfp_' + sx][0]}%`, `한국 ${w} ${K['lfp_' + sx][0]}%. 일하거나 일자리를 찾는 사람의 비율입니다.`, `ILO 모델 추정 · ${s['lfp_' + sx][1]}`);
+            if (c.gender === '여성' && s.cm18) add('cm18', a >= 10 && a <= 20 ? 4 : 0.2, '혼인', `20~24세 여성 중 ${s.cm18[0]}%가 18세 전에 결혼`, `조혼은 학업 중단과 이른 출산 위험을 높입니다.${s.cm18[1] < 2015 ? ` (자료 기준연도 ${s.cm18[1]}년)` : ''}`, `UNICEF · ${s.cm18[1]}`);
+            add('ncd', a >= 30 ? 4 : 0.3, '만성질환', `30~70세 ${w}의 4대 만성질환 사망확률 ${s['ncd_' + sx][0]}%`, `심혈관질환·암·당뇨·만성호흡기질환으로 70세 전에 숨질 확률입니다. 한국 ${w} ${K['ncd_' + sx][0]}%.`, `WHO GHE · ${s['ncd_' + sx][1]}`);
+            add('pov', 1.2, '빈곤', `하루 $3.00 미만 극빈층 ${s.pov3[0]}% · $8.30 미만 ${s.pov83[0]}%`, `2021년 구매력평가(PPP) 기준, 2025년 6월 개정된 세계은행 빈곤선입니다.${s.pov3[1] < 2015 ? ` (자료 기준연도 ${s.pov3[1]}년으로 오래됨)` : ''}`, `World Bank PIP · ${s.pov3[1]}`);
+            add('road', a >= 15 && a <= 40 ? 2.5 : 0.3, '안전', `도로교통 사망률 인구 10만 명당 ${s.road[0]}명`, `한국 ${K.road[0]}명. 게임 속 청년기 사고 위험에 이 값이 반영됩니다.`, `WHO · ${s.road[1]}`);
+            add('tfr', a >= 20 && a <= 40 ? 2.5 : 0.4, '가족', `합계출산율 ${s.tfr[0]}명`, `한국 ${K.tfr[0]}명. 게임 속 형제자매 수는 이 값을 바탕으로 정해졌습니다.`, `UN WPP · ${s.tfr[1]}`);
+            add('comm', a >= 40 ? 2 : 0.3, '사인', `사망 원인 중 감염성·모성·영양 질환 ${s.comm[0]}%`, `한국 ${K.comm[0]}%. 2021년 값으로 코로나19 사망이 포함되어 있습니다.`, `WHO GHE · ${s.comm[1]}`);
+            add('gni', 0.8, '경제', `1인당 국민총소득(PPP) $${s.gni[0].toLocaleString()}`, `한국 $${K.gni[0].toLocaleString()}. 평균값이라 개인 소득 분포와는 다릅니다.`, `World Bank · ${s.gni[1]}`);
+            add('g_pov', 0.6, '세계', `세계 인구의 ${GLOBAL_FACTS.pov3[0]}%가 하루 $3.00 미만으로 생활`, `세계은행이 2025년 6월 국제빈곤선을 $2.15에서 $3.00(2021 PPP)으로 개정한 뒤 발표한 2022년 기준 추정입니다.`, `World Bank · ${GLOBAL_FACTS.pov3[1]}`);
+            add('g_birth', 0.5, '세계', `한 해 약 ${GLOBAL_FACTS.birthsMillion[0]}백만 명이 태어나고, 그중 ${GLOBAL_FACTS.regionShare.ssa}%가 사하라 이남 아프리카`, `2025년 인구에 2024년 조출생률을 곱해 계산했습니다. 이 게임의 출생 확률표도 같은 방식입니다.`, `World Bank WDI · 계산`);
+            return out;
+        }
+        function generateYearNews(c) {
+            if (!c.iso3) return;
+            const year = (c.birthYear || BIRTH_YEAR_BASE) + c.age;
+            if (newsArchive.length === 0) factUsed = new Set();
+            let pool = factCandidates(c).filter(f => !factUsed.has(f.id + ':' + Math.floor(c.age / 5)));
+            if (pool.length < 2) { factUsed = new Set(); pool = factCandidates(c); }
+            const picked = [];
+            for (let i = 0; i < 2 && pool.length; i++) {
+                const id = pickWeighted(pool.map(f => [f.id, f.weight]));
+                const f = pool.find(x => x.id === id);
+                picked.push(f);
+                factUsed.add(f.id + ':' + Math.floor(c.age / 5));
+                pool = pool.filter(x => x.id !== id);
+            }
+            newsArchive.push({ year, age: c.age, gender: c.gender, countryShort: COUNTRY_STATS[c.iso3].name, facts: picked, korea: koreanStageLine(c.age, c) });
+            renderNewsBar();
+        }
+
+        /* ---------- 실시간 뉴스 (GDELT DOC 2.0 API, JSONP) ---------- */
+        const LIVE_NEWS = { global: null, local: null, localIso: null, checkedAt: null, error: '', loading: false, snapshots: [] };
+        const GDELT_BASE = 'https://api.gdeltproject.org/api/v2/doc/doc';
+        let gdeltQueue = Promise.resolve();
+        let gdeltLast = 0;
+        function gdeltCall(query, max, timespan) {
+            const key = 'gd:' + query + '|' + timespan;
+            try {
+                const cached = JSON.parse(sessionStorage.getItem(key));
+                if (cached && Date.now() - cached.t < 15 * 60000) return Promise.resolve(cached.d);
+            } catch (e) {}
+            const run = () => new Promise((resolve, reject) => {
+                const wait = Math.max(0, 5600 - (Date.now() - gdeltLast));
+                setTimeout(() => {
+                    gdeltLast = Date.now();
+                    const cb = '__gd' + Date.now().toString(36) + Math.floor(Math.random() * 1e5);
+                    const sc = document.createElement('script');
+                    const cleanup = () => { clearTimeout(timer); window[cb] = function () {}; sc.remove(); };
+                    const timer = setTimeout(() => { cleanup(); reject(new Error('timeout')); }, 15000);
+                    window[cb] = (data) => {
+                        cleanup();
+                        const arts = ((data && data.articles) || []).filter(a => a && a.title && /^https?:\/\//.test(a.url || ''));
+                        try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: arts })); } catch (e) {}
+                        resolve(arts);
+                    };
+                    sc.onerror = () => { cleanup(); reject(new Error('network')); };
+                    sc.src = `${GDELT_BASE}?query=${encodeURIComponent(query)}&mode=artlist&format=jsonp&callback=${cb}&maxrecords=${max}&sort=datedesc&timespan=${timespan}`;
+                    document.head.appendChild(sc);
+                }, wait);
+            });
+            const p = gdeltQueue.then(run, run);
+            gdeltQueue = p.catch(() => {});
+            return p;
+        }
+        function dedupeArticles(list) {
+            const seen = new Set();
+            return (list || []).filter(a => { const k = a.title.trim().toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
+        }
+        function parseSeenDate(s) {
+            const m = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/.exec(s || '');
+            return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6])) : null;
+        }
+        function fmtKst(d) {
+            if (!d) return '-';
+            return d.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }) + ' KST';
+        }
+        async function refreshLiveNews(force) {
+            if (!charState || !charState.iso3 || LIVE_NEWS.loading) return;
+            const iso = charState.iso3;
+            if (!force && LIVE_NEWS.checkedAt && LIVE_NEWS.localIso === iso && Date.now() - LIVE_NEWS.checkedAt < 15 * 60000) return;
+            LIVE_NEWS.loading = true;
+            renderNewsBar();
+            const en = COUNTRY_STATS[iso].en;
+            const errors = [];
+            let local = [], global = [];
+            try {
+                local = await gdeltCall(`${en} sourcelang:korean`, 10, '7d');
+                if (local.length < 3) local = local.concat(await gdeltCall(`${en} sourcelang:english`, 10, '3d'));
+            } catch (e) { errors.push('나라 뉴스 ' + (e.message === 'timeout' ? '응답 지연' : '연결 실패')); }
+            try {
+                global = await gdeltCall('("United Nations" OR UNICEF OR "World Bank" OR "World Health Organization") sourcelang:korean', 10, '3d');
+            } catch (e) { errors.push('국제 뉴스 ' + (e.message === 'timeout' ? '응답 지연' : '연결 실패')); }
+            LIVE_NEWS.local = dedupeArticles(local).slice(0, 8);
+            LIVE_NEWS.global = dedupeArticles(global).slice(0, 8);
+            LIVE_NEWS.localIso = iso;
+            LIVE_NEWS.error = errors.join(' · ');
+            LIVE_NEWS.checkedAt = Date.now();
+            LIVE_NEWS.loading = false;
+            LIVE_NEWS.snapshots.unshift({ at: LIVE_NEWS.checkedAt, country: COUNTRY_STATS[iso].name, global: LIVE_NEWS.global.slice(0, 3), local: LIVE_NEWS.local.slice(0, 3), error: LIVE_NEWS.error });
+            LIVE_NEWS.snapshots = LIVE_NEWS.snapshots.slice(0, 20);
+            renderNewsBar();
+            if (activeRightTab === 'history' && activeHistoryFilter === 'news') renderLifeHistoryTimeline();
+        }
+        setInterval(() => { if (charState && !isGameOver && document.visibilityState === 'visible') refreshLiveNews(false); }, 60000);
+
+        function articleListHtml(list, emptyMsg) {
+            if (!list || !list.length) return `<div class="text-[11px] text-slate-500 py-2">${emptyMsg}</div>`;
+            return list.map(a => `
+                <a href="${escapeHtml(a.url)}" target="_blank" rel="noopener noreferrer" class="block py-1.5 border-b border-slate-800/70 hover:bg-slate-900/60 rounded px-1 -mx-1">
+                    <div class="text-[12px] font-bold text-slate-100 leading-snug">${escapeHtml(a.title)}</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">${escapeHtml(a.domain || '')} · ${escapeHtml(fmtKst(parseSeenDate(a.seendate)))} 수집${a.language && !/korean/i.test(a.language) ? ' · ' + escapeHtml(a.language) : ''}</div>
+                </a>`).join('');
+        }
+        function fallbackLinks(iso) {
+            const name = COUNTRY_STATS[iso].name;
+            return `<div class="flex flex-wrap gap-1.5 mt-2 text-[10px]">
+                <a class="px-2 py-1 rounded bg-slate-800 text-cyan-300 hover:underline" href="https://search.naver.com/search.naver?where=news&sort=1&query=${encodeURIComponent(name)}" target="_blank" rel="noopener noreferrer">네이버 뉴스에서 '${escapeHtml(name)}' 최신순</a>
+                <a class="px-2 py-1 rounded bg-slate-800 text-cyan-300 hover:underline" href="https://reliefweb.int/country/${iso.toLowerCase()}" target="_blank" rel="noopener noreferrer">ReliefWeb ${escapeHtml(name)} 상황 보고서</a>
+                <a class="px-2 py-1 rounded bg-slate-800 text-cyan-300 hover:underline" href="https://news.un.org/en/" target="_blank" rel="noopener noreferrer">UN News</a>
+            </div>`;
+        }
+
+        function setNewsTab(tab) {
+            activeNewsTab = tab;
+            renderNewsBar();
+        }
+
+        function renderNewsBar() {
+            if (!charState || !charState.iso3) return;
+            const c = charState;
+            const e = newsArchive[newsArchive.length - 1];
+            const name = COUNTRY_STATS[c.iso3].name;
+            document.getElementById('newsYearLabel').textContent = e ? `게임 ${e.year}년 · ${e.age}세` : '';
+            document.getElementById('newsLocalLabel').textContent = `${name} 사실 카드`;
+            const cmpLabel = document.getElementById('newsCompareLabel');
+            if (cmpLabel) cmpLabel.textContent = `나와 비교 (한국 ${c.gender})`;
+            const tabs = { live: 'newsTab_live', local: 'newsTab_local', compare: 'newsTab_compare' };
+            if (!tabs[activeNewsTab]) activeNewsTab = 'live';
+            Object.entries(tabs).forEach(([t, id]) => {
+                document.getElementById(id).className = t === activeNewsTab
+                    ? 'px-2.5 py-1 rounded-md text-[11px] font-extrabold bg-emerald-500 text-slate-950 transition'
+                    : 'px-2.5 py-1 rounded-md text-[11px] font-bold text-slate-300 hover:bg-slate-800 transition';
+            });
+            const live = (LIVE_NEWS.local || []).concat(LIVE_NEWS.global || []);
+            document.getElementById('newsTicker').textContent = live.length
+                ? live.slice(0, 6).map(a => `[${fmtKst(parseSeenDate(a.seendate)).replace(' KST', '')}] ${a.title} — ${a.domain || ''}`).join('      ◆      ')
+                : (e ? e.facts.map(f => `📊 ${f.t} (${f.src})`).join('      ◆      ') : '뉴스 수신 대기 중...');
+
+            const panel = document.getElementById('newsPanel');
+            if (activeNewsTab === 'live') {
+                const status = LIVE_NEWS.loading ? '🔄 불러오는 중...' : (LIVE_NEWS.checkedAt ? `확인 시각 ${fmtKst(new Date(LIVE_NEWS.checkedAt))}` : '아직 확인 전');
+                panel.innerHTML = `
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2 text-[11px]">
+                        <span class="text-slate-300">📡 <strong class="text-white">오늘의 실제 기사</strong> · ${escapeHtml(status)} · 출처 GDELT DOC API</span>
+                        <button onclick="refreshLiveNews(true)" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold">↻ 새로고침</button>
+                    </div>
+                    ${LIVE_NEWS.error ? `<div class="text-[11px] text-rose-300 mb-1.5">⚠️ ${escapeHtml(LIVE_NEWS.error)} — 아래 링크에서 직접 확인할 수 있습니다.</div>` : ''}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div><div class="text-[10px] font-bold text-amber-300 mb-1">📍 ${escapeHtml(name)} 관련 (한국어 기사 우선, 부족하면 영어)</div>${articleListHtml(LIVE_NEWS.local, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
+                        <div><div class="text-[10px] font-bold text-sky-300 mb-1">🌐 국제기구 관련 한국어 기사 (최근 3일)</div>${articleListHtml(LIVE_NEWS.global, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
+                    </div>
+                    ${fallbackLinks(c.iso3)}
+                    <p class="text-[10px] text-slate-500 mt-2">기사 제목과 수집 시각은 GDELT가 실제 언론사에서 수집한 값입니다. 내용의 사실 여부는 원문에서 확인하세요. 실시간 기사는 캐릭터의 확률에 영향을 주지 않습니다.</p>`;
+            } else if (activeNewsTab === 'local') {
+                if (!e) { panel.innerHTML = ''; return; }
+                panel.innerHTML = `
+                    <div class="text-[11px] text-slate-400 mb-2">📍 게임 속 ${e.year}년, ${e.age}세 ${escapeHtml(e.gender)}에게 해당하는 <strong class="text-slate-200">${escapeHtml(name)}의 실측 통계</strong> (사건을 지어내지 않고, 자료 기준연도를 표시합니다)</div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${e.facts.map(f => `
+                            <div class="bg-slate-950 rounded-xl border border-slate-800 p-3 space-y-1">
+                                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300">${escapeHtml(f.tag)}</span>
+                                <div class="text-sm font-extrabold text-white leading-snug">${escapeHtml(f.t)}</div>
+                                <p class="text-slate-300 leading-relaxed">${escapeHtml(f.d)}</p>
+                                <div class="text-[10px] text-slate-500">출처: ${escapeHtml(f.src)} · 조회 ${DATA_ACCESSED}</div>
+                            </div>`).join('')}
+                    </div>`;
+            } else {
+                renderKoreaCompare(panel);
+            }
+        }
+
+        function renderNewsHistory(container) {
+            const snaps = LIVE_NEWS.snapshots;
+            const snapHtml = snaps.length ? snaps.map(s => `
+                <div class="p-3 rounded-xl border border-slate-800 border-l-4 border-l-rose-500/70 bg-slate-950/90 space-y-1.5">
+                    <div class="flex items-center justify-between"><span class="text-[11px] font-black text-rose-300">📡 실제 확인 ${escapeHtml(fmtKst(new Date(s.at)))}</span><span class="text-[10px] text-slate-500">${escapeHtml(s.country)}</span></div>
+                    ${s.error ? `<div class="text-[10px] text-rose-300">${escapeHtml(s.error)}</div>` : ''}
+                    ${articleListHtml(s.local.concat(s.global), '기사 없음')}
+                </div>`).join('') : '<div class="p-3 text-center text-slate-500">아직 확인한 실시간 기사가 없습니다.</div>';
+            const factHtml = newsArchive.map(e => `
+                <div class="p-3 rounded-xl border border-slate-800 border-l-4 border-l-cyan-500/70 bg-slate-950/90 space-y-2">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="text-[11px] font-black text-cyan-300">📊 게임 ${e.year}년 · ${e.age}세</span>
+                        <span class="text-[10px] text-slate-500">${escapeHtml(e.countryShort)} · ${e.gender}</span>
+                    </div>
+                    ${e.facts.map(f => `<div><span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-300">${escapeHtml(f.tag)}</span> <span class="font-bold text-slate-100">${escapeHtml(f.t)}</span><p class="text-slate-400 leading-relaxed">${escapeHtml(f.d)} <span class="text-slate-600">(${escapeHtml(f.src)})</span></p></div>`).join('')}
+                    <div class="text-[11px] text-amber-100/90 bg-amber-500/5 border border-amber-500/20 rounded-lg px-2 py-1.5">🇰🇷 ${escapeHtml(e.korea)}</div>
+                </div>`).join('');
+            container.innerHTML = `
+                <div class="text-[11px] font-bold text-slate-400">실시간 기사 확인 기록 (실제 날짜·시각)</div>${snapHtml}
+                <div class="text-[11px] font-bold text-slate-400 pt-2">연도별 사실 카드 (게임 속 나이별 · 통계 기준연도 표기)</div>${factHtml || '<div class="p-3 text-center text-slate-500">아직 없음</div>'}`;
+        }
+
+        /* ---------- 데이터 출처 모달 ---------- */
+        function openDataModal() {
+            const c = charState && charState.iso3 ? charState : null;
+            const iso = c ? c.iso3 : 'KOR';
+            const sx = c ? sexKey(c) : 'f';
+            const rows = COMPARE_KEYS.concat(['road', 'pov42']).map(k => {
+                const meta = STAT_META[k];
+                const fem = meta.sex ? statOf(iso, k, 'f') : statOf(iso, k);
+                const mal = meta.sex ? statOf(iso, k, 'm') : null;
+                const val = meta.sex ? `여 ${fmtStatVal(k, fem)} · 남 ${fmtStatVal(k, mal)}` : fmtStatVal(k, fem);
+                return `<tr class="border-b border-slate-800/60"><td class="py-1.5 pr-2 text-slate-300">${meta.label}</td><td class="font-mono text-white">${escapeHtml(val)}</td><td class="text-[10px] text-slate-500 pl-2">${escapeHtml(SOURCES[meta.src].org)} · ${(fem || mal) ? (fem || mal).y : '-'}</td></tr>`;
+            }).join('');
+            const regionRows = REGIONS_DATA.map(r => `<tr class="border-b border-slate-800/60"><td class="py-1 pr-2 text-slate-300">${r.name}</td><td class="font-mono text-white text-right">${r.weight}%</td><td class="text-[10px] text-slate-500 pl-2">${r.countries.map(x => x.country.split(' ')[0]).join(', ')}</td></tr>`).join('');
+            document.getElementById('dataModalBody').innerHTML = `
+                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+                    <div class="font-bold text-emerald-400">이 게임은 세 겹으로 만들어졌습니다</div>
+                    <p><strong>① 기초 통계</strong> — 국가·성별 실측값(World Bank WDI API, ${DATA_ACCESSED} 조회). 출생 확률, 성별 기대수명, 5세 미만 사망률, 빈곤선 구간 비율, 식수·전기·인터넷, 교육·노동·만성질환 지표가 캐릭터 생성과 사망 위험에 직접 쓰입니다.</p>
+                    <p><strong>② 현재 상황</strong> — 실제 기사 목록(GDELT DOC API)을 확인 시각과 함께 보여줍니다. 기사는 설명용이며 확률을 바꾸지 않습니다.</p>
+                    <p><strong>③ 게임 모델의 가정</strong> — 구간 안의 소득 분포, 가구 시설 보유의 소득 보정, 연령별 사망 위험 곡선(성별 기대수명에 맞춰 보정한 Gompertz 모형), 선택지의 스탯 효과, 사인 세부 가중치는 현실 자료를 참고한 <em>게임 가중치</em>이며 실제 개인 발생률이 아닙니다.</p>
+                    <p><strong>합성 페르소나</strong> — 이름·부모 직업·사건은 창작이며 실존 인물이 아닙니다. 생활조건만 통계를 따릅니다.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="font-bold text-cyan-400 mb-1.5">권역별 출생 확률 (2025년 인구 × 2024년 조출생률)</div>
+                    <table class="w-full text-xs">${regionRows}</table>
+                    <p class="text-[10px] text-slate-500 mt-1.5">세계은행 권역에서 파키스탄·아프가니스탄은 남아시아로, 중앙아시아 5개국은 별도 권역으로 옮겨 계산했습니다. 권역 안 국가는 대표 표본이며 실제 인구 비중과 다릅니다.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                    <div class="font-bold text-amber-300 mb-1.5">${escapeHtml(COUNTRY_STATS[iso].name)} 실측값 ${c ? '(지금 캐릭터의 출생국)' : '(예시)'}</div>
+                    <table class="w-full text-xs">${rows}</table>
+                    <p class="text-[10px] text-slate-500 mt-1.5">2015년 이전 자료는 그대로 쓰되 화면에 기준연도를 표시합니다. '자료 없음' 항목은 확률에 쓰지 않거나, 식수처럼 꼭 필요한 경우 게임 가정(90%)으로 대체하고 표시합니다.</p>
+                </div>
+                <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
+                    <div class="font-bold text-rose-300 mb-1">출처 등록부</div>
+                    ${Object.values(SOURCES).map(s => `<div class="text-xs"><strong class="text-slate-200">${escapeHtml(s.org)}</strong> — ${escapeHtml(s.title)} · <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="text-cyan-300 underline break-all">${escapeHtml(s.url)}</a></div>`).join('')}
+                </div>`;
+            document.getElementById('dataModal').classList.remove('hidden');
+        }
+
+        /* ---------- 최종 보고서: 근거 탭 ---------- */
+        function renderReportMethod() {
+            const el = document.getElementById('rpanel_method');
+            const c = charState;
+            if (!el || !c || !c.iso3) return;
+            const sx = sexKey(c);
+            const used = ['le', 'u5', 'measles', 'pov3', 'pov42', 'pov83', 'gni', 'water', 'elec', 'net', 'road', 'ncd', 'comm', 'tfr'];
+            const s = COUNTRY_STATS[c.iso3];
+            const row = (label, v, y, src) => `<tr class="border-b border-slate-800/60"><td class="py-1.5 pr-2 text-slate-300">${label}</td><td class="font-mono text-white">${v}</td><td class="text-[10px] text-slate-500 pl-2">${src} · ${y}</td></tr>`;
+            const rows = used.map(k => {
+                if (k === 'comm') return row('사망 원인 구성(감염성 / 손상)', `${s.comm[0]}% / ${s.inj[0]}%`, s.comm[1], 'WHO GHE');
+                const st = statOf(c.iso3, k, sx);
+                if (!st) return row(STAT_META[k].label, '자료 없음', '-', '-');
+                return row(STAT_META[k].label + (STAT_META[k].sex ? ` (${c.gender})` : ''), escapeHtml(fmtStatVal(k, st)), st.y, escapeHtml(SOURCES[STAT_META[k].src].org));
+            }).join('');
+            const missing = [];
+            Object.keys(STAT_META).forEach(k => {
+                const st = statOf(c.iso3, k, sx);
+                if (!st && !(k === 'cm18' && c.gender !== '여성')) missing.push(STAT_META[k].label);
+            });
+            const old = [];
+            Object.keys(STAT_META).forEach(k => { const st = statOf(c.iso3, k, sx); if (st && st.y < 2015) old.push(`${STAT_META[k].label} (${st.y}년)`); });
+            el.innerHTML = `
+                <div class="bg-slate-950 rounded-2xl border border-slate-800 p-4 space-y-1.5">
+                    <div class="text-xs font-black text-emerald-300">🔎 이 인생은 어떻게 만들어졌나요?</div>
+                    <p class="text-[11px] text-slate-300 leading-relaxed"><strong>${escapeHtml(c.name)}</strong>은(는) <strong>합성 페르소나</strong>입니다. 이름·가족·사건은 창작이고, 출생 확률·성별 기대수명·가구 소비 수준·생활 시설·사망 위험은 아래 실측 통계로 정했습니다. 통계 조회일 ${DATA_ACCESSED}.</p>
+                    <p class="text-[11px] text-slate-400">출생 시 가구 1인당 하루 소비 $${(c.birthBudget || 0).toFixed(2)} (${incomeBandLabel(c.birthBudget || 0)}) — ${escapeHtml(s.name)} 인구의 약 ${c.incomeShareBelow}%보다 높은 수준 · 가구 시설: 안전한 식수 ${c.household.safeWater ? '있음' : '없음'}${c.household.waterAssumed ? '(국가 자료 없음 → 가정 90%)' : ''}, 전기 ${c.household.electricity ? '있음' : '없음'}, 인터넷 ${c.household.internet ? '있음' : '없음'}</p>
+                </div>
+                <div class="overflow-x-auto bg-slate-950 rounded-2xl border border-slate-800 p-3"><table class="w-full text-[11px]">${rows}</table></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-slate-950 rounded-2xl border border-slate-800 p-3 space-y-1">
+                        <div class="text-[11px] font-bold text-amber-300">⚠️ 자료 없음 · 오래된 자료</div>
+                        <p class="text-[11px] text-slate-400">자료 없음: ${missing.length ? escapeHtml(missing.join(', ')) : '없음'}</p>
+                        <p class="text-[11px] text-slate-400">2015년 이전 자료: ${old.length ? escapeHtml(old.join(', ')) : '없음'}</p>
+                    </div>
+                    <div class="bg-slate-950 rounded-2xl border border-slate-800 p-3 space-y-1">
+                        <div class="text-[11px] font-bold text-purple-300">🎲 게임 모델이 개입한 부분 (실제 개인 발생률 아님)</div>
+                        <ul class="text-[11px] text-slate-400 list-disc list-inside space-y-0.5">
+                            <li>빈곤선 구간 비율은 실측, 구간 안 분포와 $8.30 이상 소득 분포는 가정</li>
+                            <li>가구 시설 보유: 국가 비율에 소득 구간 보정을 곱한 추첨</li>
+                            <li>사망 위험: 성별 기대수명·5세 미만 사망률·도로교통 사망률에 맞춘 곡선 + 건강 수치 보정</li>
+                            <li>선택지의 스탯 변화와 사건 발생 빈도</li>
+                            <li>세부 사인: WHO 사인 구성 비율 + 질환별 가중치</li>
+                        </ul>
+                    </div>
+                </div>`;
+        }
+
+        /* ---------- 최종 보고서 이미지 저장 ---------- */
+        function loadHtml2Canvas() {
+            if (window.html2canvas) return Promise.resolve();
+            return loadScript('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js');
+        }
+        function buildShareCard() {
+            const c = charState;
+            const rc = reportCache;
+            const box = document.createElement('div');
+            box.id = 'shareCard';
+            box.style.cssText = 'position:fixed;left:-10000px;top:0;width:1080px;padding:56px;background:#0b1220;color:#e2e8f0;font-family:"Noto Sans KR",Inter,sans-serif;box-sizing:border-box;';
+            const chip = (k, v, col) => `<div style="flex:1;background:#020617;border:1px solid #1e293b;border-radius:18px;padding:18px 20px;"><div style="font-size:15px;color:#94a3b8;">${k}</div><div style="font-size:26px;font-weight:900;color:${col};margin-top:6px;">${v}</div></div>`;
+            const forks = rc ? rc.forks.slice(0, 5).map(({ d, options }) => {
+                const ch = options[d.chosen];
+                const alt = options.map((o, i) => ({ o, i })).filter(x => x.i !== d.chosen).sort((a, b) => b.o.medianAge - a.o.medianAge)[0];
+                return `<div style="padding:10px 0;border-bottom:1px solid #1e293b;font-size:17px;"><span style="color:#fbbf24;font-weight:800;">${d.age}세</span> ${escapeHtml(stripEmoji(d.options[d.chosen]).slice(0, 30))}<span style="color:#64748b;"> → 기대 수명 ${ch.medianAge}세 / 소득 $${ch.medianBudget.toFixed(2)}</span>${alt ? `<div style="color:#a78bfa;font-size:15px;margin-top:2px;">가지 않은 길: ${escapeHtml(stripEmoji(d.options[alt.i]).slice(0, 30))} → ${alt.o.medianAge}세 / $${alt.o.medianBudget.toFixed(2)}</div>` : ''}</div>`;
+            }).join('') : '<div style="color:#64748b;font-size:16px;">갈림길 비교 계산 중</div>';
+            const b = rc ? rc.baseline : null;
+            const bars = b ? [['5세', b.reach5], ['18세', b.reach18], ['40세', b.reach40], ['65세', b.reach65], ['80세', b.reach80]].map(([k, v]) => `<div style="display:flex;align-items:center;gap:12px;font-size:16px;margin:6px 0;"><span style="width:56px;color:#94a3b8;">${k}</span><div style="flex:1;height:14px;background:#1e293b;border-radius:99px;overflow:hidden;"><div style="width:${v}%;height:100%;background:#34d399;"></div></div><span style="width:56px;text-align:right;font-weight:800;">${v}%</span></div>`).join('') : '';
+            box.innerHTML = `
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div style="display:flex;align-items:center;gap:14px;"><div style="width:56px;height:56px;border-radius:16px;background:#10b981;color:#020617;font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center;">8B</div><div><div style="font-size:24px;font-weight:900;color:#fff;">1 in 8 Billion: 지구인 생존기</div><div style="font-size:15px;color:#94a3b8;">생애 최종 보고서 · 통계 기반 합성 페르소나</div></div></div>
+                    <div style="font-size:15px;color:#64748b;">${new Date().toLocaleDateString('ko-KR')}</div>
+                </div>
+                <div style="margin-top:36px;font-size:46px;font-weight:900;color:#fff;">${escapeHtml(c.name)}의 일생 <span style="color:#34d399;">향년 ${c.age}세</span></div>
+                <div style="margin-top:8px;font-size:20px;color:#cbd5e1;">${escapeHtml(c.regionName)} · ${escapeHtml(c.country)} · ${c.gender} · ${escapeHtml(TENDENCIES[c.tendency].label)}</div>
+                <div style="margin-top:14px;font-size:19px;color:#fda4af;">🕯️ ${escapeHtml(c.deathCause || '-')}</div>
+                <div style="display:flex;gap:14px;margin-top:28px;">
+                    ${chip('생존 / 기대수명(' + c.gender + ')', `${c.age}세 / ${c.lifeExpectancy}세`, '#fff')}
+                    ${chip('최종 순자산', fmtMoney(c.wealth), '#34d399')}
+                    ${chip('하루 소비 (2021 PPP)', '$' + c.dailyBudget.toFixed(2), '#22d3ee')}
+                    ${chip('마지막 직업', `<span style="font-size:19px;line-height:1.35;">${escapeHtml(c.occupation)}</span>`, '#fbbf24')}
+                </div>
+                <div style="margin-top:26px;background:#052e2b;border:1px solid #10b98155;border-radius:18px;padding:20px 24px;font-size:20px;line-height:1.6;">${rc ? `같은 부모·같은 나라에서 100번 태어났다면, 나는 그중 <b style="color:#fff;">${rc.earlier}명</b>보다 오래 살았습니다.` : '같은 출생 100번 시뮬레이션 계산 중'}</div>
+                <div style="display:flex;gap:20px;margin-top:24px;">
+                    <div style="flex:1.3;background:#020617;border:1px solid #1e293b;border-radius:18px;padding:20px 24px;"><div style="font-size:18px;font-weight:900;color:#fbbf24;margin-bottom:6px;">⚖️ 내 선택 vs 가지 않은 길 (40회 시뮬레이션 중앙값)</div>${forks}</div>
+                    <div style="flex:1;background:#020617;border:1px solid #1e293b;border-radius:18px;padding:20px 24px;"><div style="font-size:18px;font-weight:900;color:#34d399;margin-bottom:6px;">🎲 같은 출생 100번의 생존 곡선</div>${bars}${rc ? `<div style="margin-top:14px;font-size:16px;color:#c4b5fd;">🌌 평행세계의 나: ${rc.parallel.c.age}세 · ${escapeHtml(rc.parallel.cause)}</div>` : ''}</div>
+                </div>
+                <div style="margin-top:28px;font-size:13px;color:#64748b;line-height:1.6;">통계: World Bank WDI (UN WPP · UN IGME · WB PIP 2021 PPP · UNESCO UIS · WHO/UNICEF · ILO · WHO GHE), ${DATA_ACCESSED} 조회 · 이름과 사건은 창작이며 선택 효과는 게임 모델의 가정입니다.<br>${escapeHtml(location.href.split('#')[0])}</div>`;
+            return box;
+        }
+        async function saveReportImage() {
+            if (!charState) return;
+            const btn = document.getElementById('btnSaveImage');
+            const orig = btn.textContent;
+            btn.disabled = true;
+            btn.textContent = '🖼️ 이미지 만드는 중...';
+            try {
+                for (let i = 0; i < 40 && !reportCache; i++) await new Promise(r => setTimeout(r, 250));
+                await loadHtml2Canvas();
+                const card = buildShareCard();
+                document.body.appendChild(card);
+                const canvas = await window.html2canvas(card, { backgroundColor: '#0b1220', scale: 1, useCORS: true, logging: false });
+                card.remove();
+                const blob = await new Promise(res => canvas.toBlob(res, 'image/png'));
+                const fname = `1in8billion_${charState.name.replace(/\s+/g, '')}_${charState.age}세.png`;
+                const file = new File([blob], fname, { type: 'image/png' });
+                if (navigator.canShare && /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) && navigator.canShare({ files: [file] })) {
+                    try { await navigator.share({ files: [file], title: '1 in 8 Billion 생애 보고서' }); btn.textContent = '✓ 공유 완료'; } catch (e) { downloadBlob(blob, 'image/png', fname); btn.textContent = '✓ 저장 완료'; }
+                } else {
+                    downloadBlob(blob, 'image/png', fname);
+                    btn.textContent = '✓ 저장 완료';
+                }
+            } catch (e) {
+                console.warn('[image]', e);
+                btn.textContent = '⚠️ 저장 실패 (다시 시도)';
+            }
+            setTimeout(() => { btn.textContent = orig; btn.disabled = false; }, 2200);
+        }
+
+        /* ============================================================================
+           13. 접속 분석 (실시간 · 체류 · 동시 접속 · 이탈)
+               - 클라우드(Firebase Realtime Database) 연동 시: 모든 기기·네트워크 집계
+               - 미연동 시: 이 브라우저(localStorage)만 집계
+        ============================================================================ */
+        // ☁️ Firebase 설정: 관리자 메뉴 > 클라우드 연동에서 "설정이 들어간 index.html 받기"를 누르면 자동으로 채워집니다.
+        const FIREBASE_CONFIG = /*FB_CONFIG*/null/*FB_CONFIG_END*/;
+        const FIREBASE_SDK = 'https://www.gstatic.com/firebasejs/10.12.2/';
+
         const AN_PREFIX = '8b_sess_';
         const AN_STAGES = ['페이지 입장', '닉네임 등록', '가챠 시작', '탄생(플레이)', '첫 중대 기로', '생애 완주'];
-        const AN_OFFLINE_MS = 75000;
+        const AN_OFFLINE_MS = 150000;
+        const CLOUD_PUSH_MS = 20000;
         let anRec = null;
         let anLastTick = Date.now();
         let anLastInput = Date.now();
         let adminConcCache = { t: 0 };
+
+        const Cloud = { mode: 'local', ready: false, connected: false, uid: null, db: null, offset: 0, offsetKnown: false, error: '', sessions: {}, presence: {}, adminSub: false, lastPush: 0 };
+
+        const FB_RULES = {
+            rules: {
+                sessions: {
+                    '.read': 'auth != null',
+                    '.indexOn': ['lastSeen'],
+                    '$sid': {
+                        '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
+                        '.validate': "newData.hasChildren(['uid', 'lastSeen']) && newData.child('lastSeen').isNumber()"
+                    }
+                },
+                presence: {
+                    '.read': 'auth != null',
+                    '.indexOn': ['t'],
+                    '$sid': {
+                        '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
+                        '.validate': "newData.hasChildren(['uid', 't'])"
+                    }
+                }
+            }
+        };
 
         function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
         function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
@@ -4172,8 +4682,213 @@
             return out;
         }
 
-        function anInit() {
+        // 서버 시계 기준 현재 시각 (기기마다 시계가 달라도 체류·접속 판정이 어긋나지 않도록)
+        function anNow() { return Date.now() + (Cloud.offset || 0); }
+
+        /* ---------- 클라우드 (Firebase) ---------- */
+        function getCloudConfig() {
+            if (FIREBASE_CONFIG && FIREBASE_CONFIG.apiKey) return FIREBASE_CONFIG;
+            try { const c = JSON.parse(lsGet('8b_fb_config')); return c && c.apiKey ? c : null; } catch (e) { return null; }
+        }
+
+        function parseFirebaseConfig(text) {
+            const cfg = {};
+            const re = /(apiKey|authDomain|databaseURL|projectId|storageBucket|messagingSenderId|appId)\s*["']?\s*:\s*["']([^"']+)["']/g;
+            let m;
+            while ((m = re.exec(text || ''))) cfg[m[1]] = m[2].trim();
+            return cfg;
+        }
+
+        function autofillDbUrl() {
+            const cfg = parseFirebaseConfig(document.getElementById('fbConfigInput').value);
+            const url = document.getElementById('fbDbUrlInput');
+            if (cfg.databaseURL && !url.value) url.value = cfg.databaseURL;
+        }
+
+        function setFbMsg(text, ok) {
+            const el = document.getElementById('fbSetupMsg');
+            if (!el) return;
+            el.className = 'min-h-[1rem] font-bold ' + (ok ? 'text-emerald-300' : 'text-rose-300');
+            el.textContent = text;
+        }
+
+        function saveCloudConfig() {
+            const cfg = parseFirebaseConfig(document.getElementById('fbConfigInput').value);
+            const url = document.getElementById('fbDbUrlInput').value.trim();
+            if (url) cfg.databaseURL = url;
+            if (!cfg.apiKey || !cfg.projectId) return setFbMsg('❌ firebaseConfig 코드에서 apiKey·projectId를 찾지 못했습니다. 코드 전체를 붙여넣어 주세요.');
+            if (!cfg.databaseURL || !/^https:\/\/.+(firebaseio\.com|firebasedatabase\.app)\/?$/.test(cfg.databaseURL)) return setFbMsg('❌ Database URL이 필요합니다. Realtime Database 화면 맨 위의 https://... 주소를 넣어 주세요.');
+            if (!cfg.authDomain) cfg.authDomain = cfg.projectId + '.firebaseapp.com';
+            lsSet('8b_fb_config', JSON.stringify(cfg));
+            if (Cloud.ready || Cloud.mode === 'error' || Cloud.mode === 'connecting') {
+                setFbMsg('✓ 저장했습니다. 새 설정으로 다시 연결하기 위해 페이지를 새로고침합니다...', true);
+                setTimeout(() => location.reload(), 900);
+                return;
+            }
+            setFbMsg('연결 중...', true);
+            cloudInit().then(() => {
+                if (Cloud.ready) { cloudSubscribeAdmin(); setFbMsg('✓ 클라우드에 연결됐습니다. 이제 "설정이 들어간 index.html 받기"로 파일을 받아 GitHub에 올려 주세요.', true); }
+                else setFbMsg('❌ ' + Cloud.error);
+            });
+        }
+
+        function clearCloudConfig() {
+            lsDel('8b_fb_config');
+            if (FIREBASE_CONFIG) setFbMsg('이 브라우저 저장값을 지웠습니다. (파일에 들어간 설정은 그대로라 계속 연결됩니다)', true);
+            else { setFbMsg('연동을 해제했습니다. 새로고침합니다...', true); setTimeout(() => location.reload(), 900); }
+        }
+
+        function renderFbRules() {
+            const el = document.getElementById('fbRulesText');
+            if (el) el.textContent = JSON.stringify(FB_RULES, null, 2);
+        }
+
+        function copyFbRules() {
+            const temp = document.createElement('textarea');
+            temp.value = JSON.stringify(FB_RULES, null, 2);
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            const btn = document.getElementById('btnCopyRules');
+            btn.textContent = '✓ 복사됨';
+            setTimeout(() => { btn.textContent = '규칙 복사'; }, 1600);
+        }
+
+        function loadScript(src) {
+            return new Promise((resolve, reject) => {
+                const sc = document.createElement('script');
+                sc.src = src;
+                sc.async = true;
+                sc.onload = resolve;
+                sc.onerror = () => reject(new Error('Firebase 라이브러리를 불러오지 못했습니다(네트워크 확인).'));
+                document.head.appendChild(sc);
+            });
+        }
+
+        function friendlyCloudError(e) {
+            const code = (e && (e.code || e.message)) || String(e);
+            if (/operation-not-allowed|admin-restricted/i.test(code)) return 'Authentication에서 "익명" 로그인을 사용 설정해 주세요.';
+            if (/permission[_ -]denied/i.test(code)) return 'Realtime Database 규칙이 아직 게시되지 않았습니다. 규칙 탭에 아래 규칙을 붙여넣고 게시해 주세요.';
+            if (/api-key|invalid-api-key/i.test(code)) return 'apiKey가 올바르지 않습니다. firebaseConfig를 다시 복사해 주세요.';
+            if (/unauthorized-domain/i.test(code)) return 'Authentication > 설정 > 승인된 도메인에 github.io 주소를 추가해 주세요.';
+            return code;
+        }
+
+        async function cloudInit() {
+            const cfg = getCloudConfig();
+            if (!cfg || !cfg.databaseURL) { Cloud.mode = 'local'; renderCloudStatus(); return; }
+            Cloud.mode = 'connecting';
+            Cloud.error = '';
+            renderCloudStatus();
+            try {
+                if (!window.firebase) {
+                    await loadScript(FIREBASE_SDK + 'firebase-app-compat.js');
+                    await loadScript(FIREBASE_SDK + 'firebase-auth-compat.js');
+                    await loadScript(FIREBASE_SDK + 'firebase-database-compat.js');
+                }
+                if (!firebase.apps.length) firebase.initializeApp(cfg);
+                const cred = await firebase.auth().signInAnonymously();
+                Cloud.uid = cred.user.uid;
+                Cloud.db = firebase.database();
+                // 접속 권한 확인을 겸한 첫 기록
+                await cloudPush(true, true);
+                Cloud.ready = true;
+                Cloud.mode = 'cloud';
+                Cloud.db.ref('.info/serverTimeOffset').on('value', snap => {
+                    const off = snap.val() || 0;
+                    if (anRec) {
+                        const delta = off - (Cloud.offset || 0);
+                        anRec.firstSeen += delta;
+                        anRec.lastSeen += delta;
+                    }
+                    Cloud.offset = off;
+                    Cloud.offsetKnown = true;
+                });
+                Cloud.db.ref('.info/connected').on('value', snap => {
+                    Cloud.connected = !!snap.val();
+                    if (Cloud.connected) cloudRegisterPresence();
+                    renderCloudStatus();
+                });
+                Cloud.db.ref('presence').orderByChild('t').limitToLast(200).on('value', snap => {
+                    Cloud.presence = snap.val() || {};
+                    refreshOnlineBadgeCounts();
+                }, () => {});
+                if (isAdminUnlocked) cloudSubscribeAdmin();
+            } catch (e) {
+                Cloud.ready = false;
+                Cloud.mode = 'error';
+                Cloud.error = friendlyCloudError(e);
+                console.warn('[cloud]', e);
+            }
+            renderCloudStatus();
+        }
+
+        function cloudPush(force, throwOnError) {
+            if (!Cloud.db || !anRec || !Cloud.uid) return Promise.resolve();
             const now = Date.now();
+            if (!force && now - Cloud.lastPush < CLOUD_PUSH_MS) return Promise.resolve();
+            Cloud.lastPush = now;
+            const rec = Object.assign({}, anRec, { uid: Cloud.uid });
+            rec.activeSec = Math.round(rec.activeSec);
+            rec.idleSec = Math.round(rec.idleSec);
+            const job = Promise.all([
+                Cloud.db.ref('sessions/' + anRec.id).set(rec),
+                Cloud.db.ref('presence/' + anRec.id).set({ uid: Cloud.uid, t: rec.lastSeen, c: !!rec.closed, s: rec.state || 'active' })
+            ]);
+            if (throwOnError) return job;
+            return job.catch(e => { Cloud.error = friendlyCloudError(e); renderCloudStatus(); });
+        }
+
+        async function cloudRegisterPresence() {
+            if (!Cloud.db || !anRec) return;
+            try {
+                await cloudPush(true, true);
+                const TS = firebase.database.ServerValue.TIMESTAMP;
+                const sref = Cloud.db.ref('sessions/' + anRec.id);
+                sref.child('closed').onDisconnect().set(true);
+                sref.child('lastSeen').onDisconnect().set(TS);
+                Cloud.db.ref('presence/' + anRec.id).onDisconnect().update({ c: true, t: TS });
+            } catch (e) {
+                Cloud.error = friendlyCloudError(e);
+                renderCloudStatus();
+            }
+        }
+
+        function cloudSubscribeAdmin() {
+            if (!Cloud.ready || Cloud.adminSub) return;
+            Cloud.adminSub = true;
+            const q = Cloud.db.ref('sessions').orderByChild('lastSeen').limitToLast(500);
+            const put = snap => { const v = snap.val(); if (v && v.id) { v.cloud = true; Cloud.sessions[snap.key] = v; } adminConcCache.t = 0; };
+            q.on('child_added', put, e => { Cloud.error = friendlyCloudError(e); renderCloudStatus(); });
+            q.on('child_changed', put);
+            q.on('child_removed', snap => { delete Cloud.sessions[snap.key]; adminConcCache.t = 0; });
+        }
+
+        function renderCloudStatus() {
+            const el = document.getElementById('adminScope');
+            if (!el) return;
+            const cfg = getCloudConfig();
+            if (Cloud.ready) {
+                el.className = 'text-[11px] bg-cyan-500/10 border border-cyan-500/30 rounded-xl px-3 py-2 text-cyan-100';
+                el.innerHTML = `☁️ <strong>클라우드 연결됨</strong> (Firebase · ${escapeHtml(cfg.projectId || '')}) — 모든 기기·네트워크의 접속이 실시간으로 집계됩니다. 불러온 세션 ${Object.keys(Cloud.sessions).length}개 (최근 500개까지)${Cloud.connected ? '' : ' · ⚠️ 잠시 연결 끊김, 자동 재연결 중'}${!FIREBASE_CONFIG ? '<br><span class="text-amber-300 font-bold">⚠️ 아직 이 브라우저에만 연결된 상태입니다. "설정이 들어간 index.html 받기"로 파일을 받아 GitHub에 올려야 다른 사람의 기록도 들어옵니다.</span>' : ''}${Cloud.error ? `<br><span class="text-rose-300">${escapeHtml(Cloud.error)}</span>` : ''}`;
+            } else if (Cloud.mode === 'connecting') {
+                el.className = 'text-[11px] bg-slate-950/60 border border-slate-800 rounded-xl px-3 py-2 text-slate-300';
+                el.innerHTML = '☁️ 클라우드에 연결하는 중...';
+            } else if (Cloud.mode === 'error') {
+                el.className = 'text-[11px] bg-rose-500/10 border border-rose-500/30 rounded-xl px-3 py-2 text-rose-200';
+                el.innerHTML = `❌ <strong>클라우드 연결 실패</strong> — ${escapeHtml(Cloud.error)} <span class="text-slate-400">(지금은 이 브라우저 기록만 표시)</span>`;
+            } else {
+                el.className = 'text-[11px] bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2 text-amber-100';
+                el.innerHTML = '📍 <strong>클라우드 미연동</strong> — 지금은 이 브라우저에서 열린 탭의 기록만 보입니다. 다른 사람(다른 기기·IP)의 접속을 보려면 아래 <strong>☁️ 클라우드 연동 설정</strong>을 진행해 주세요.';
+                const d = document.getElementById('cloudSetup');
+                if (d && !d.dataset.autoOpened) { d.open = true; d.dataset.autoOpened = '1'; }
+            }
+        }
+
+        /* ---------- 세션 기록 ---------- */
+        function anInit() {
+            const now = anNow();
             anRec = {
                 id: currentSessionId, nickname: '', firstSeen: now, lastSeen: now, activeSec: 0, idleSec: 0,
                 stageIdx: 0, closed: false, state: 'active', isSim: false,
@@ -4184,8 +4899,18 @@
             anSave();
             ['mousemove', 'keydown', 'click', 'touchstart', 'wheel'].forEach(ev => window.addEventListener(ev, () => { anLastInput = Date.now(); }, { passive: true }));
             document.addEventListener('visibilitychange', anTick);
-            window.addEventListener('pagehide', () => { anTick(); anRec.closed = true; anSave(); });
-            window.addEventListener('pageshow', () => { if (anRec) { anRec.closed = false; anSave(); } });
+            window.addEventListener('pagehide', () => {
+                anTick();
+                anRec.closed = true;
+                anSave();
+                if (Cloud.db) {
+                    try {
+                        Cloud.db.ref('sessions/' + anRec.id).update({ closed: true, lastSeen: anNow() });
+                        Cloud.db.ref('presence/' + anRec.id).update({ c: true, t: anNow() });
+                    } catch (e) {}
+                }
+            });
+            window.addEventListener('pageshow', () => { if (anRec) { anRec.closed = false; anSave(); cloudPush(true); } });
             setInterval(anTick, 1000);
             anPrune();
         }
@@ -4211,14 +4936,17 @@
                 anRec.occupation = '탄생 대기';
             }
             anSave();
+            cloudPush(false);
         }
         // 이전 버전 호출부 호환
         function broadcastMyPresence() { anSyncNow(); }
 
         function anStage(i) {
             if (!anRec) return;
+            const changed = i > anRec.stageIdx;
             anRec.stageIdx = Math.max(anRec.stageIdx, i);
             anSave();
+            if (changed) cloudPush(true);
         }
 
         function anRecordChoice(tags, isAuto) {
@@ -4226,19 +4954,20 @@
             (tags || []).forEach(t => { anRec.choices[t] = (anRec.choices[t] || 0) + 1; });
             if (isAuto) anRec.autoChoices += 1; else anRec.manualChoices += 1;
             anSave();
+            cloudPush(true);
         }
 
         function anTick() {
             if (!anRec) return;
-            const now = Date.now();
-            const dt = Math.min(120, Math.max(0, (now - anLastTick) / 1000));
-            anLastTick = now;
+            const wall = Date.now();
+            const dt = Math.min(120, Math.max(0, (wall - anLastTick) / 1000));
+            anLastTick = wall;
             const visible = document.visibilityState === 'visible';
             const running = !!charState && !isGameOver && (gameSpeed > 0 || (isDecisionModalOpen && autoWatch));
-            const engaged = visible && (now - anLastInput < 90000 || running);
+            const engaged = visible && (wall - anLastInput < 90000 || running);
             anRec.state = engaged ? 'active' : 'idle';
             if (engaged) anRec.activeSec += dt; else anRec.idleSec += dt;
-            anRec.lastSeen = now;
+            anRec.lastSeen = anNow();
             anRec.closed = false;
             anSyncNow();
             refreshOnlineBadgeCounts();
@@ -4246,12 +4975,22 @@
         }
 
         function anLoadAll() {
-            const out = [];
+            const out = {};
+            if (Cloud.ready) {
+                Object.values(Cloud.sessions).forEach(r => { out[r.id] = r; });
+            }
             lsKeys().forEach(k => {
                 if (!k || !k.startsWith(AN_PREFIX)) return;
-                try { const r = JSON.parse(lsGet(k)); if (r && r.id) out.push(r); } catch (e) {}
+                try {
+                    const r = JSON.parse(lsGet(k));
+                    if (!r || !r.id) return;
+                    // 클라우드 연결 중에는 이 브라우저의 지난 로컬 기록 대신 클라우드 기록을 쓰고, 샘플만 함께 표시
+                    if (Cloud.ready && !r.isSim && r.id !== currentSessionId) return;
+                    if (!out[r.id] || r.id === currentSessionId) out[r.id] = Object.assign({}, r, out[r.id] ? { cloud: true } : {});
+                } catch (e) {}
             });
-            return out;
+            if (anRec) out[anRec.id] = Object.assign({}, anRec, { cloud: Cloud.ready });
+            return Object.values(out);
         }
 
         function anStatus(r, now) {
@@ -4263,14 +5002,29 @@
         function anTotalSec(r, now) { return Math.max(0, (anEnd(r, now) - r.firstSeen) / 1000); }
 
         function anPrune() {
-            const all = anLoadAll().sort((a, b) => b.lastSeen - a.lastSeen);
+            const all = [];
+            lsKeys().forEach(k => {
+                if (!k || !k.startsWith(AN_PREFIX)) return;
+                try { const r = JSON.parse(lsGet(k)); if (r && r.id) all.push(r); } catch (e) {}
+            });
+            all.sort((a, b) => b.lastSeen - a.lastSeen);
             const cutoff = Date.now() - 30 * 24 * 3600 * 1000;
             all.forEach((r, i) => { if (i >= 400 || r.lastSeen < cutoff) lsDel(AN_PREFIX + r.id); });
         }
 
         function refreshOnlineBadgeCounts() {
-            const now = Date.now();
-            const online = anLoadAll().filter(r => !r.isSim && anStatus(r, now) !== 'offline').length || 1;
+            const now = anNow();
+            let online;
+            if (Cloud.ready) {
+                online = Object.entries(Cloud.presence).filter(([id, p]) => id !== currentSessionId && p && !p.c && now - p.t < AN_OFFLINE_MS).length + 1;
+            } else {
+                const ids = new Set();
+                lsKeys().forEach(k => {
+                    if (!k || !k.startsWith(AN_PREFIX)) return;
+                    try { const r = JSON.parse(lsGet(k)); if (r && !r.isSim && anStatus(r, now) !== 'offline') ids.add(r.id); } catch (e) {}
+                });
+                online = Math.max(1, ids.size);
+            }
             const elHeader = document.getElementById('headerOnlineCount');
             const elGate = document.getElementById('gateOnlineCount');
             if (elHeader) elHeader.textContent = online;
@@ -4306,6 +5060,7 @@
         function openAdminModal() {
             document.getElementById('adminModal').classList.remove('hidden');
             if (isAdminUnlocked) {
+                cloudSubscribeAdmin();
                 document.getElementById('adminAuthGate').classList.add('hidden');
                 document.getElementById('adminDashboardContent').classList.remove('hidden');
                 renderAdminDashboard();
@@ -4322,6 +5077,7 @@
             const err = document.getElementById('adminAuthError');
             if (input === adminPasscode) {
                 isAdminUnlocked = true;
+                cloudSubscribeAdmin();
                 err.classList.add('hidden');
                 document.getElementById('adminAuthGate').classList.add('hidden');
                 document.getElementById('adminDashboardContent').classList.remove('hidden');
@@ -4394,10 +5150,11 @@
         }
 
         function renderAdminDashboard() {
-            const now = Date.now();
+            const now = anNow();
+            renderCloudStatus();
             const showSim = document.getElementById('adminShowSim').checked;
             const all = anLoadAll().filter(r => showSim || !r.isSim);
-            document.getElementById('adminClock').textContent = new Date(now).toLocaleTimeString('ko-KR');
+            document.getElementById('adminClock').textContent = new Date(now).toLocaleTimeString('ko-KR') + (Cloud.ready ? ' · ☁️' : '');
             const st = all.map(r => anStatus(r, now));
             const active = st.filter(s => s === 'active').length;
             const idle = st.filter(s => s === 'idle').length;
@@ -4530,7 +5287,7 @@
                         <td class="py-2.5 px-3 font-mono whitespace-nowrap"><span class="text-cyan-300">${fmtDur(r.activeSec || 0)}</span><div class="text-[10px] text-slate-500">총 ${fmtDur(anTotalSec(r, now))}</div></td>
                         <td class="py-2.5 px-3 font-mono text-amber-300">${r.livesStarted || 0} / ${r.livesCompleted || 0}</td>
                         <td class="py-2.5 px-3 text-slate-400 whitespace-nowrap">${s === 'offline' ? relTime(now - r.lastSeen) : '접속 중'}</td>
-                        <td class="py-2.5 px-3 text-right">${isMe ? '<span class="text-[10px] text-slate-500">-</span>' : `<button onclick="anDeleteSession('${escapeHtml(r.id)}')" class="px-2 py-1 rounded bg-rose-500/15 hover:bg-rose-500/30 text-rose-300 text-[11px] font-bold">기록 삭제</button>`}</td>
+                        <td class="py-2.5 px-3 text-right">${(isMe || r.cloud) ? '<span class="text-[10px] text-slate-500">' + (r.cloud && !isMe ? '☁️' : '-') + '</span>' : `<button onclick="anDeleteSession('${escapeHtml(r.id)}')" class="px-2 py-1 rounded bg-rose-500/15 hover:bg-rose-500/30 text-rose-300 text-[11px] font-bold">기록 삭제</button>`}</td>
                     </tr>`;
             }).join('') : `<tr><td colspan="8" class="py-6 text-center text-slate-500">조건에 맞는 세션이 없습니다.</td></tr>`;
         }
@@ -4550,7 +5307,8 @@
 
         function anResetAll() {
             if (!confirm('이 브라우저에 저장된 접속·플레이 통계를 모두 지울까요? (현재 세션은 새로 기록됩니다)')) return;
-            anLoadAll().forEach(r => { if (r.id !== currentSessionId) lsDel(AN_PREFIX + r.id); });
+            anLoadAll().forEach(r => { if (r.id !== currentSessionId && !r.cloud) lsDel(AN_PREFIX + r.id); });
+            if (Cloud.ready) alert('이 브라우저의 기록만 지웠습니다. 클라우드에 모인 기록은 Firebase 콘솔 > Realtime Database > sessions 에서 삭제할 수 있습니다.');
             adminConcCache.t = 0;
             renderAdminDashboard();
         }
@@ -4559,7 +5317,7 @@
             const nicks = ['우주여행자', '인생2회차', '서울시민', '럭키가챠', '지구별탐험대', '통계학도', '노마드', '별빛유랑자', '생존왕', '새벽감성', '퇴근길', '관전러'];
             const causes = ['허혈성 심장질환 (급성 심근경색)', '뇌졸중 및 뇌혈관 합병증', '만성 폐쇄성 폐질환 (COPD) 및 호흡기 부전', '영유아 급성 말라리아 및 중증 호흡기 감염', '도로 교통사고 및 산업 현장 안전사고', '수인성 급성 설사병 및 폐렴 합병증'];
             const tags = Object.keys(TAG_LABELS);
-            const now = Date.now();
+            const now = anNow();
             for (let i = 0; i < n; i++) {
                 const reg = pickWeightedRegion();
                 const co = reg.countries[Math.floor(Math.random() * reg.countries.length)];
@@ -4606,7 +5364,7 @@
         }
 
         function exportParticipantsCSV() {
-            const now = Date.now();
+            const now = anNow();
             const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
             const headers = ['세션ID', '닉네임', '샘플', '상태', '기기', '진행단계', '첫접속', '마지막활동', '총체류(초)', '활성(초)', '유휴(초)', '인생시작', '인생완주', '최고나이', '출생국가', '현재나이', '직업', '자산(USD)', '건강', '직접선택', '자동선택'];
             const rows = anLoadAll().sort((a, b) => b.lastSeen - a.lastSeen).map(r => [
@@ -4632,6 +5390,8 @@
             if (savedNick) document.getElementById('nicknameInput').value = savedNick;
             initStartScreen();
             anInit();
+            renderFbRules();
+            cloudInit();
             refreshOnlineBadgeCounts();
             syncAutoWatchUI();
             ['adminSearch', 'adminStatusFilter', 'adminSort', 'adminShowSim'].forEach(id => {
