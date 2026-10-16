@@ -4713,30 +4713,36 @@
 
         const Cloud = { mode: 'local', ready: false, connected: false, uid: null, db: null, offset: 0, offsetKnown: false, error: '', sessions: {}, presence: {}, adminSub: false, lastPush: 0 };
 
+        // 이 게임 전용 Firebase 공간 (다른 게임과 분리)
+        const FB_ROOT = 'earth_life/';
         const FB_RULES = {
             rules: {
-                sessions: {
-                    '.read': 'auth != null',
-                    '.indexOn': ['lastSeen'],
-                    '$sid': {
-                        '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
-                        '.validate': "newData.hasChildren(['uid', 'lastSeen']) && newData.child('lastSeen').isNumber()"
-                    }
+                // 🌍 지구인 생존기 전용
+                earth_life: {
+                    sessions: {
+                        '.read': 'auth != null',
+                        '.indexOn': ['lastSeen'],
+                        '$sid': {
+                            '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
+                            '.validate': "newData.hasChildren(['uid', 'lastSeen']) && newData.child('lastSeen').isNumber()"
+                        }
+                    },
+                    presence: {
+                        '.read': 'auth != null',
+                        '.indexOn': ['t'],
+                        '$sid': {
+                            '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
+                            '.validate': "newData.hasChildren(['uid', 't'])"
+                        }
+                    },
+                    saves: { '$key': { '.read': 'auth != null', '.write': 'auth != null' } }
                 },
-                presence: {
-                    '.read': 'auth != null',
-                    '.indexOn': ['t'],
-                    '$sid': {
-                        '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
-                        '.validate': "newData.hasChildren(['uid', 't'])"
-                    }
-                },
-                // 이어하기 저장 (닉네임+PIN 해시 키)
-                saves: {
-                    '$key': { '.read': 'auth != null', '.write': 'auth != null' }
-                },
-                // 같은 Firebase를 쓰는 K-라이프 리스크 매니저 데이터 (지우지 마세요)
-                klife_v3: { '.read': 'auth != null', '.write': 'auth != null' }
+                // 💼 K-라이프 리스크 매니저(j_us_partner) 전용
+                j_us_partner: { '.read': 'auth != null', '.write': 'auth != null' },
+                // 공간 분리 이전 기록 (읽기 전용 보관)
+                sessions: { '.read': 'auth != null', '.indexOn': ['lastSeen'] },
+                presence: { '.read': 'auth != null' },
+                klife_v3: { '.read': 'auth != null' }
             }
         };
 
@@ -4877,7 +4883,7 @@
                     if (Cloud.connected) cloudRegisterPresence();
                     renderCloudStatus();
                 });
-                Cloud.db.ref('presence').orderByChild('t').limitToLast(200).on('value', snap => {
+                Cloud.db.ref(FB_ROOT + 'presence').orderByChild('t').limitToLast(200).on('value', snap => {
                     Cloud.presence = snap.val() || {};
                     refreshOnlineBadgeCounts();
                 }, () => {});
@@ -4900,8 +4906,8 @@
             rec.activeSec = Math.round(rec.activeSec);
             rec.idleSec = Math.round(rec.idleSec);
             const job = Promise.all([
-                Cloud.db.ref('sessions/' + anRec.id).set(rec),
-                Cloud.db.ref('presence/' + anRec.id).set({ uid: Cloud.uid, t: rec.lastSeen, c: !!rec.closed, s: rec.state || 'active' })
+                Cloud.db.ref(FB_ROOT + 'sessions/' + anRec.id).set(rec),
+                Cloud.db.ref(FB_ROOT + 'presence/' + anRec.id).set({ uid: Cloud.uid, t: rec.lastSeen, c: !!rec.closed, s: rec.state || 'active' })
             ]);
             if (throwOnError) return job;
             return job.catch(e => { Cloud.error = friendlyCloudError(e); renderCloudStatus(); });
@@ -4912,10 +4918,10 @@
             try {
                 await cloudPush(true, true);
                 const TS = firebase.database.ServerValue.TIMESTAMP;
-                const sref = Cloud.db.ref('sessions/' + anRec.id);
+                const sref = Cloud.db.ref(FB_ROOT + 'sessions/' + anRec.id);
                 sref.child('closed').onDisconnect().set(true);
                 sref.child('lastSeen').onDisconnect().set(TS);
-                Cloud.db.ref('presence/' + anRec.id).onDisconnect().update({ c: true, t: TS });
+                Cloud.db.ref(FB_ROOT + 'presence/' + anRec.id).onDisconnect().update({ c: true, t: TS });
             } catch (e) {
                 Cloud.error = friendlyCloudError(e);
                 renderCloudStatus();
@@ -4925,11 +4931,17 @@
         function cloudSubscribeAdmin() {
             if (!Cloud.ready || Cloud.adminSub) return;
             Cloud.adminSub = true;
-            const q = Cloud.db.ref('sessions').orderByChild('lastSeen').limitToLast(500);
+            const q = Cloud.db.ref(FB_ROOT + 'sessions').orderByChild('lastSeen').limitToLast(500);
             const put = snap => { const v = snap.val(); if (v && v.id) { v.cloud = true; Cloud.sessions[snap.key] = v; } adminConcCache.t = 0; };
             q.on('child_added', put, e => { Cloud.error = friendlyCloudError(e); renderCloudStatus(); });
             q.on('child_changed', put);
             q.on('child_removed', snap => { delete Cloud.sessions[snap.key]; adminConcCache.t = 0; });
+            // 공간 분리 이전(루트 sessions)에 쌓인 기록도 통계에 포함 (읽기 전용)
+            Cloud.db.ref('sessions').orderByChild('lastSeen').limitToLast(500).once('value').then(snap => {
+                const all = snap.val() || {};
+                Object.keys(all).forEach(k => { const v = all[k]; if (v && v.id && !Cloud.sessions[k]) { v.cloud = true; v.legacy = true; Cloud.sessions[k] = v; } });
+                adminConcCache.t = 0;
+            }).catch(() => {});
         }
 
         function renderCloudStatus() {
@@ -4972,8 +4984,8 @@
                 anSave();
                 if (Cloud.db) {
                     try {
-                        Cloud.db.ref('sessions/' + anRec.id).update({ closed: true, lastSeen: anNow() });
-                        Cloud.db.ref('presence/' + anRec.id).update({ c: true, t: anNow() });
+                        Cloud.db.ref(FB_ROOT + 'sessions/' + anRec.id).update({ closed: true, lastSeen: anNow() });
+                        Cloud.db.ref(FB_ROOT + 'presence/' + anRec.id).update({ c: true, t: anNow() });
                     } catch (e) {}
                 }
             });
@@ -5499,14 +5511,14 @@
             lsSet(LIFE_SAVE_KEY, text);
             if (SAVE.key && Cloud.db && Cloud.ready && (force || Date.now() - SAVE.lastRemote > 10000)) {
                 SAVE.lastRemote = Date.now();
-                Cloud.db.ref('saves/' + SAVE.key).set({ data: text, nick: currentPlayerNickname || '', savedAt: sv.savedAt, uid: Cloud.uid || '' })
+                Cloud.db.ref(FB_ROOT + 'saves/' + SAVE.key).set({ data: text, nick: currentPlayerNickname || '', savedAt: sv.savedAt, uid: Cloud.uid || '' })
                     .catch(e => console.warn('[save]', e));
             }
         }
 
         function lifeSaveClear() {
             lsDel(LIFE_SAVE_KEY);
-            if (SAVE.key && Cloud.db && Cloud.ready) Cloud.db.ref('saves/' + SAVE.key).remove().catch(() => {});
+            if (SAVE.key && Cloud.db && Cloud.ready) Cloud.db.ref(FB_ROOT + 'saves/' + SAVE.key).remove().catch(() => {});
         }
 
         function earthToast(msg, ms) {
@@ -5654,7 +5666,7 @@
             msg.textContent = '불러오는 중…';
             try {
                 const key = await saveKeyOf(nick, pin);
-                const snap = await Cloud.db.ref('saves/' + key).once('value');
+                const snap = await Cloud.db.ref(FB_ROOT + 'saves/' + key).once('value');
                 const v = snap.val();
                 if (!v || !v.data) { msg.textContent = '저장된 인생을 찾지 못했어요. 닉네임·PIN을 확인해 주세요.'; return; }
                 const sv = JSON.parse(v.data);
