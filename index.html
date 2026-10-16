@@ -328,7 +328,7 @@
                     <div id="newsTicker" class="ticker-track">뉴스 수신 대기 중...</div>
                 </div>
                 <div id="newsPanel" class="p-3 sm:p-4 text-xs"></div>
-                <div class="px-4 pb-2.5 text-[10px] text-slate-500">※ 📡 실시간 뉴스는 실제 기사(GDELT, 확인 시각 표시), 📍 사실 카드와 👤 한국 비교는 World Bank WDI 실측 통계(기준연도 표시, 2026-10-16 조회)입니다.</div>
+                <div class="px-4 pb-2.5 text-[10px] text-slate-500">※ 📡 실시간 뉴스는 실제 기사(Google 뉴스·연합뉴스, 발행 시각 표시), 📍 사실 카드와 👤 한국 비교는 World Bank WDI 실측 통계(기준연도 표시, 2026-10-16 조회)입니다.</div>
             </div>
 
             <!-- Row 1: Character Identity & Real-Time Age Progress Bar -->
@@ -1384,7 +1384,8 @@
             urban: { org: 'UN DESA (WDI)', title: '도시 인구 비율', url: 'https://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS' },
             births: { org: '게임 계산 (WDI 자료)', title: '권역별 출생아 수 = 2025년 인구 × 2024년 조출생률. 세계 약 1억 3,370만 명', url: 'https://data.worldbank.org/indicator/SP.DYN.CBRT.IN' },
             kostat: { org: '통계청', title: '2024년 혼인·이혼 통계 (2025-03-20 발표) — 평균 초혼연령 남 33.9세 · 여 31.6세', url: 'https://www.newsis.com/view/NISX20250320_0003106157' },
-            gdelt: { org: 'The GDELT Project', title: 'GDELT DOC 2.0 API — 실시간 기사 목록(제목·언론사·수집 시각)', url: 'https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/' }
+            gnews: { org: 'Google 뉴스', title: '한국어 뉴스 검색 RSS — 국가별 최근 7일 기사(제목·언론사·발행 시각). GitHub Actions가 1시간마다 news.json으로 수집, 없으면 공개 프록시 경유', url: 'https://news.google.com/?hl=ko&gl=KR&ceid=KR:ko' },
+            yna: { org: '연합뉴스', title: '국제 뉴스 RSS', url: 'https://www.yna.co.kr/rss/international.xml' }
         };
 
         const COUNTRY_STATS = {
@@ -4303,68 +4304,100 @@
             renderNewsBar();
         }
 
-        /* ---------- 실시간 뉴스 (GDELT DOC 2.0 API, JSONP) ---------- */
+        /* ---------- 실시간 뉴스: Google 뉴스(한국어 검색 RSS) + 연합뉴스 국제 RSS ----------
+           GitHub Pages(정적 사이트)에서는 브라우저 보안(CORS) 때문에 RSS를 직접 읽을 수 없어 공개 프록시(allorigins)를 거칩니다. */
         const LIVE_NEWS = { global: null, local: null, localIso: null, checkedAt: null, error: '', loading: false, snapshots: [] };
-        const GDELT_BASE = 'https://api.gdeltproject.org/api/v2/doc/doc';
-        let gdeltQueue = Promise.resolve();
-        let gdeltLast = 0;
-        function gdeltCall(query, max, timespan) {
-            const key = 'gd:' + query + '|' + timespan;
+        const YNA_WORLD_RSS = 'https://www.yna.co.kr/rss/international.xml';
+        const NEWS_QUERY = { IND: '인도 모디 OR 뉴델리 OR 인도 경제', COD: '콩고민주공화국 OR 민주콩고', KOR: '대한민국 사회 OR 통계청', USA: '미국 경제 OR 미국 정부', CHN: '중국 경제 OR 중국 정부' };
+        const RSS_PROXIES = [
+            { url: u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u), json: false },
+            { url: u => 'https://api.allorigins.win/get?url=' + encodeURIComponent(u), json: true }
+        ];
+        function hostOf(u) { try { return new URL(u).hostname.replace(/^www\./, ''); } catch (e) { return ''; } }
+        function parseRss(xml, defaultSource) {
+            const d = new DOMParser().parseFromString(xml, 'text/xml');
+            return [...d.querySelectorAll('item')].map(i => {
+                const srcEl = i.querySelector('source');
+                const srcName = srcEl ? srcEl.textContent.trim() : '';
+                let title = (i.querySelector('title') ? i.querySelector('title').textContent : '').trim();
+                if (srcName && title.endsWith(' - ' + srcName)) title = title.slice(0, -(srcName.length + 3));
+                const url = (i.querySelector('link') ? i.querySelector('link').textContent : '').trim();
+                const t = Date.parse(i.querySelector('pubDate') ? i.querySelector('pubDate').textContent : '');
+                return { title, url, time: isNaN(t) ? null : t, domain: srcName || defaultSource || hostOf(url) };
+            }).filter(a => a.title && /^https?:\/\//.test(a.url));
+        }
+        async function fetchRss(rssUrl, defaultSource) {
+            const key = 'rss:' + rssUrl;
             try {
-                const cached = JSON.parse(sessionStorage.getItem(key));
-                if (cached && Date.now() - cached.t < 15 * 60000) return Promise.resolve(cached.d);
+                const c = JSON.parse(sessionStorage.getItem(key));
+                if (c && Date.now() - c.t < 15 * 60000) return c.d;
             } catch (e) {}
-            const run = () => new Promise((resolve, reject) => {
-                const wait = Math.max(0, 5600 - (Date.now() - gdeltLast));
-                setTimeout(() => {
-                    gdeltLast = Date.now();
-                    const cb = '__gd' + Date.now().toString(36) + Math.floor(Math.random() * 1e5);
-                    const sc = document.createElement('script');
-                    const cleanup = () => { clearTimeout(timer); window[cb] = function () {}; sc.remove(); };
-                    const timer = setTimeout(() => { cleanup(); reject(new Error('timeout')); }, 15000);
-                    window[cb] = (data) => {
-                        cleanup();
-                        const arts = ((data && data.articles) || []).filter(a => a && a.title && /^https?:\/\//.test(a.url || ''));
-                        try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: arts })); } catch (e) {}
-                        resolve(arts);
-                    };
-                    sc.onerror = () => { cleanup(); reject(new Error('network')); };
-                    sc.src = `${GDELT_BASE}?query=${encodeURIComponent(query)}&mode=artlist&format=jsonp&callback=${cb}&maxrecords=${max}&sort=datedesc&timespan=${timespan}`;
-                    document.head.appendChild(sc);
-                }, wait);
-            });
-            const p = gdeltQueue.then(run, run);
-            gdeltQueue = p.catch(() => {});
-            return p;
+            for (const p of RSS_PROXIES) {
+                try {
+                    const ctrl = new AbortController();
+                    const timer = setTimeout(() => ctrl.abort(), 9000);
+                    const res = await fetch(p.url(rssUrl), { signal: ctrl.signal });
+                    clearTimeout(timer);
+                    if (!res.ok) continue;
+                    let txt = await res.text();
+                    if (p.json) txt = JSON.parse(txt).contents || '';
+                    const items = parseRss(txt, defaultSource);
+                    if (items.length) {
+                        try { sessionStorage.setItem(key, JSON.stringify({ t: Date.now(), d: items })); } catch (e) {}
+                        return items;
+                    }
+                } catch (e) {}
+            }
+            throw new Error('network');
+        }
+        async function fetchWorldNews() {
+            try {
+                return await fetchRss(YNA_WORLD_RSS, '연합뉴스');
+            } catch (e) {
+                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(YNA_WORLD_RSS));
+                const j = await res.json();
+                if (j.status !== 'ok') throw new Error('network');
+                return (j.items || []).map(i => ({ title: i.title, url: i.link, time: Date.parse(String(i.pubDate).replace(' ', 'T') + 'Z'), domain: '연합뉴스' })).filter(a => a.title && /^https?:\/\//.test(a.url));
+            }
         }
         function dedupeArticles(list) {
             const seen = new Set();
-            return (list || []).filter(a => { const k = a.title.trim().toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; });
-        }
-        function parseSeenDate(s) {
-            const m = /^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/.exec(s || '');
-            return m ? new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6])) : null;
+            return (list || []).filter(a => { const k = a.title.trim().toLowerCase(); if (seen.has(k)) return false; seen.add(k); return true; })
+                .sort((a, b) => (b.time || 0) - (a.time || 0));
         }
         function fmtKst(d) {
             if (!d) return '-';
             return d.toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }) + ' KST';
         }
+        function articleTime(a) { return a && a.time ? new Date(a.time) : null; }
         async function refreshLiveNews(force) {
             if (!charState || !charState.iso3 || LIVE_NEWS.loading) return;
             const iso = charState.iso3;
             if (!force && LIVE_NEWS.checkedAt && LIVE_NEWS.localIso === iso && Date.now() - LIVE_NEWS.checkedAt < 15 * 60000) return;
             LIVE_NEWS.loading = true;
             renderNewsBar();
-            const en = COUNTRY_STATS[iso].en;
+            const q = (NEWS_QUERY[iso] || COUNTRY_STATS[iso].name) + ' when:7d';
+            const gnews = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q) + '&hl=ko&gl=KR&ceid=KR:ko';
             const errors = [];
             let local = [], global = [];
-            try {
-                local = await gdeltCall(`${en} sourcelang:korean`, 10, '7d');
-                if (local.length < 3) local = local.concat(await gdeltCall(`${en} sourcelang:english`, 10, '3d'));
-            } catch (e) { errors.push('나라 뉴스 ' + (e.message === 'timeout' ? '응답 지연' : '연결 실패')); }
-            try {
-                global = await gdeltCall('("United Nations" OR UNICEF OR "World Bank" OR "World Health Organization") sourcelang:korean', 10, '3d');
-            } catch (e) { errors.push('국제 뉴스 ' + (e.message === 'timeout' ? '응답 지연' : '연결 실패')); }
+            LIVE_NEWS.serverUpdatedAt = null;
+            // 1순위: 같은 저장소의 news.json (GitHub Actions가 1시간마다 수집) — 가장 빠르고 안정적
+            if (location.protocol !== 'file:') try {
+                const res = await fetch('news.json?v=' + Math.floor(Date.now() / 600000), { cache: 'no-store' });
+                if (res.ok) {
+                    const nj = await res.json();
+                    const age = Date.now() - Date.parse(nj.updatedAt || 0);
+                    if (age < 12 * 3600000) {
+                        local = (nj.countries && nj.countries[iso]) || [];
+                        global = nj.world || [];
+                        LIVE_NEWS.serverUpdatedAt = Date.parse(nj.updatedAt);
+                    }
+                }
+            } catch (e) {}
+            // 2순위: 공개 프록시로 RSS 직접 읽기 (동시 요청 제한이 있어 하나씩)
+            if (!local.length) local = await fetchRss(gnews, '').catch(() => { errors.push('나라 뉴스 연결 실패'); return []; });
+            if (!global.length) global = await fetchWorldNews().catch(() => { errors.push('국제 뉴스 연결 실패'); return []; });
+            if (!charState || charState.iso3 !== iso) { LIVE_NEWS.loading = false; return; }
             LIVE_NEWS.local = dedupeArticles(local).slice(0, 8);
             LIVE_NEWS.global = dedupeArticles(global).slice(0, 8);
             LIVE_NEWS.localIso = iso;
@@ -4383,7 +4416,7 @@
             return list.map(a => `
                 <a href="${escapeHtml(a.url)}" target="_blank" rel="noopener noreferrer" class="block py-1.5 border-b border-slate-800/70 hover:bg-slate-900/60 rounded px-1 -mx-1">
                     <div class="text-[12px] font-bold text-slate-100 leading-snug">${escapeHtml(a.title)}</div>
-                    <div class="text-[10px] text-slate-500 mt-0.5">${escapeHtml(a.domain || '')} · ${escapeHtml(fmtKst(parseSeenDate(a.seendate)))} 수집${a.language && !/korean/i.test(a.language) ? ' · ' + escapeHtml(a.language) : ''}</div>
+                    <div class="text-[10px] text-slate-500 mt-0.5">${escapeHtml(a.domain || '')} · ${escapeHtml(fmtKst(articleTime(a)))} 발행</div>
                 </a>`).join('');
         }
         function fallbackLinks(iso) {
@@ -4418,24 +4451,24 @@
             });
             const live = (LIVE_NEWS.local || []).concat(LIVE_NEWS.global || []);
             document.getElementById('newsTicker').textContent = live.length
-                ? live.slice(0, 6).map(a => `[${fmtKst(parseSeenDate(a.seendate)).replace(' KST', '')}] ${a.title} — ${a.domain || ''}`).join('      ◆      ')
+                ? live.slice(0, 6).map(a => `[${fmtKst(articleTime(a)).replace(' KST', '')}] ${a.title} — ${a.domain || ''}`).join('      ◆      ')
                 : (e ? e.facts.map(f => `📊 ${f.t} (${f.src})`).join('      ◆      ') : '뉴스 수신 대기 중...');
 
             const panel = document.getElementById('newsPanel');
             if (activeNewsTab === 'live') {
-                const status = LIVE_NEWS.loading ? '🔄 불러오는 중...' : (LIVE_NEWS.checkedAt ? `확인 시각 ${fmtKst(new Date(LIVE_NEWS.checkedAt))}` : '아직 확인 전');
+                const status = LIVE_NEWS.loading ? '🔄 불러오는 중...' : (LIVE_NEWS.checkedAt ? (LIVE_NEWS.serverUpdatedAt ? `뉴스 수집 ${fmtKst(new Date(LIVE_NEWS.serverUpdatedAt))} · 확인 ${fmtKst(new Date(LIVE_NEWS.checkedAt))}` : `확인 시각 ${fmtKst(new Date(LIVE_NEWS.checkedAt))}`) : '아직 확인 전');
                 panel.innerHTML = `
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-2 text-[11px]">
-                        <span class="text-slate-300">📡 <strong class="text-white">오늘의 실제 기사</strong> · ${escapeHtml(status)} · 출처 GDELT DOC API</span>
+                        <span class="text-slate-300">📡 <strong class="text-white">오늘의 실제 기사</strong> · ${escapeHtml(status)} · 출처 Google 뉴스 · 연합뉴스</span>
                         <button onclick="refreshLiveNews(true)" class="px-2 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold">↻ 새로고침</button>
                     </div>
                     ${LIVE_NEWS.error ? `<div class="text-[11px] text-rose-300 mb-1.5">⚠️ ${escapeHtml(LIVE_NEWS.error)} — 아래 링크에서 직접 확인할 수 있습니다.</div>` : ''}
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div><div class="text-[10px] font-bold text-amber-300 mb-1">📍 ${escapeHtml(name)} 관련 (한국어 기사 우선, 부족하면 영어)</div>${articleListHtml(LIVE_NEWS.local, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
-                        <div><div class="text-[10px] font-bold text-sky-300 mb-1">🌐 국제기구 관련 한국어 기사 (최근 3일)</div>${articleListHtml(LIVE_NEWS.global, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
+                        <div><div class="text-[10px] font-bold text-amber-300 mb-1">📍 ${escapeHtml(name)} 관련 한국어 기사 (Google 뉴스 검색, 최근 7일)</div>${articleListHtml(LIVE_NEWS.local, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
+                        <div><div class="text-[10px] font-bold text-sky-300 mb-1">🌐 국제 뉴스 (연합뉴스 국제 RSS)</div>${articleListHtml(LIVE_NEWS.global, LIVE_NEWS.loading ? '불러오는 중...' : '최근 기사가 없습니다.')}</div>
                     </div>
                     ${fallbackLinks(c.iso3)}
-                    <p class="text-[10px] text-slate-500 mt-2">기사 제목과 수집 시각은 GDELT가 실제 언론사에서 수집한 값입니다. 내용의 사실 여부는 원문에서 확인하세요. 실시간 기사는 캐릭터의 확률에 영향을 주지 않습니다.</p>`;
+                    <p class="text-[10px] text-slate-500 mt-2">기사 제목·언론사·발행 시각은 Google 뉴스와 연합뉴스 RSS의 원래 값입니다. 내용의 사실 여부는 원문에서 확인하세요. 실시간 기사는 캐릭터의 확률에 영향을 주지 않습니다.</p>`;
             } else if (activeNewsTab === 'local') {
                 if (!e) { panel.innerHTML = ''; return; }
                 panel.innerHTML = `
@@ -4493,7 +4526,7 @@
                 <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
                     <div class="font-bold text-emerald-400">이 게임은 세 겹으로 만들어졌습니다</div>
                     <p><strong>① 기초 통계</strong> — 국가·성별 실측값(World Bank WDI API, ${DATA_ACCESSED} 조회). 출생 확률, 성별 기대수명, 5세 미만 사망률, 빈곤선 구간 비율, 식수·전기·인터넷, 교육·노동·만성질환 지표가 캐릭터 생성과 사망 위험에 직접 쓰입니다.</p>
-                    <p><strong>② 현재 상황</strong> — 실제 기사 목록(GDELT DOC API)을 확인 시각과 함께 보여줍니다. 기사는 설명용이며 확률을 바꾸지 않습니다.</p>
+                    <p><strong>② 현재 상황</strong> — 실제 기사 목록(Google 뉴스 한국어 검색 · 연합뉴스 국제 RSS)을 발행 시각과 함께 보여줍니다. 기사는 설명용이며 확률을 바꾸지 않습니다.</p>
                     <p><strong>③ 게임 모델의 가정</strong> — 구간 안의 소득 분포, 가구 시설 보유의 소득 보정, 연령별 사망 위험 곡선(성별 기대수명에 맞춰 보정한 Gompertz 모형), 선택지의 스탯 효과, 사인 세부 가중치는 현실 자료를 참고한 <em>게임 가중치</em>이며 실제 개인 발생률이 아닙니다.</p>
                     <p><strong>합성 페르소나</strong> — 이름·부모 직업·사건은 창작이며 실존 인물이 아닙니다. 생활조건만 통계를 따릅니다.</p>
                 </div>
