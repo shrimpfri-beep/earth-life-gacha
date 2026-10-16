@@ -109,9 +109,26 @@
                     <p id="nicknameErrorMsg" class="hidden text-[11px] text-rose-400 font-semibold mt-1.5">⚠️ 닉네임을 2글자 이상 입력해 주세요.</p>
                 </div>
 
+                <div>
+                    <label for="pinInput" class="block text-xs font-bold text-slate-300 mb-1.5">🔐 이어하기 PIN <span class="font-normal text-slate-500">(숫자 4자리 · 선택)</span></label>
+                    <input type="password" id="pinInput" inputmode="numeric" maxlength="4" placeholder="예: 1234 — 입력하면 폰·PC 어디서든 이어하기"
+                        onkeydown="if(event.key==='Enter') handleNicknameLogin()"
+                        class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 focus:border-emerald-400 focus:outline-none text-white font-bold text-sm placeholder:text-slate-600 transition">
+                    <p class="text-[11px] text-slate-500 mt-1">같은 기기는 PIN 없이도 자동으로 이어집니다. 다른 기기에서는 <b>닉네임 + PIN</b>으로 불러와요.</p>
+                </div>
+
                 <button onclick="handleNicknameLogin()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-sm shadow-lg shadow-emerald-500/20 transition transform active:scale-95">
                     🌍 닉네임으로 입장하기
                 </button>
+                <button type="button" onclick="toggleRemoteLoad()" class="w-full text-xs font-bold text-cyan-300 underline underline-offset-2">📲 다른 기기에서 하던 인생 불러오기</button>
+                <div id="remoteLoadBox" class="hidden p-3 rounded-xl bg-slate-950 border border-cyan-500/30 space-y-2">
+                    <div class="grid grid-cols-2 gap-2">
+                        <input id="rlNick" type="text" maxlength="16" placeholder="닉네임" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                        <input id="rlPin" type="password" inputmode="numeric" maxlength="4" placeholder="PIN 4자리" class="px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white text-sm">
+                    </div>
+                    <button type="button" onclick="loadRemoteSave()" class="w-full py-2 rounded-lg bg-cyan-500 text-slate-950 text-xs font-black">불러오기</button>
+                    <p id="rlMsg" class="text-[11px] text-slate-400"></p>
+                </div>
             </div>
 
             <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400 relative">
@@ -205,6 +222,7 @@
 
         <!-- VIEW 1: START / BIRTH GACHA SCREEN (지구인 인형뽑기) -->
         <section id="startScreen" class="max-w-6xl mx-auto my-4">
+            <div id="resumeBox" class="hidden mb-4 bg-emerald-950/40 border border-emerald-500/40 rounded-2xl p-4 sm:p-5"></div>
             <div class="bg-slate-900/90 border border-slate-800 rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
                 <div class="absolute -top-24 -right-24 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
                 <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -928,6 +946,7 @@
                                 <option value="recent">최근 활동순</option><option value="dwell">체류 시간순</option><option value="lives">플레이 횟수순</option><option value="stage">진행 단계순</option>
                             </select>
                             <label class="flex items-center gap-1 text-slate-400"><input type="checkbox" id="adminShowSim" checked class="accent-purple-500"> 샘플 포함</label>
+                            <label class="flex items-center gap-1 text-slate-400"><input type="checkbox" id="adminGroupPerson" checked class="accent-emerald-500"> 같은 사람 묶기</label>
                         </div>
                     </div>
                     <div class="overflow-x-auto max-h-80">
@@ -3237,11 +3256,13 @@
             updateDashboardUI();
             syncAutoWatchUI();
             anSyncNow();
+            lifeSave(true);
             setGameSpeed(1);
         }
 
         function triggerRebirthConfirm() {
             if (charState && !isGameOver && !confirm('지금 인생을 여기서 끝내고 새로 뽑을까요? (최종 보고서는 만들어지지 않습니다)')) return;
+            lifeSaveClear();
             resetToStartGacha();
         }
 
@@ -3271,6 +3292,7 @@
             resetClawMachine();
             document.getElementById('startScreen').classList.remove('hidden');
             anSyncNow();
+            renderResumeBox();
         }
 
         /* ---------- 10.3 자동 관전 ---------- */
@@ -3383,6 +3405,7 @@
             const r = simulateYear(charState);
             generateYearNews(charState);
             anSyncNow();
+            if (!r.died) lifeSave(false, !!r.milestone);
             if (r.died) {
                 updateDashboardUI();
                 triggerCharacterDeath(r.title, r.desc);
@@ -3503,6 +3526,7 @@
             if (lifeDecisions.length === 1) anStage(4);
             closeMilestoneModal();
             updateDashboardUI();
+            lifeSave(true);
         }
 
         function closeMilestoneModal() {
@@ -3788,23 +3812,27 @@
             });
         }
 
-        function triggerCharacterDeath(causeTitle, causeDesc) {
+        function triggerCharacterDeath(causeTitle, causeDesc, restored) {
             isGameOver = true;
             if (loopInterval) clearInterval(loopInterval);
             gameSpeed = 0;
             clearMsCountdown();
             const c = charState;
             c.deathCause = causeTitle;
-            addLog(c.age, '생애 종료', `${causeTitle}(으)로 향년 ${c.age}세의 일생을 마쳤습니다.`, 'rose');
-            c.highlights.push(`${c.age}세: ${causeTitle}(으)로 영면`);
+            c.deathDesc = causeDesc;
+            if (!restored) {
+                addLog(c.age, '생애 종료', `${causeTitle}(으)로 향년 ${c.age}세의 일생을 마쳤습니다.`, 'rose');
+                c.highlights.push(`${c.age}세: ${causeTitle}(으)로 영면`);
+            }
 
-            if (anRec) {
+            if (anRec && !restored) {
                 anRec.livesCompleted += 1;
                 anRec.deaths.push({ cause: causeTitle, age: c.age, region: c.regionId });
                 if (anRec.deaths.length > 60) anRec.deaths.shift();
             }
             anStage(5);
             anSyncNow();
+            lifeSave(true);
 
             document.getElementById('epitaphName').textContent = `${c.name}의 일생 (향년 ${c.age}세)`;
             document.getElementById('epitaphLocation').textContent = `${c.regionName} · ${c.country} · ${c.familyDesc}`;
@@ -4702,7 +4730,13 @@
                         '.write': "auth != null && (!data.exists() || data.child('uid').val() === auth.uid) && (!newData.exists() || newData.child('uid').val() === auth.uid)",
                         '.validate': "newData.hasChildren(['uid', 't'])"
                     }
-                }
+                },
+                // 이어하기 저장 (닉네임+PIN 해시 키)
+                saves: {
+                    '$key': { '.read': 'auth != null', '.write': 'auth != null' }
+                },
+                // 같은 Firebase를 쓰는 K-라이프 리스크 매니저 데이터 (지우지 마세요)
+                klife_v3: { '.read': 'auth != null', '.write': 'auth != null' }
             }
         };
 
@@ -5075,13 +5109,19 @@
                 return;
             }
             err.classList.add('hidden');
+            const pinEl = document.getElementById('pinInput');
+            const pin = pinEl ? (pinEl.value || '').trim() : '';
+            if (pin && !/^\d{4}$/.test(pin)) { err.textContent = '⚠️ PIN은 숫자 4자리로 입력해 주세요 (비워둬도 돼요).'; err.classList.remove('hidden'); return; }
+            if (pin) saveKeyOf(raw, pin).then(k => { SAVE.key = k; lsSet('8b_save_key', k); if (anRec) { anRec.uk = 'k:' + k.slice(0, 16); anRec.hasPin = true; anSave(); cloudPush(true); } lifeSave(true); });
+            else if (raw !== lsGet('8b_nickname')) { SAVE.key = ''; lsDel('8b_save_key'); }
             currentPlayerNickname = raw;
             lsSet('8b_nickname', raw);
             document.getElementById('headerNicknameDisplay').textContent = currentPlayerNickname;
             document.getElementById('nicknameGateOverlay').classList.add('hidden');
-            if (anRec) anRec.nickname = raw;
+            if (anRec) { anRec.nickname = raw; anRec.uk = SAVE.key ? 'k:' + SAVE.key.slice(0, 16) : 'n:' + raw; }
             anStage(1);
             refreshOnlineBadgeCounts();
+            renderResumeBox();
         }
 
         function changeNicknamePrompt() {
@@ -5204,7 +5244,7 @@
             const started = all.reduce((a, r) => a + (r.livesStarted || 0), 0);
             const completed = all.reduce((a, r) => a + (r.livesCompleted || 0), 0);
             const nickCount = {};
-            all.forEach(r => { if (r.nickname) nickCount[r.nickname] = (nickCount[r.nickname] || 0) + 1; });
+            all.forEach(r => { if (r.nickname) { const k = personKey(r); nickCount[k] = (nickCount[k] || 0) + 1; } });
             const uniqueNicks = Object.keys(nickCount).length;
             const returning = Object.values(nickCount).filter(v => v > 1).length;
             const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
@@ -5217,7 +5257,7 @@
                 kpiCard('🚪', '이탈률 (탄생 전)', `${pct(bounced, ended.length)}%`, `종료 세션 ${ended.length}개 중 ${bounced}개가 플레이 전에 나감`, 'text-rose-300'),
                 kpiCard('⏸️', '플레이 중 이탈', `${pct(midQuit, playedEnded.length)}%`, `플레이한 종료 세션 ${playedEnded.length}개 중 완주 없이 나감 ${midQuit}개`, 'text-amber-300'),
                 kpiCard('🏁', '생애 완주', `${completed}회`, `시작 ${started}회 대비 완주율 ${pct(completed, started)}%`, 'text-emerald-300'),
-                kpiCard('🙋', '고유 닉네임', `${uniqueNicks}명`, `재방문 ${returning}명 · 닉네임 미등록 세션 ${all.filter(r => !r.nickname).length}개`, 'text-amber-200')
+                kpiCard('🙋', '총 생성 닉네임 (사람 기준)', `${uniqueNicks}명`, `재방문 ${returning}명 · PIN 사용 ${new Set(all.filter(r => r.hasPin).map(personKey)).size}명 · 미등록 세션 ${all.filter(r => !r.nickname).length}개`, 'text-amber-200')
             ].join('');
 
             const reached = AN_STAGES.map((_, i) => all.filter(r => r.stageIdx >= i).length);
@@ -5290,12 +5330,13 @@
             const q = (document.getElementById('adminSearch').value || '').trim().toLowerCase();
             const sf = document.getElementById('adminStatusFilter').value;
             const sort = document.getElementById('adminSort').value;
-            let rows = all.map(r => ({ r, s: anStatus(r, now) }))
+            const grouped = document.getElementById('adminGroupPerson') && document.getElementById('adminGroupPerson').checked;
+            let rows = (grouped ? mergePersons(all, now) : all.map(r => ({ r, s: anStatus(r, now) })))
                 .filter(x => sf === 'all' || x.s === sf)
                 .filter(x => !q || (x.r.nickname || '').toLowerCase().includes(q) || (x.r.country || '').toLowerCase().includes(q));
             const sorters = {
                 recent: (a, b) => b.r.lastSeen - a.r.lastSeen,
-                dwell: (a, b) => anTotalSec(b.r, now) - anTotalSec(a.r, now),
+                dwell: (a, b) => (b.r.mergedTotal != null ? b.r.mergedTotal : anTotalSec(b.r, now)) - (a.r.mergedTotal != null ? a.r.mergedTotal : anTotalSec(a.r, now)),
                 lives: (a, b) => (b.r.livesStarted || 0) - (a.r.livesStarted || 0),
                 stage: (a, b) => b.r.stageIdx - a.r.stageIdx
             };
@@ -5314,13 +5355,13 @@
                         <td class="py-2.5 px-3 font-extrabold text-white whitespace-nowrap">${escapeHtml(r.nickname || '(미등록)')}
                             ${isMe ? '<span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">나</span>' : ''}
                             ${r.isSim ? '<span class="ml-1 text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">샘플</span>' : ''}
-                            <span class="ml-1 text-[10px] text-slate-500">${r.device === 'mobile' ? '📱' : '💻'}</span></td>
+                            <span class="ml-1 text-[10px] text-slate-500">${r.devices ? r.devices : (r.device === 'mobile' ? '📱' : '💻')}</span>${r.hasPin ? ' <span title="PIN 설정">🔐</span>' : ''}${r.visits > 1 ? `<div class="text-[10px] text-slate-500 font-normal">방문 ${r.visits}회</div>` : ''}</td>
                         <td class="py-2.5 px-3 text-slate-300 whitespace-nowrap">${AN_STAGES[r.stageIdx] || '-'}</td>
                         <td class="py-2.5 px-3 text-slate-300"><span class="whitespace-nowrap">${escapeHtml((r.country || '-').split(' ')[0])}</span> <span class="text-slate-500">${r.age ? r.age + '세' : ''}</span><div class="text-[10px] text-slate-500 truncate max-w-[160px]">${escapeHtml(r.occupation || '')}</div></td>
-                        <td class="py-2.5 px-3 font-mono whitespace-nowrap"><span class="text-cyan-300">${fmtDur(r.activeSec || 0)}</span><div class="text-[10px] text-slate-500">총 ${fmtDur(anTotalSec(r, now))}</div></td>
+                        <td class="py-2.5 px-3 font-mono whitespace-nowrap"><span class="text-cyan-300">${fmtDur(r.activeSec || 0)}</span><div class="text-[10px] text-slate-500">총 ${fmtDur(r.mergedTotal != null ? r.mergedTotal : anTotalSec(r, now))}</div></td>
                         <td class="py-2.5 px-3 font-mono text-amber-300">${r.livesStarted || 0} / ${r.livesCompleted || 0}</td>
                         <td class="py-2.5 px-3 text-slate-400 whitespace-nowrap">${s === 'offline' ? relTime(now - r.lastSeen) : '접속 중'}</td>
-                        <td class="py-2.5 px-3 text-right">${(isMe || r.cloud) ? '<span class="text-[10px] text-slate-500">' + (r.cloud && !isMe ? '☁️' : '-') + '</span>' : `<button onclick="anDeleteSession('${escapeHtml(r.id)}')" class="px-2 py-1 rounded bg-rose-500/15 hover:bg-rose-500/30 text-rose-300 text-[11px] font-bold">기록 삭제</button>`}</td>
+                        <td class="py-2.5 px-3 text-right">${(isMe || r.cloud || r.visits > 1) ? '<span class="text-[10px] text-slate-500">' + (r.cloud && !isMe ? '☁️' : '-') + '</span>' : `<button onclick="anDeleteSession('${escapeHtml(r.id)}')" class="px-2 py-1 rounded bg-rose-500/15 hover:bg-rose-500/30 text-rose-300 text-[11px] font-bold">기록 삭제</button>`}</td>
                     </tr>`;
             }).join('') : `<tr><td colspan="8" class="py-6 text-center text-slate-500">조건에 맞는 세션이 없습니다.</td></tr>`;
         }
@@ -5415,19 +5456,278 @@
         }
 
         /* ============================================================================
+           13.5 이어하기 저장 (같은 기기: 자동 / 다른 기기: 닉네임 + PIN)
+           - 인생 상태 전체(캐릭터·로그·선택 기록·뉴스)를 JSON 문자열로 저장
+           - 서버(Firebase saves/)에는 닉네임+PIN의 SHA-256 해시를 키로 저장 → PIN 원문은 저장하지 않음
+        ============================================================================ */
+        const LIFE_SAVE_KEY = '8b_life_save';
+        const SAVE = { key: '', lastRemote: 0 };
+
+        async function saveKeyOf(nick, pin) {
+            const text = `${nick.trim()}#${pin}`;
+            try {
+                const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+                return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 32);
+            } catch (e) {
+                let h = 2166136261;
+                for (const ch of text) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619) >>> 0; }
+                return 'f' + h.toString(16);
+            }
+        }
+
+        function lifeSaveLocal() {
+            try { const sv = JSON.parse(lsGet(LIFE_SAVE_KEY)); return sv && sv.c ? sv : null; } catch (e) { return null; }
+        }
+
+        function lifeSave(force, msOpen) {
+            if (!charState || pendingBirth) return;
+            let sv;
+            try {
+                sv = {
+                    v: 1, savedAt: Date.now(), nick: currentPlayerNickname,
+                    c: JSON.parse(JSON.stringify(charState)),
+                    decisions: JSON.parse(JSON.stringify(lifeDecisions || [])),
+                    birth: birthSnapshot ? JSON.parse(JSON.stringify(birthSnapshot)) : null,
+                    news: (newsArchive || []).slice(-30),
+                    yp: yearProgressSec, sm: subMonthIndex,
+                    auto: autoWatch, speed: lastSpeedBeforePause || 1,
+                    ms: msOpen != null ? !!msOpen : !!(isDecisionModalOpen && currentMilestone),
+                    over: !!isGameOver
+                };
+            } catch (e) { return; }
+            const text = JSON.stringify(sv);
+            lsSet(LIFE_SAVE_KEY, text);
+            if (SAVE.key && Cloud.db && Cloud.ready && (force || Date.now() - SAVE.lastRemote > 10000)) {
+                SAVE.lastRemote = Date.now();
+                Cloud.db.ref('saves/' + SAVE.key).set({ data: text, nick: currentPlayerNickname || '', savedAt: sv.savedAt, uid: Cloud.uid || '' })
+                    .catch(e => console.warn('[save]', e));
+            }
+        }
+
+        function lifeSaveClear() {
+            lsDel(LIFE_SAVE_KEY);
+            if (SAVE.key && Cloud.db && Cloud.ready) Cloud.db.ref('saves/' + SAVE.key).remove().catch(() => {});
+        }
+
+        function earthToast(msg, ms) {
+            let box = document.getElementById('earthToast');
+            if (!box) {
+                box = document.createElement('div');
+                box.id = 'earthToast';
+                box.className = 'fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] px-4 py-2.5 rounded-xl bg-slate-900/95 border border-emerald-400/50 text-xs font-bold text-emerald-300 shadow-2xl max-w-[90vw] text-center';
+                document.body.appendChild(box);
+            }
+            box.textContent = msg;
+            box.classList.remove('hidden');
+            clearTimeout(earthToast._t);
+            earthToast._t = setTimeout(() => box.classList.add('hidden'), ms || 3000);
+        }
+
+        function renderResumeBox() {
+            const box = document.getElementById('resumeBox');
+            if (!box) return;
+            const sv = lifeSaveLocal();
+            const inGame = charState && !pendingBirth && !document.getElementById('gameDashboard').classList.contains('hidden');
+            if (!sv || inGame) { box.classList.add('hidden'); return; }
+            const c = sv.c;
+            const when = new Date(sv.savedAt).toLocaleString('ko-KR', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+            const done = sv.over || c.deathCause;
+            box.classList.remove('hidden');
+            box.innerHTML = `
+                <div class="flex items-center justify-between gap-3 flex-wrap">
+                    <div>
+                        <div class="text-[11px] font-bold text-emerald-300">👋 다시 오셨네요, ${escapeHtml(sv.nick || currentPlayerNickname || '플레이어')}님</div>
+                        <div class="text-sm font-black text-white mt-0.5">${escapeHtml(c.name || '')} · ${escapeHtml((c.country || '').split(' ')[0])} · ${done ? `향년 ${c.age}세 (생애 종료)` : `${c.age}세 진행 중`}</div>
+                        <div class="text-[11px] text-slate-400">마지막 저장 ${when}${SAVE.key ? ' · 🔐 다른 기기 이어하기 가능' : ''}</div>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="resumeLife(lifeSaveLocal())" class="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black">${done ? '📄 지난 보고서 보기' : '▶ 이어하기'}</button>
+                        <button onclick="discardLifeSave()" class="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-300 text-xs font-bold border border-slate-700">🆕 새로 뽑기</button>
+                    </div>
+                </div>`;
+        }
+
+        function discardLifeSave() {
+            if (!confirm('저장된 인생 기록을 지우고 새로 시작할까요?')) return;
+            lifeSaveClear();
+            renderResumeBox();
+        }
+
+        function renderLogContainer() {
+            const container = document.getElementById('eventLogContainer');
+            const logs = (charState && charState.logs) || [];
+            container.innerHTML = logs.slice(0, 250).map(entry => `
+                <div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800/90 space-y-1">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[11px] font-bold px-2 py-0.5 rounded border ${entry.badgeClass || ''}">${entry.age}세 · ${escapeHtml(entry.tag)}</span>
+                        <span class="text-[10px] text-slate-500 font-mono">#${entry.id}</span>
+                    </div>
+                    <p class="text-slate-200 leading-relaxed">${escapeHtml(entry.text)}</p>
+                </div>`).join('');
+            document.getElementById('logCountLabel').textContent = `${logs.length}건`;
+            document.getElementById('historyCountBadge').textContent = logs.length;
+        }
+
+        function resumeLife(sv) {
+            if (!sv || !sv.c) return;
+            clearMsCountdown();
+            if (loopInterval) clearInterval(loopInterval);
+            if (sv.nick && !currentPlayerNickname) {
+                currentPlayerNickname = sv.nick;
+                lsSet('8b_nickname', sv.nick);
+                document.getElementById('headerNicknameDisplay').textContent = sv.nick;
+                if (anRec) anRec.nickname = sv.nick;
+            }
+            document.getElementById('nicknameGateOverlay').classList.add('hidden');
+
+            charState = sv.c;
+            if (!Array.isArray(charState.logs)) charState.logs = [];
+            if (!Array.isArray(charState.highlights)) charState.highlights = [];
+            if (!charState.completedMilestones) charState.completedMilestones = {};
+            lifeDecisions = sv.decisions || [];
+            birthSnapshot = sv.birth || cloneState(charState);
+            newsArchive = sv.news || [];
+            reportCache = null;
+            pendingBirth = null;
+            vetoedFrom = null;
+            rerollUsed = !!charState.rerollUsed;
+            if (charState.tendency) selectedTendency = charState.tendency;
+            yearProgressSec = sv.yp || 0;
+            subMonthIndex = sv.sm || 1;
+            isDecisionModalOpen = false;
+            currentMilestone = null;
+            isGameOver = false;
+            if (sv.auto != null) autoWatch = !!sv.auto;
+            lastSpeedBeforePause = sv.speed || 1;
+
+            ['startScreen', 'birthCard', 'deathModal', 'milestoneModal', 'alarmBanner'].forEach(id => { const el = document.getElementById(id); if (el) el.classList.add('hidden'); });
+            document.getElementById('gameDashboard').classList.remove('hidden');
+            document.getElementById('topTimeControls').classList.remove('hidden');
+            document.getElementById('topTimeControls').classList.add('flex');
+            document.getElementById('btnNewLifeTop').classList.remove('hidden');
+            document.getElementById('resumeBox').classList.add('hidden');
+            renderLogContainer();
+
+            if (anRec) {
+                anRec.livesResumed = (anRec.livesResumed || 0) + 1;
+                anRec.uk = SAVE.key ? 'k:' + SAVE.key.slice(0, 16) : 'n:' + currentPlayerNickname;
+                anRec.hasPin = !!SAVE.key;
+            }
+            anStage(3);
+            if (lifeDecisions.length) anStage(4);
+            switchRightTab('live');
+            activeNewsTab = 'live';
+            try { refreshLiveNews(false); } catch (e) {}
+            updateDashboardUI();
+            syncAutoWatchUI();
+            anSyncNow();
+
+            if (sv.over || charState.deathCause) {
+                triggerCharacterDeath(charState.deathCause || '생애 종료', charState.deathDesc || '', true);
+                return;
+            }
+            if (sv.ms) {
+                const ms = getMilestoneForAge(charState);
+                if (ms) {
+                    openMilestoneModal(ms);
+                    earthToast(`💾 ${charState.age}세 중대 기로에서 이어갑니다`, 3500);
+                    return;
+                }
+            }
+            setGameSpeed(0);
+            earthToast(`💾 ${charState.age}세부터 이어갑니다 — 속도 버튼(▶)을 누르면 계속 진행돼요`, 3500);
+        }
+
+        function toggleRemoteLoad() {
+            const box = document.getElementById('remoteLoadBox');
+            box.classList.toggle('hidden');
+            const n = document.getElementById('rlNick');
+            if (!n.value) n.value = document.getElementById('nicknameInput').value;
+        }
+
+        async function loadRemoteSave() {
+            const msg = document.getElementById('rlMsg');
+            const nick = document.getElementById('rlNick').value.trim();
+            const pin = document.getElementById('rlPin').value.trim();
+            if (!nick || !/^\d{4}$/.test(pin)) { msg.textContent = '닉네임과 숫자 4자리 PIN을 입력해 주세요.'; return; }
+            if (!Cloud.db || !Cloud.ready) { msg.textContent = '서버에 연결하는 중이에요. 잠시 후 다시 눌러 주세요.'; return; }
+            msg.textContent = '불러오는 중…';
+            try {
+                const key = await saveKeyOf(nick, pin);
+                const snap = await Cloud.db.ref('saves/' + key).once('value');
+                const v = snap.val();
+                if (!v || !v.data) { msg.textContent = '저장된 인생을 찾지 못했어요. 닉네임·PIN을 확인해 주세요.'; return; }
+                const sv = JSON.parse(v.data);
+                SAVE.key = key;
+                lsSet('8b_save_key', key);
+                currentPlayerNickname = nick;
+                lsSet('8b_nickname', nick);
+                document.getElementById('nicknameInput').value = nick;
+                document.getElementById('headerNicknameDisplay').textContent = nick;
+                if (anRec) { anRec.nickname = nick; anRec.uk = 'k:' + key.slice(0, 16); anRec.hasPin = true; }
+                anStage(1);
+                lsSet(LIFE_SAVE_KEY, v.data);
+                msg.textContent = '✅ 불러왔어요!';
+                resumeLife(sv);
+            } catch (e) {
+                msg.textContent = '불러오기 실패: ' + (e && e.message ? e.message : e);
+            }
+        }
+
+        // 관리자: 같은 사람(닉네임 또는 닉네임+PIN)의 여러 방문·기기를 한 줄로 묶기
+        function personKey(r) { return r.uk || (r.nickname ? 'n:' + r.nickname : 'id:' + r.id); }
+        function mergePersons(all, now) {
+            const groups = {};
+            all.forEach(r => (groups[personKey(r)] = groups[personKey(r)] || []).push(r));
+            const rank = { active: 3, idle: 2, offline: 1 };
+            return Object.values(groups).map(rs => {
+                rs.sort((a, b) => (a.lastSeen || 0) - (b.lastSeen || 0));
+                const latest = rs[rs.length - 1];
+                const sts = rs.map(r => anStatus(r, now));
+                const best = sts.reduce((a, b) => (rank[b] > rank[a] ? b : a), 'offline');
+                const devs = [...new Set(rs.map(r => r.device === 'mobile' ? '📱' : '💻'))].join('');
+                const merged = Object.assign({}, latest, {
+                    activeSec: rs.reduce((a, r) => a + (r.activeSec || 0), 0),
+                    mergedTotal: rs.reduce((a, r) => a + anTotalSec(r, now), 0),
+                    livesStarted: rs.reduce((a, r) => a + (r.livesStarted || 0), 0),
+                    livesCompleted: rs.reduce((a, r) => a + (r.livesCompleted || 0), 0),
+                    stageIdx: Math.max(...rs.map(r => r.stageIdx || 0)),
+                    hasPin: rs.some(r => r.hasPin),
+                    cloud: rs.some(r => r.cloud),
+                    visits: rs.length,
+                    devices: devs
+                });
+                return { r: merged, s: best };
+            });
+        }
+
+        /* ============================================================================
            14. BOOT
         ============================================================================ */
         window.onload = function () {
             adminPasscode = lsGet('8b_admin_code') || '8000';
             const savedNick = lsGet('8b_nickname');
             if (savedNick) document.getElementById('nicknameInput').value = savedNick;
+            SAVE.key = lsGet('8b_save_key') || '';
             initStartScreen();
             anInit();
+            // 같은 기기 재접속: 저장된 닉네임으로 자동 입장 + 이어하기 카드
+            if (savedNick) {
+                currentPlayerNickname = savedNick;
+                document.getElementById('headerNicknameDisplay').textContent = savedNick;
+                document.getElementById('nicknameGateOverlay').classList.add('hidden');
+                anRec.nickname = savedNick;
+                anRec.uk = SAVE.key ? 'k:' + SAVE.key.slice(0, 16) : 'n:' + savedNick;
+                anRec.hasPin = !!SAVE.key;
+                anStage(1);
+            }
+            renderResumeBox();
+            window.addEventListener('pagehide', () => { if (charState && pendingBirth == null) lifeSave(true); });
             renderFbRules();
             cloudInit();
             refreshOnlineBadgeCounts();
             syncAutoWatchUI();
-            ['adminSearch', 'adminStatusFilter', 'adminSort', 'adminShowSim'].forEach(id => {
+            ['adminSearch', 'adminStatusFilter', 'adminSort', 'adminShowSim', 'adminGroupPerson'].forEach(id => {
                 const el = document.getElementById(id);
                 el.addEventListener('input', () => { adminConcCache.t = 0; renderAdminDashboard(); });
                 el.addEventListener('change', () => { adminConcCache.t = 0; renderAdminDashboard(); });
