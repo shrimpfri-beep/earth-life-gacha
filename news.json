@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-10-17T14:14:23+00:00",
+ "updatedAt": "2026-10-17T17:17:52+00:00",
  "sources": [
   "Google 뉴스 한국어 검색 RSS (국가별 최근 7일)",
   "연합뉴스 국제 RSS"
@@ -808,6 +808,54 @@
  },
  "world": [
   {
+   "title": "\"푸틴에 굴복\"…트럼프 대러제재 면제에 여당서도 비난 빗발",
+   "url": "https://www.yna.co.kr/view/AKR20261018001000071",
+   "domain": "연합뉴스",
+   "time": 1792256761000
+  },
+  {
+   "title": "이스라엘 정착촌 주민, 서안서 유럽 외교관 공격…피해국 격앙(종합)",
+   "url": "https://www.yna.co.kr/view/AKR20261017049551079",
+   "domain": "연합뉴스",
+   "time": 1792254255000
+  },
+  {
+   "title": "'최단명' 백악관 대변인, 위기의 비서실장이 놓은 덫에 걸렸나",
+   "url": "https://www.yna.co.kr/view/AKR20261018000300071",
+   "domain": "연합뉴스",
+   "time": 1792251334000
+  },
+  {
+   "title": "이집트, 사우디 방어전 참전하나…대통령 \"요청시 즉각 응할것\"(종합)",
+   "url": "https://www.yna.co.kr/view/AKR20261017049351079",
+   "domain": "연합뉴스",
+   "time": 1792249964000
+  },
+  {
+   "title": "이스라엘 정착촌 주민, 서안서 유럽 외교관 차량 공격",
+   "url": "https://www.yna.co.kr/view/AKR20261017049500079",
+   "domain": "연합뉴스",
+   "time": 1792249913000
+  },
+  {
+   "title": "이집트 대통령 \"사우디 방어 위한 군사지원 채비\"",
+   "url": "https://www.yna.co.kr/view/AKR20261017049300079",
+   "domain": "연합뉴스",
+   "time": 1792247462000
+  },
+  {
+   "title": "프랑스서 이번엔 고물가 항의 대규모 시위…곳곳서 격렬 충돌",
+   "url": "https://www.yna.co.kr/view/AKR20261017049200098",
+   "domain": "연합뉴스",
+   "time": 1792247283000
+  },
+  {
+   "title": "이란 외무 \"사우디·후티 갈등 정치로 풀어야\"…중재의지 재확인",
+   "url": "https://www.yna.co.kr/view/AKR20261017048800079",
+   "domain": "연합뉴스",
+   "time": 1792246908000
+  },
+  {
    "title": "교황, 폐 수술 5일 만에 퇴원…주일 삼종기도 주례 예정(종합)",
    "url": "https://www.yna.co.kr/view/AKR20261017045551009",
    "domain": "연합뉴스",
@@ -830,55 +878,24 @@
    "url": "https://www.yna.co.kr/view/AKR20261017010652073",
    "domain": "연합뉴스",
    "time": 1792236525000
-  },
-  {
-   "title": "엘시시 이집트대통령 \"2030년 이후 집권 안해…추가 개헌 없다\"",
-   "url": "https://www.yna.co.kr/view/AKR20261017046100079",
-   "domain": "연합뉴스",
-   "time": 1792236450000
-  },
-  {
-   "title": "교황, 폐 수술 5일 만에 퇴원…주일 삼종기도 주례 예정",
-   "url": "https://www.yna.co.kr/view/AKR20261017045500009",
-   "domain": "연합뉴스",
-   "time": 1792232983000
-  },
-  {
-   "title": "EU, 우크라 회원국 합류 공동 TF 출범…\"가입 절차에 속도\"",
-   "url": "https://www.yna.co.kr/view/AKR20261017044600098",
-   "domain": "연합뉴스",
-   "time": 1792232847000
-  },
-  {
-   "title": "벨라루스, 주북한대사관 개설…\"호혜적 관계 발전 주력\"",
-   "url": "https://www.yna.co.kr/view/AKR20261017040600009",
-   "domain": "연합뉴스",
-   "time": 1792225827000
-  },
-  {
-   "title": "시위대 앞 '양복 입은 방패'…佛학생시위 아이콘 된 생드니 시장",
-   "url": "https://www.yna.co.kr/view/AKR20261017040400009",
-   "domain": "연합뉴스",
-   "time": 1792225678000
-  },
-  {
-   "title": "다카이치, 야스쿠니 신사에 공물 봉납…\"참배는 보류할 듯\"(종합)",
-   "url": "https://www.yna.co.kr/view/AKR20261017010651073",
-   "domain": "연합뉴스",
-   "time": 1792224741000
-  },
-  {
-   "title": "'급식 색감 내려 물감' 中유치원 집단 납중독 책임자에 무기징역",
-   "url": "https://www.yna.co.kr/view/AKR20261017039300089",
-   "domain": "연합뉴스",
-   "time": 1792224558000
-  },
-  {
-   "title": "북중러 도발에 항의만…닛케이 \"'일본 얕보인다' 목소리 나와\"",
-   "url": "https://www.yna.co.kr/view/AKR20261017037700073",
-   "domain": "연합뉴스",
-   "time": 1792223309000
   }
  ],
- "errors": []
+ "errors": [
+  "NGA: HTTP Error 503: Service Unavailable",
+  "ETH: HTTP Error 503: Service Unavailable",
+  "COD: HTTP Error 503: Service Unavailable",
+  "IND: HTTP Error 503: Service Unavailable",
+  "PAK: HTTP Error 503: Service Unavailable",
+  "BGD: HTTP Error 503: Service Unavailable",
+  "IDN: HTTP Error 503: Service Unavailable",
+  "CHN: HTTP Error 503: Service Unavailable",
+  "KOR: HTTP Error 503: Service Unavailable",
+  "EGY: HTTP Error 503: Service Unavailable",
+  "DZA: HTTP Error 503: Service Unavailable",
+  "BRA: HTTP Error 503: Service Unavailable",
+  "MEX: HTTP Error 503: Service Unavailable",
+  "USA: HTTP Error 503: Service Unavailable",
+  "DEU: HTTP Error 503: Service Unavailable",
+  "UZB: HTTP Error 503: Service Unavailable"
+ ]
 }
