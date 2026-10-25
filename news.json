@@ -1,11 +1,17 @@
 {
- "updatedAt": "2026-10-25T14:25:52+00:00",
+ "updatedAt": "2026-10-25T18:26:27+00:00",
  "sources": [
   "Google 뉴스 한국어 검색 RSS (국가별 최근 7일)",
   "연합뉴스 국제 RSS"
  ],
  "countries": {
   "NGA": [
+   {
+    "title": "나이지리아에서 발생한 유혈 총격 사건으로 최소 40명이 사망했습니다.",
+    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNY2gyQ005TzdmMllHNjhHT2Rkc2xkbjIyTVdCOWxGRnVHUWZXRXQ3RUVnMGliS0RqeEMyQkVzYVc1V1VKRWlvcFdPSjVsWTZOdTJ0SnVfdnM0QV9GcDhhSG4wOWg0VEV2SjYxd3R3WGFXRFk2VHE4YkNVbmlTbDdKcUFrRDd2Mzk4N2kwaw?oc=5",
+    "domain": "Vietnam.vn",
+    "time": 1792944757000
+   },
    {
     "title": "나이지리아 북동부에서 발생한 공격으로 최소 40명이 사망했습니다.",
     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPa0xpUnV2d2tpOGNxZEZUdXN0bkNQaTR0RzZLc2RIS00xMzJvYzlIMTFYT1daR1UwbVY4eXRSV1I3Tm90LVdZZlhWdEprNFUwZWJGRGU1RlFLd0dJYlZ0Yl9EUTlRMy1IT3BGMzRRZHh2MGVfM29EMUVXTlBJaWdQTWI3VUFhclFwSHJjbzdyQ0ZVMFVLeXVzeUt1VXo?oc=5",
@@ -47,12 +53,6 @@
     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBWZW1Ubk9reDgyV3ExMTRldEdTVmQzRTFZdjh5VXRYUWg0ZWcyRVVHUXBvbG5QN1dKT0toSFhTZmZ0dUpURlJ5MV9IcGh4ZGpadGdZZ1Nsa3U?oc=5",
     "domain": "IQAir",
     "time": 1792836617000
-   },
-   {
-    "title": "케냐에서 2번째 에볼라 사망자 발생…첫 사망자 친척인 65세 여",
-    "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1QRjNJVl92aU5zblV3RHZ3UGZIeUtDYU9sa2FldzRmc2p0aUVrT0tVcGZ1LU5hU0I3RXVWbU5EdFFuMmNfOW1aWERBOG1RZ3RhbFNQMkVobnRHQTVXLURYZ2hvd0ROc19fcmpGRGZ4U2RVek1vMVN0SdIBeEFVX3lxTE1QRjNJVl92aU5zblV3RHZ3UGZIeUtDYU9sa2FldzRmc2p0aUVrT0tVcGZ1LU5hU0I3RXVWbU5EdFFuMmNfOW1aWERBOG1RZ3RhbFNQMkVobnRHQTVXLURYZ2hvd0ROc19fcmpGRGZ4U2RVek1vMVN0SQ?oc=5",
-    "domain": "뉴시스",
-    "time": 1792805354000
    }
   ],
   "ETH": [
@@ -107,12 +107,6 @@
   ],
   "COD": [
    {
-    "title": "Kinshasa 공기질 지수 (AQI) 및 콩고 민주 공화국 공해 | IQAir 대한민국",
-    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNSkVWakFja2FUTnNvRVhUOXpCQzJKODB1MENfeFprV1FQSndiTXJCdXJGNVoxYi1wdGtVSmVQa1NYQl9Kc0hwenN6aTZWUXhwdmUxX09jWnVfdHhMZWQtS2ZrU1pWYWMyUDZ0THBJUU9tRTJRZjZwNGhJREkyNGlVcFlfWmk?oc=5",
-    "domain": "IQAir",
-    "time": 1792893834000
-   },
-   {
     "title": "아프리카 에볼라 발병: 케냐에서 두 번째 사망자 발생, 콩고민주공화국에서 새로운 백신 시험.",
     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPZVF6WWU5emdIZm9HM0h0UnE5U09TOWFvdmV3dXd6SDg1WDR5cEJUY052YXcyMlJ6YjYxWHVQSV9xdHU0QTRpNV9ISDVBQW9TVUtKSW90RWlXeWV2NldrTzh5MVNRWDY1NWRxbEZDbGZmaDNNdldOMTByeW11UWF0YnNlbnlsZHluTjhTQmx1S1JtZ3JwWTM3eE5KRUlCekF3OHFRQ292QVN4WGpOSXhFS1hZS3FKZw?oc=5",
     "domain": "Vietnam.vn",
@@ -153,9 +147,21 @@
     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE16SXU1dXBvZFBlTjlaUU1xdlZESmZ5TzNOQUYybnFSV2xnSXFVRnBuQ24yeE5FaURtR0p6YW9XM2JzclRQNHhLSnpBM2JyRW5aMFVtWEo0aDFZNjNHM0E0S0VzQjk2Y28?oc=5",
     "domain": "서울STV뉴스",
     "time": 1792718822000
+   },
+   {
+    "title": "미국행 비행기 ‘이 나라 간 적 없음’ 확인서 받는다…환승만 해도 탑승거부",
+    "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5CRGpXbHRwaUdYNlVMSHI4ck5VSlBLZUZsUUxSZjJWRjJ5U3RtQUZMYkQ2ZVhobmtVNzdMaU9JSUh1NDdVR1E?oc=5",
+    "domain": "매일경제",
+    "time": 1792717175000
    }
   ],
   "IND": [
+   {
+    "title": "인도와 협력하여 정부는 AI를 통해 두 자릿수 성장하는 창조적 경제를 목표로합니다.",
+    "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE44MFZIbkxfYjM0Z1RGdnVPaGd1M19YNk9pTG9oc0tBTnB3OXBHWFktQklYd1hneUFuSWcyX2ZMbHNoOVQwY1FZ0gFCQVVfeXFMUEZQQUYwaXBQeVRZaG8tUEhfajg0Ny1oVnNhUzN3ekFGUlRmeGZMWGVfN1JZNzBmSVhkeWZMWndkZ213?oc=5",
+    "domain": "VOI.ID",
+    "time": 1792921922000
+   },
    {
     "title": "[천자춘추] 인도가 뉴델리 대신 아메다바드를 택한 이유",
     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9weFpCNFZaeXBDbG5tcHhZeGs1WXpjQ3JLdmpWSjBUS0R0aThhbHFKXzhlQWc3ZW1BV3B2YjRxNVhWUUZyLWI0dkN0WmtiREFhRVlINXE2WWg2TWM?oc=5",
@@ -194,15 +200,9 @@
    },
    {
     "title": "인도 발 뺀 세븐일레븐, 유럽서 승부수 던진다",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAzSWZmSjFDdVcxTjh5MXl2WnNJMldCdGNGU0FZRHpaWFYzZlBMYldIQnZpRUNXVHpBSWdnVmE2X2hpYkF4TmNIdlZ6ZmRkUnRISFlqcjhydW84em1zLW9yYw?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1EZGdrNDBmOVZNR1MyZ0poeTNVMFA2Rk1wMlMxaWUycTlVRTl4aWZaam1TUlpLT3NITnU1SW1XUGVxRHVCZTYxbUp3OENoQVVBMHBlTHJKNzRPbGd3djk0ODVvY0JQUQ?oc=5",
     "domain": "더구루",
     "time": 1792794600000
-   },
-   {
-    "title": "[인포그래픽] 미국은 명목 GDP 1위, 중국은 구매력 1위…인도네시아 경제 7위로 ‘껑충’",
-    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5QakxPTVZzZlVqMlhiQWRMMC1aWmx5ZF9EYXA4TzJjZUdfWWJUZTExbzViWUpfMXkyVGVQZVIwbE5OZ3d5eDFGbEU0c2ZCNEowZDFjeFdyWWp6MW5oVXhBenlXa3o3Y2pjRG1pWGVHWU0?oc=5",
-    "domain": "굿모닝베트남미디어",
-    "time": 1792757071000
    }
   ],
   "PAK": [
@@ -264,7 +264,7 @@
    },
    {
     "title": "박용철 강화군수, 방글라데시와 계절근로자 도입 확대 논의",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5NLUdDRURKekdpOXI0dmtfTGNoNTR5ci1xQndtNWZzWHRRZFZsN3lHd09BUGIzSFlzdTQ1VnhNVGgtakZHRzc4REptYUdkenlwNUVrZW9iX1F5RDJvSmMtdU9OYk9kOW9WTHN6ZGhn?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5hLVV6X0MtUTlHRmRTdHRMX1MxYy11TXBtQkFyNmJXdlZkcHZWeHhaOFBDTkdGRmhyeGc3LUtEVFZYdmRZbHpYSVYtdFRQZFduU0RZTmxLUU9SR3d5cUdBYWQteFVBUVpxT3Bacy1lOA?oc=5",
     "domain": "중부일보",
     "time": 1792908780000
    },
@@ -287,6 +287,12 @@
     "time": 1792882826000
    },
    {
+    "title": "Mymensingh Division 산불 지도",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE50a3pvN0haSjFBV0tuZTlRcHVMbU9ZZ2FHMnBhWnFiZC01YlVnUElJbDcxNW5lSGJjZkNyYWxnajdsQy1lNkpuNC1VdVA5d0ZadXpPRlB4YTVvenkwQXVVSG5kS0wyRFMyajVHTjQ5SWo0Zw?oc=5",
+    "domain": "IQAir",
+    "time": 1792879285000
+   },
+   {
     "title": "방글라데시도 J-10CE 도입 검토…중국 전투기, 수호이·미그 수출시장 잠식",
     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1MaURRdjZKWVNhazdEcjBQc21oVzFoUDFTVWF4R2ZCUVZvc2Yxa2VCWnZTS09oVEd1NmR3MmtneTN0U0t2NjI5Z2RhSGVOWUduM0E1R3U0Ykh3ZnA2OVZwQV9fajl1YW5peE1wNVRyNW1DUm42NFNDeFZlZEFYUQ?oc=5",
     "domain": "Meta-Defense",
@@ -297,12 +303,6 @@
     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1LcjNGOXZTZW1FeXJyNFB1X2c4amFHbEluTHlQWFhqbEtYb0dTUm9MdkV0MnJ4SmNjMUVja3V3NFE3OXVhQ0lGWGVBTDFydVhWaUNDUGZxYW1UQW9ickNQbHVwbFBRckZjVkYw?oc=5",
     "domain": "애드뉴스인천",
     "time": 1792744860000
-   },
-   {
-    "title": "전국고용서비스협회, 방글라데시 국무장관과 고용서비스 협력 확대 논의",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9OQ1Z1SjgybHFPQ3N4R2NHQl8taW5ValdCTTRwbXQyNzFjbjd5dU9PcFFGR2xVdVpIS0s4Zjk4REZ1MTFmNUhjWWdJWGh2ZUtITVE5MHhVNFJlZDQwWE54VUZJZTFVNjRpdUt6NQ?oc=5",
-    "domain": "CEO경제신문",
-    "time": 1792739760000
    }
   ],
   "IDN": [
@@ -325,16 +325,10 @@
     "time": 1792909964000
    },
    {
-    "title": "韓 해양 위성 기술로 인도네시아 해양 관리 역량↑",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFA3dE5aMTVVSWtvVXEtNEZFSlRZLU1VTXVkTndJLTRxdGlySE43a3lLejJIU3ZLVHVjcVE3Qm92ZElCZDJRdm1sREdvQ0Z4eHlMUWFhcU4wNFhIR2hVWTZQaGQ5anVWUmZNT2gzSg?oc=5",
-    "domain": "아시아투데이",
-    "time": 1792907156000
-   },
-   {
-    "title": "인도네시아, '산불 갈등' 싱가포르에 가스 공급 감축",
-    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE52ODVCQ1ZCdUZYcmVCck5FdXZVQmN2MGVoOUh4b1V5YzJ0azJTSGlGR0IxcklKQ0pveFVaNFlEbHBfNlJlLXE4UHFSOXJYZGpxMEE?oc=5",
-    "domain": "매일경제 마켓",
-    "time": 1792901624000
+    "title": "고령군, (주)지산타포린, 인도네시아 수출 확대",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0tT0pneGxfSjA4ak1NaTNrTkFHWDZ6dm9NTWE4SU8tbWY5am9RTXFTSUd6c01XbVBKekh0aGN1UWNKNGdNUDMteDJfWHdXMTR0MFoxMGl5Qi1YbHIzcUlKaVY4RzZsQU0?oc=5",
+    "domain": "영남경제",
+    "time": 1792905767000
    },
    {
     "title": "한국 해양위성 기술, 인도네시아 해양환경 관리에 활용…5년간 협력 성과 공유",
@@ -353,9 +347,27 @@
     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE56WlVMRVJOQ0ZRVHEtUzZBaF9Xd0RXZHphclRsc2JXcDJncTQ0elI0OGktNHdHRndQbDhnc3VDbXkwU3ZKdEstdF9WYkNZbnVrNGJfcUJ5Um9oUWpvaXJvNmxwMDczeGlLZzdWZnBsa1g5U0o5SzRFV9IBeEFVX3lxTE56WlVMRVJOQ0ZRVHEtUzZBaF9Xd0RXZHphclRsc2JXcDJncTQ0elI0OGktNHdHRndQbDhnc3VDbXkwU3ZKdEstdF9WYkNZbnVrNGJfcUJ5Um9oUWpvaXJvNmxwMDczeGlLZzdWZnBsa1g5U0o5SzRFVw?oc=5",
     "domain": "뉴시스",
     "time": 1792893600000
+   },
+   {
+    "title": "“원양어선에서 뛰어내렸다”…부산 앞바다 4시간 표류한 인도네시아인 구조",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFBzTVFqWjg3TGdhS3NMSENpTkRmWlRoVlNLS2JkQjdaejdyMGRoVjNTY0FjZ3BZYmJ6TEVNTE0wYUNGOTRjLVpKREVxaVdoTXMz?oc=5",
+    "domain": "문화일보",
+    "time": 1792893520000
    }
   ],
   "CHN": [
+   {
+    "title": "정부, 김정은 중국 ‘번개 방문’ 진의 알아내야",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5xZU9VM0prX3RkaVU5bzdpaHlYVk5xTzdKYmlWdnJoUWNIcHJvSDkwUG1ZVUdibmo4cF8wcV9RRWZBUXBBZWQ5SExvanlRa2tzemJDVm1WcDJOMGw2ODNkcFUwUWtCOTREYmtr0gFvQVVfeXFMTTU0dmxwV2RhcGRVcVRoYTh4eVR3NFQwZnBUZ3hlWk9wdldoOGIyUFBaX1JpTjY5RE4tSFhyTlRvdS1oMUJPempvUm9Zc3dCdlRLb3NNMmZkd0ZVRGVVamNsS3NpRU1PWFp0aElucS1r?oc=5",
+    "domain": "자유일보",
+    "time": 1792911300000
+   },
+   {
+    "title": "장철민 의원 “중국에 밀리는 K-배터리… 정부 대책 전면 재점검하라”",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBtSHctVlZrUDBOTkNScjNtWlZWdVdLUlB3b3B2SGNZSzRGa2tTWjl5STUtT0c1anpPRkpEYURzN1lYbDdEUW9xUjJRQ1p2RkcwQTVnNmRoOXJqVDZ5WEJFdjcwSG9aTXIwV3ozbEpB0gFuQVVfeXFMUG1Idy1WVmtQME5OQ1JyM21aVlZ1V0tSUHdvcHZIY1lLNEZra1NaOXlJNS1PRzVqek9GSkRhRHM3WVhsN0RRb3FSMlFDWnZGRzBBNWc2ZGg5cmpUNnlYQkV2NzBIb1pNcjBXejNsSkE?oc=5",
+    "domain": "중부매일",
+    "time": 1792908272000
+   },
    {
     "title": "국힘, 김정은 방중에 “北은 중국 향한 길 여는데 정부는 주시만 하나”",
     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9wVEd3enY1NndvZ0Y3N1hmcjFRYzFrRUlfMlhERkZkZ0g4dmptZGItYWZOWVZSaXd0cG4ya3A4c1lVaVZuZ1RiMWowWnU4UFlfY1HSAVNBVV95cUxQeU42VHhJYWsyeEY1X1pVanVIaW5Pbmt5X0ZQam0zeUNaT004VDhNVWw1Q1Z4anh4OS01Tk5HNjZlWVA5V191Y1l4ZWlxLV9qSkhwOA?oc=5",
@@ -381,36 +393,24 @@
     "time": 1792887432000
    },
    {
-    "title": "[속보]‘사망설’ 김정은, 24일 전격 중국 방문 … “신압록강대교 건너 단둥 도착” 정부 소식통 전해",
-    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1STjA2Z214djVSS1VOMk4yb2MtYlhtZXhtcGR1bDNDMHFQLTdNajN6djMxUzFYNUhQSWR6bDNpcm1tWS1uUGRtVmlyVFZ6Qldf?oc=5",
-    "domain": "문화일보",
-    "time": 1792822215000
+    "title": "26년 만에 만든 'CHIP' 전시관…'반도체 굴기' 다시 힘주는 중국? - 머니투데이",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE10NVo3MlRFUjFyNnA5SF9JdlJndldJYmtIOGdGaTBCdkU1QmdZX0ZFX21Ub2dzbWExM0owa0dFYVhudllVTURaOVFSOGc5MDZ6TEI0QTVMTnZwbHV3TmhURHFuY01fdDIt0gFuQVVfeXFMTUZJbzhtNnp2UTczZ0tkN1pueVZlZUhBWnM5WkRNeVRFTjRDTHdSeFZPbkhIbTN2N1hvVnFXNGlMZmhYNVdNRVo1NEh3YlktbWhOQzNHRGhBX2hCU3VGckVJSnVNdW9oaDdnVmd4amc?oc=5",
+    "domain": "머니투데이",
+    "time": 1792875600000
    },
    {
-    "title": "중국, 출생아 수 안정화 총력…출산·육아 지원정책 확대",
-    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5BTUhtUU5ObUdGNzJrRjVpLW1ETmZ0bklJbGFlR3h3WnBVU21KSDZkeG1lR29zZHdLN0U5NHh1dHdRRV80Nm55WnZGTm44cE9PNUhUOVlLSmZvaTRZaEZzQ09QNkoxbDhIQmxzeQ?oc=5",
-    "domain": "메디컬투데이",
-    "time": 1792814183000
-   },
-   {
-    "title": "딥시크·미니맥스, 중국 정부 AI 모델 해외 수출 승인 획득",
-    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE8wYWY1eEVKcURYOFgxcFVPRjZMMGE1T0dXYVlucVdGRUhLdGdRdjFyZV96b2VWb3FNNkJzdVVlNzkxQTFKZnJ0b25nbGFxVGFxVlAwTFB1R1hQTm13aUNGMEV2VnMxeEFYZnc?oc=5",
-    "domain": "AI타임스",
-    "time": 1792809819000
-   },
-   {
-    "title": "\"정부 지원에 테슬라까지\"…ETF 수익률 휩쓴 '중국 로봇' 정체",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFByVk1xRjlmdnFlb2U1RW5LeXh3Zi0tbzJYQzA4SWZuYVJOTmhRS2hDUDRLSDE3M2R0cDUyeTFJZ3ZYbHNhc05WUUozT05LNDhwdTdwY3ZKdkYwQQ?oc=5",
-    "domain": "한국경제",
-    "time": 1792801802000
+    "title": "뉴질랜드, 중국 연계 해킹 의혹 속 피지 사이버 보안 역량 강화",
+    "url": "https://news.google.com/rss/articles/CBMi2AJBVV95cUxQSjN3cTRNYldsX2FiZnBBal9uRWZuZjBjWlJnVlBpbTZoZFRSMWZMcGd4bm5JNU8tenQ2dE8yMWhHUWpnMmx4UC1hWW9uUzJRREFmbW9DUGh1Vkc0OGlLTUZKUlM1YkJHTGQ3S3c2X1ZVNzF5cllxa0N0dkQzWnFVZ19ydFBhSHlXTU1DU1g3MTZsTm5FeUJVdzRkWjlTcHVsZmNYdlpXbW83LVMwTGdwSGVKRExNQk1feWxLSU03R3lLTkdBdkU2QXJPNDh5eWRrU3ZSUTlPZGxJangtaWQyMHY0dVVybTd6SDFWWndOSThVVWIwY21mZ09hLVZ3VUdJci15ZGtwTHVNaGxTR2VTNGhva3BTOUxHMk9GOHM1a1RXRE9uVGcwZ29qYkJ5NTJVVVVuSUhoTFhMem03c3ZsWHdyUzh6ZXlvV19sSTZvRzY2cUZHWU03Yw?oc=5",
+    "domain": "Indo-Pacific Defense FORUM",
+    "time": 1792850436000
    }
   ],
   "KOR": [
    {
-    "title": "우리나라 해양 위성 기술로 인도네시아 해양 관리 역량 키운다",
-    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5SZ1hlcUFxS0NVN3JMYy1kX2otYk0zWnl3M18zeWw1Tnhla2loa2tmX0pzajFMaE9Ya3hCZHhyclFCNlprcjVoTjcxYWFwRDE4RTZRQkFnN3JxMWs5Y3I4QXAtT3g4c3NJWi1n?oc=5",
-    "domain": "뉴스데일리",
-    "time": 1792920977000
+    "title": "대한민국명장회 울산지회, 궂은 날씨 속 왕생이길 닦았다",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE44RklYaGVEWm5mTHlMMG5WclByNDlCWXlUaEVZbWRHenl3YXo0SXRhZ0dLNWVvNTFOeE9zZFBuOW92WkpVS2ZpNjVjMEYwZmZWUll3bWpwS0o3VzhwQ0NMZ2s1MGE4S3BHNnBIX29n?oc=5",
+    "domain": "울산일보",
+    "time": 1792919520000
    },
    {
     "title": "[신상록의 시론] 동포 100만 시대, ‘역사·가치관 중심’의 새로운 사회통합을 향하여",
@@ -457,10 +457,40 @@
   ],
   "EGY": [
    {
+    "title": "이집트는 왜 예멘 분쟁 개입을 주저하는 걸까요?",
+    "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOcmpLRmtKQU5paU1hbkR4NEJUUU1JWmlIR3E0ckFyR0JUc1ZNTTlpaEtDOGdUcEV4VDRPTC10NDdWYkI4VUZ6RzF3UkpDdzRUUWU0MmxhVmNSdEh1WEV4YUZZRWJvY0ljeHcxeUc4NjlSRTE2NUgzckxyV2lLd05DRWhJSGVJS3VBNzhaUDFqTVU?oc=5",
+    "domain": "Vietnam.vn",
+    "time": 1792940977000
+   },
+   {
+    "title": "[한민광의 이집트 칼럼 #27] 이집트 알라바스터의 시간 여행",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFA1em5id1dHRWZWSGw5Ty1ab295aTFHQ1Zpc0NUbkl1R2hHWUhhTHhTdzU4emNIVkcydFZVQUNwV0h5bFdIWVVYT2YyNWJiMmhaaWpuUUVrV3ZqVTVRLWxScGs3cXMtRFl2RF9PWXNyVDZSVHZ5VnFR0gF3QVVfeXFMUDV6bmJ3V0dFZlZIbDlPLVpvb3lpMUdDVmlzQ1RuSXVHaEdZSGFMeFN3NTh6Y0hWRzJ0VlVBQ3BXSHlsV0hZVVhPZjI1YmIyaFppam5RRWtXdmpVNVEtbFJwazdxcy1EWXZEX09Zc3JUNlJUdnlWcVE?oc=5",
+    "domain": "문화매거진",
+    "time": 1792940020000
+   },
+   {
+    "title": "유엔 사무총장이 이집트를 방문하여 지역 위기 해결을 위한 노력을 촉구했습니다.",
+    "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOV05DaFNrSHhidnQ5aWZMcFF0VXM2VVFVYVNTY2JqN182Q1N6ZVMwcnNObS1ZZDJzdVVFMjdyWC1zbV8wUjVxSzJnRjhtZDJoYjJmMjdoTGhBcFVFaUFaR2tVRHZqeHZCbEtjYUpmRnZfSUhGUDlMcmVFNjlpcXhWM19LUnFKbDZjLVZfbHhCX29LcXFYX2hWdnRUOUVXZ2FtSVE?oc=5",
+    "domain": "Vietnam.vn",
+    "time": 1792923851000
+   },
+   {
     "title": "野 \"이집트 엘다바 원전 1조2천억 손실 계약 책임은 文정부\"",
     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBmT0QybVV6RWtPaWs3My1mTURENm96TGdnS3JaMkVkbHlEYnpScVpUUzVDaXk0dDBsZUt3bV9tYXZqeWVxZmE3S28yTHRwOWVXWm50S1BMaUdkNmkxV0FvMmlB?oc=5",
     "domain": "매일신문",
-    "time": 1792928844000
+    "time": 1792922001000
+   },
+   {
+    "title": "[신간안내]세계를 걷는 은퇴 교사 부부",
+    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1RaHh2dndUb0FVY2w3Wkg4MDczcnVyOElOTl9ZV1Z3TGhWTVo2Y080a01kejNXdTEyRGtOeHdfdk51UjVldDVSdFMyX2V4S2x2UHRDZjVIY2xCMWFJY3RIU1JJUmppR2NkVExwUUUzOELSAXBBVV95cUxNUWh4dnZ3VG9BVWNsN1pIODA3M3J1cjhJTk5fWVdWd0xoVk1aNmNPNGtNZHozV3UxMkRrTnh3X3ZOdVI1ZXQ1UnRTMl9leEtsdlB0Q2Y1SGNsQjFhSWN0SFNSSVJqaUdjZFRMcFFFMzhC?oc=5",
+    "domain": "남도일보",
+    "time": 1792914900000
+   },
+   {
+    "title": "유엔 사무총장이 중동과 아프리카의 평화 증진을 위해 이집트를 방문했습니다.",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPeWMyNmR3ZkZtanZOX1IwTE5vdE5ySVRRNnBVNy1JcDRRWThpQXlGZkthdmlvYTZqc3ZwWlphVjNVMDVMcmZFUDVCd2lLeTBGWWl5RER2TXJxTnNTQWtVaFBKSDhrY1dsR0loMmFaZmJQUERQX1VVNXkwUE1VT2JZV0FjUWpiWkpnY3h3OTRkaHdjYjFndHFVelpZTVBPY181RDh0aDFMMDY?oc=5",
+    "domain": "Vietnam.vn",
+    "time": 1792890496000
    },
    {
     "title": "이집트에서 4,300년 된 금으로 덮인 미라가 발견되었습니다.",
@@ -473,44 +503,20 @@
     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE01ZkR4N2lsZkJpUzNkUDhjajZGSWFVbmtIaDRVWHl6aS1USTF1X3FHOEdoSnR4ZklGX2w0MTd6XzNaRDZ0M2N2X3VZb2pETzk3cXBBUGQ3bnJROU3SAWBBVV95cUxNbDRHUXh0YzFMdUNVSkQxUGl6LTF6MFJ5b2dqZ1NKUUdXSTA3UFZWQTEwcHhZMzB3bFJHYm1FbE5lczEyMldvXzBsbHhWb2kxcmFpRGxGN2d4b0tjYThKQ04?oc=5",
     "domain": "연합뉴스",
     "time": 1792879215000
-   },
-   {
-    "title": "New Valley 산불 지도",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBnS1VfbHhGbUphaVAtbmdUVmQ3dXMzTFBGVmVEQW00MzZMNW9nUjZQQ3JmSVI2NmQ2S2VWaGYtZUVkODdhWTY4SG91aWcyR0U0NWtUY3VfUENqNDgzd2xn?oc=5",
-    "domain": "IQAir",
-    "time": 1792816416000
-   },
-   {
-    "title": "이집트 유물전 보험가액 1,500억원…운송부터 전시·반환까지 보장",
-    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE0wRHpZSjhlYU54MmJiUGMyS3VqTDBLQU9xTGNyWEJJd0puM1F4QkFDMzRvbG1weU80NEdvTTZBRld2TzlIX2M5aE1Xa3MtNHI5SUU1elZYdlhzeTBZemJCTkhWYkpLUlNB?oc=5",
-    "domain": "보험매일",
-    "time": 1792816035000
-   },
-   {
-    "title": "[이집트 미라전] 한국 온 브루클린박물관 소장품, 보험가액만 1천500억원",
-    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9SclNocVI3Z1VWc2xIRGNVYk9KTVRydkFJZzAwN2U0d0VTaHZKM3ZUUUV4LTloSU1wMXh5cjJKakFDdWpsRi1Zc2h5TzhRUW4zY0VpeDZDYzJyVVHSAWBBVV95cUxOWFJuNFFfSzlHNjV4X3RQTkVxUlc4RWRHdE5xcy1UM0xCTU55cDBsMnIxTmFuRWhxWWl5dFd1c3dJRHFfZGZpTnZIZG1KOGdnZTRscUlRTXlCWWtPaE5SejE?oc=5",
-    "domain": "연합뉴스",
-    "time": 1792792803000
-   },
-   {
-    "title": "[이집트 미라전] \"신이 사랑하는 람세스의 집\"…3천년 전 '건축왕' 파라오",
-    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1KMHNMem5YM1dzV3BVeHl3blRORjNkeGVfVW53ZGJTVFczd2FQQ05vQlFHeWJpWVhMUjJOak9lQVp3OThkWU1qcTFlY21RemVmZTd3WjNvZlNwV1XSAWBBVV95cUxOaFloTUZnY0FqWUZaY0EtWjhiWjI4VFVIemtCMmJwR0owVG5jaXVqNXo3a2RlZDk1cHRXTG1zQ19vQjVEeWNvTFB0TnZfR2V0OWZsUC1iT0FXOWh1YU9IeVc?oc=5",
-    "domain": "연합뉴스",
-    "time": 1792715532000
-   },
-   {
-    "title": "오이 재배 농부들이 우연히 고대 이집트 파라오의 조각상을 발견했습니다.",
-    "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNRnF2ZktFMTVZZGpzUlFaMnhnN3h4M2QzUzVBM1NDVWNpa3NRdGtxSE85SmxuTkF4X1FGYUlSckVpaFRWY3d2OXBzY0RQUjVrUDk2MFhHLUhZNG5WdF9URmZkcHBsN0hEczF2eW5ZV21wenpGSGtNc1FqXzBpNUpzZENWY0trMXpjN2JUd040em85WTFqa1lCczBIVDI?oc=5",
-    "domain": "Vietnam.vn",
-    "time": 1792682599000
    }
   ],
   "DZA": [
    {
-    "title": "오레두 쿠웨이트 2026년 9개월 실적: 매출 6% 증가, 알제리 충당금으로 순이익 감소 - 뉴스 및 통계",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPajNXdDZ5RFhiOXZwNm14LXU1Tk43SG9DVk11XzVoSU1QeXF4NDFQOUtMaEUyOHNaaXNpb2ptMWl3M1JuSDNnQ3pETl9YWnRUNWp3a1h2RUc0M1lMbUpIOExEMWMtQlMzVG5rN1BFWTVTRHVrbl91RjZjWWd5T1NfRWFQWFFxQUVfYXVrc0h4SXdmazBEZUwtVUhkLXNzWkZHbEdpei1vMTJTOTBtb3pSTktIak9oYXRDU2xJ?oc=5",
-    "domain": "IndexBox",
-    "time": 1792884655000
+    "title": "세르비아 유권자들이 역사적인 선거에 참여했다.",
+    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNb0RBaFBySXMzVGFSTDFNSGR5bkgyVTNycHVOX2k2NVZ3UlZvYkRaLVFjV1Ftd05DUU52YTZpd21FMWtvV25yb3g5ODFpODRQQjNLRHoyTUFxMndmSEwyNHBxTTllSVMwVTlOcUx2Z2t2THRVY0taR3pCcDZvY2FUOWlBMkFmeFduQTJFSEU1VTVBd3JkVGc?oc=5",
+    "domain": "Vietnam.vn",
+    "time": 1792933092000
+   },
+   {
+    "title": "Chiffa 공기질 지수 (AQI) 및 알제리 공해 | IQAir 대한민국",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5VeG44cmJ5bEt0dDl2UXhXekZ2c2xsYmFGTTg1VUI2elFjQmpPeWlxTWtOVXJ2Y01yYzEzNlZKLWlsUEZMZmZkYXF6a2VwUlRNX1RYTDVoZzd1dHd3YV8xV0VHYTk2ajM0?oc=5",
+    "domain": "IQAir",
+    "time": 1792888346000
    },
    {
     "title": "北,아프리카 우방 외교 강화…외교 고립 탈피 총력전",
@@ -529,12 +535,6 @@
     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1qS2FFd0JJLXcxS0o5QXVaZmtfdlVQRHZwVlpMcHczVkNDMXlPZ2tIQ00wVWZqMTVnREx6TTBWckRvajBGNWU0NXhqd1lzT0RyOFJsd2ZYd3JmLVRlR2RhTFkxUjlTdkdaR3BQQndza9IBb0FVX3lxTE1qS2FFd0JJLXcxS0o5QXVaZmtfdlVQRHZwVlpMcHczVkNDMXlPZ2tIQ00wVWZqMTVnREx6TTBWckRvajBGNWU0NXhqd1lzT0RyOFJsd2ZYd3JmLVRlR2RhTFkxUjlTdkdaR3BQQndzaw?oc=5",
     "domain": "머니투데이",
     "time": 1792809540000
-   },
-   {
-    "title": "한계 넘어 세계新… 장민호, 희망을 달리다",
-    "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE5zeTBGdVc4REFwcjZzVnlyYjcwWENYQUxWYTdlQkNRdlRuLWFURGdwQmI0S0pieU5TTjZ0MDZaWmd5R2k3SVE?oc=5",
-    "domain": "매일경제",
-    "time": 1792801525000
    },
    {
     "title": "Blida 산불 지도",
@@ -557,8 +557,26 @@
   ],
   "BRA": [
    {
+    "title": "[르포] 엇갈린 브라질 표심…\"변화 위해 한표\" vs \"역전 기대\"",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9vaWNYZ2g1MXNnbVFNYzNlMnpwR3RldUpoRWtNTmE5WHVXWjA0VVNsT2hVcmN6OUhqS3VIcHZ2X2x5YTZpckczN01DTkhNUFY0eW1hQU1SX1hGcEJhMVdCc9IBYEFVX3lxTE9vaWNYZ2g1MXNnbVFNYzNlMnpwR3RldUpoRWtNTmE5WHVXWjA0VVNsT2hVcmN6OUhqS3VIcHZ2X2x5YTZpckczN01DTkhNUFY0eW1hQU1SX1hGcEJhMVdCcw?oc=5",
+    "domain": "연합뉴스",
+    "time": 1792942630000
+   },
+   {
+    "title": "브라질 대선 운명의 D-day",
+    "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNY1lYX3cwQ2NzNnhmdzFxRDA5R3JKQkt3Sk0ycEJ5bjlZNEFZVHBRSUFjaVZ6TkZ4WUE4ZkgycEpCOHdaUGlGR3FiQ3JxN2pkNWIxVjB5d21sTkFTMTBSYzRDR214bmwyQ1NrTGZRT2VsLU9DbkZhLUdDaGpzZ2pwanZhcTczZw?oc=5",
+    "domain": "서울신문",
+    "time": 1792940369000
+   },
+   {
+    "title": "브라질 대선 결선 돌입… 룰라 4선이냐, 첫 ‘부자 대통령’이냐",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE16V2F3N1lQWnhoX3d0Sjl1RFFyRUcwSXlCSElWaFl0bXdFYlZsQ2tHdURqRTdWRzY2R3BrWHVNVWtINVZkV0haejQzdF9Yb3k3eWlvcnV0ZXh1WE0xUGkzQ0c0MTVEN3ZQckE?oc=5",
+    "domain": "천지일보",
+    "time": 1792929600000
+   },
+   {
     "title": "브라질 대선 결선투표 시작···첫 4선 대통령·첫 부자 대통령 갈림길",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9kSWxoWnpjQm81cW1XM3hRUkpwekxpNm1jZ0NHMFNMWTNpQ3YzQXZUSUNKUWd2ZGxxOFJTZjVQNjNTWkdtY1lSWUlsRVFEbmRDazZ4NUo4bzQ3Z9IBX0FVX3lxTE5ydVZQVFBTNWxueXd2OGVpUUVvY2MtbHc2WVRoelNCaXR2UjAzcnQ0NnNPbHNrbGNiQ2lUY2QxQXlyZkpjZG9qdGowbWNDdE5COEMwY1pzaWpJV3gwcEww?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5ydVZQVFBTNWxueXd2OGVpUUVvY2MtbHc2WVRoelNCaXR2UjAzcnQ0NnNPbHNrbGNiQ2lUY2QxQXlyZkpjZG9qdGowbWNDdE5COEMwY1pzaWpJV3gwcEww0gFfQVVfeXFMTnJ1VlBUUFM1bG55d3Y4ZWlRRW9jYy1sdzZZVGh6U0JpdHZSMDNydDQ2c09sc2tsY2JDaVRjZDFBeXJmSmNkb2p0ajBtY0N0TkI4QzBjWnNpaklXeDBwTDA?oc=5",
     "domain": "경향신문",
     "time": 1792927140000
    },
@@ -585,27 +603,21 @@
     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE42WHFZN09XMEtSdWUxeDltM2xrT0JqeWNsR0dwMngxZWJ5QlB1RUNUUVpMLXh0MVNSajVzbUZmWWlpZWFwY1p1OWxlbVh0eFlCZndTSTNsbWN2d9IBX0FVX3lxTFBOSjRTdTJlNFhGX0RqbWtpV3A1NFBVSGFVZksyUFZYdGR2MW1faHZqMHBlZFJhMmtqRUl2cGc0WE81cFZXQ1ZVNWNOVjVjT0tDMThJMkhJbE9ydGdKVzVR?oc=5",
     "domain": "경향신문",
     "time": 1792917120000
-   },
-   {
-    "title": "크래프톤, 브라질에 첫 남미 거점…K게임 신시장 공략 본격화",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE05cFFFQUprNHNLMl9va2JYMlUxOHhVenFNUWdIcGYwZXRLZm9kTTAxdHJGSG5hTjM5eTRBbDFoZEtPSjFhZzZCWmNpT1NfenljNGVmMG9UemRVQQ?oc=5",
-    "domain": "한국경제",
-    "time": 1792914810000
-   },
-   {
-    "title": "미국, 브라질 대선 개입 파문…보우소나루 일가 복귀 위해 관세 부과",
-    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVVBUZ3FoakRKOGFYSkdPcWRVdzByVTktTHBoYUI5MWxoNTVLQ3l2bDgtVV8wRkJrcUtzOHNFRlNZREVRdFUyeEk5Mm5USWxZQ2pmZFZ3NEZDQkpSblFEemU0U1h3d2tjbFBnWmxwSExFS3l1RUk1X0pnYVE1VWh4OU5B?oc=5",
-    "domain": "한겨레",
-    "time": 1792910220000
-   },
-   {
-    "title": "브라질 대선 결선투표 초박빙… 여론조사 ‘보우소나루 50.5% 對 룰라 49.5%’ 동률 - 조선비즈",
-    "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNNGFpWkZicW5DaEd0NjhPazBwZVB1Q1NnbzRlNTZZcVlPYjZlV09qbG5ZLWVQYzFRaUxPSWdJa1ljd3d1Q2VNaDBfU1NfRmpHZnYwLWtVcU8wQm5CYkk3NUgzODZEcjhWaXF6bk9oUDdsdGhTb3h3Zm9xTHFKRWxEVnBNOXZOTEtDLTBNY01pSFc0SlkxWjBCN3hJemN5d9IBsgFBVV95cUxOVGdJRWs0UHhENi1GaTg3aGtvcnk5NnhseWFKZDMwS1A0UkZKa2tIR3dDc0pVUkVrRm1EVVVOWktWVUlfUThfSTFBUjZ5OE9sbnJCRG1wcUpoTzJaUjVHVVpCVkx1cGl1VVJ1WWpLZVJ2a0xlVW5ZRE42LUdTd2I2WUZnSkFNSHNlaXhTcjg5TTJ6eGo2RENhYnpyUWZkTV9iUk43REpCdnhZOHFTZDRfN0xR?oc=5",
-    "domain": "Chosunbiz",
-    "time": 1792910100000
    }
   ],
   "MEX": [
+   {
+    "title": "현대차, 멕시코 '대양간 회랑' 정규 물류망 편입 추진…3000대 수송",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1qcWVjc3VuVFpCQk9IbTR2QmtVVUFkRjZzVVlVTjN2NE9Yclo4WUpxbVp2M2RHR2FEa0V0ZnZkZE1EOThVM28yd3NVTk0xNUpRSTdLclZxNkZ4UFF3MUxBaGFCNC02VWt4ZHpF?oc=5",
+    "domain": "한국신용신문",
+    "time": 1792948860000
+   },
+   {
+    "title": "LG생활건강, 멕시코 K-뷰티 공략 확대…닥터그루트 북미 수상·피지 매출 600억원",
+    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFB5WjRhNnYzaktSa0pNbmFYdmtYdWw0TERVVzhBMXVDN1o1clVCY3pSWUM3UEVXbTQzbGFHejZqNzhWdUg4V1hwWEhfQUNVYm8zM240dktEZHNOOWxsNjQxTEF2ejVZUzRUWjdXT09OUjBfQQ?oc=5",
+    "domain": "웹이코노미",
+    "time": 1792946400000
+   },
    {
     "title": "한국 박살내고 16강 가더니…’멕시코 에이스’ 키뇨네스, 발롱도르 30인에 포함 “후보 명단에 포함될 자격이 충분하다”",
     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE9fMnZUNDUwQ3BkNjJKZVdwcVVvOWNneWRYMEc4QmR1ajQxSzUtUzJOQmhQVWtzeHoxWmZXOWxfS3BlY1k0UlVrbTFNR0M5ek1OLV9xOHE2ZkdvOEU2Y2ZhcjBtaEF0YmtabWFYSGFjQmtVa01H?oc=5",
@@ -641,50 +653,14 @@
     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOMDc5RVJLYUxwS1Y1Z2tuNUpsbVIzVGIwaDBpc2ZxNmdaNFpNRmJxUkJCc210S05ESG5CeTRaQk5ualpEb3dzb2NRQW9ickwxX1g0NUZheTJDWEw0ZUQyMHF3Y2tDNmlpUXQ0X1Y0NHNscWkySEtzbUVkc1ZRRXlrcGlTNVM3cWFpYjU0LTNEWnh0T09idG5HcDc5X0xmZHdwSmdCVHg0MW9iSUtTSkVjRVZYdUw1UXVSTDdPX3NLVQ?oc=5",
     "domain": "www.tmgm.com",
     "time": 1792803829000
-   },
-   {
-    "title": "'서프라이즈 미스터리 살롱' 이찬원, 속옷 속에 원숭이 18마리… 멕시코 공항서 멸종위기종 밀반입범 적발",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9jZUd3MWRHUUZXTnA3UHBIYVB3c25zaENlN25UQU1veWg0VGx4X3l0eGZkZnVtZ3hGSnhsOTVseUtqY1d2MlFRNndMdzdsZDBXUmpSRk8xcjFETFhlMFVOSjhQYWdTcmVHRTIwZkc3T1Vxdw?oc=5",
-    "domain": "톱스타뉴스",
-    "time": 1792796488000
-   },
-   {
-    "title": "기아 멕시코 “관세 비용, 회사가 흡수”… 판매 신기록 전망",
-    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNRXM1anZxQjdON1R0ZENzWmZLTWdQQ05XaG9jbXpya1lJUThBS2xGTUsza21CX3VPU09qZTR6UkRQaWkxM2RIZkR6WG5mSGhjUkczeC1QeS1jZUZRLUlfWFlQZVRrNXFUZWtjSWwySFhCQXVkcFpuaEZrUXpnaHRacDlSVmR6UFpS?oc=5",
-    "domain": "글로벌이코노믹",
-    "time": 1792792492000
    }
   ],
   "USA": [
    {
-    "title": "트럼프, 아우디 조지아 투자 발표…미국 첫 생산공장 추진",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB3S29Nc2NyZXRneXl0UFZJXzFIVE9wVldBUEpqZldOc3N2bFFLT051NXVHZXNWR0ZrMjVaX3VZWFAzRWNUbUVMZjNValYzbkpOTGRkWlVkUXFENFFHUGMyXzU0R0tJbkU3OEdHMHJn?oc=5",
-    "domain": "코리아포스트 한글판",
-    "time": 1792924672000
-   },
-   {
-    "title": "미국, 브라질 대선 개입 파문…보우소나루 일가 복귀 위해 관세 부과",
-    "url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOVVBUZ3FoakRKOGFYSkdPcWRVdzByVTktTHBoYUI5MWxoNTVLQ3l2bDgtVV8wRkJrcUtzOHNFRlNZREVRdFUyeEk5Mm5USWxZQ2pmZFZ3NEZDQkpSblFEemU0U1h3d2tjbFBnWmxwSExFS3l1RUk1X0pnYVE1VWh4OU5B?oc=5",
-    "domain": "한겨레",
-    "time": 1792910220000
-   },
-   {
-    "title": "셰인은 미국에서 1억 달러 규모의 소송을 제기하고 유럽에서 일련의 법적 난관에 부딪히면서 상당한 재정적 압박에 직면해 있습니다.",
-    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPVU9YeWxRbnVwLUVEOHQ5SWw0aEU1SmtxMmcxazdWemxYU1FLS3REWjZoYnhRLTZOSUlhWl96X296VzNCeUNrZF9DNHljZGZNaVFOWFYxRHlrQjlPQ0lHeTdJTkNYMHJGcGZkdGR5dEtXQ21pbEVRS041MEdIT0YzTVQ5eUhhVE1OSndzRDNyeWJ1ZDBYS0R6YUdLY3ozZi1oNGdGUDhaY2pMdThtajkxY0lSTEJFT1pHeFVESEUxbk1GYS1kb0x6cg?oc=5",
-    "domain": "Vietnam.vn",
-    "time": 1792903455000
-   },
-   {
-    "title": "미국 알래스카 LNG사업 뒤흔든 '러시아의 그림자'...충격은 ?",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE83QUJXa1plcVEwdzlabXRBYmx6bmthYVFPemFMXzRDbnA2V09tSUV0dVJqRHpyTjJUSGt5dnBUdEFBMUpJNG16QUhrVjhqekJ2cWxBSVpxTXpPZzRja2E5RHA4S2pNT1NyYzY5SHJwLWxXYjDSAXNBVV95cUxPN0FCV2taZXFRMHc5Wm10QWJsem5rYWFRT3phTF80Q25wNldPbUlFdHVSakR6ck4yVEhreXZwVHRBQTFKSTRtekFIa1Y4anpCdnFsQUlacU16T2c0Y2thOURwOEtqTU9TcmM2OUhycC1sV2Iw?oc=5",
-    "domain": "초이스경제",
-    "time": 1792900524000
-   },
-   {
-    "title": "미국은 자국민에게 사우디아라비아와 아랍에미리트 여행을 재고할 것을 권고합니다.",
-    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNUnV1bm9tdEtSb1dOT2ZqVEVkUDRSbGItZzNCemNUTDh2VEpja1FJXzBhck5nTC1Ja0ZDQUNmNHZvOFlpTVFnSFllZTFqajZEejVISzAyR25Bd1ZPM1FoZHBqUHE2aWY3LXhsSzRscHJMN3JNeHJzeW5YSkVSZXJnRkVrX2M5clYtR3VtaWFZbw?oc=5",
-    "domain": "Vietnam.vn",
-    "time": 1792899448000
+    "title": "美, 다시 공자학원 뿌리뽑기 나서",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPY05PdW9sM2tPQXJiYlpPRGwwTnRFZ280RzJUM0lBdFYyRmw1a3d3TEZzT0hNLXNtVGVXLVRDX3ZTMEtnNnY1WkV2eHczMmNMbHZKR05TMkZqeXk5TFhOcWtYckdEY3RBbDFNZkMzeVlQZ1JDUmpXZm9FUFEwOGdTWWhCMGY?oc=5",
+    "domain": "조선일보",
+    "time": 1792942860000
    },
    {
     "title": "외국인 입장료 인상 '역풍'…美 국립공원 여행업계 울상",
@@ -699,13 +675,67 @@
     "time": 1792879920000
    },
    {
-    "title": "미 정부, 수년간 머스크에 스타링크 차단·가동 요청…동맹국들, 탈스페이스X 의존 추진",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1USkdJM0FuWTV1TlI0WFVwd25QaDZwLTQwWEhueVpLQVVSSjkwUHJBLXBpLTU0OVI2U2YxZ29FdUYydFVNTl9rckRVSy1JQ3prYl9KYnRQSHRab2IxQWRKc3BlN1ExYU5pN2xyLXBR?oc=5",
-    "domain": "아시아투데이",
-    "time": 1792866821000
+    "title": "‘화들짝 놀란 미국’, 중동 대사관 인력 급감축한 이유…이란 ‘美 관리 암살 음모’때문",
+    "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5pNGRmVkVCdlFTcmhLYmVkcmYzdVB2S2tjb2kwYUtKZ1J0Umd6UE95Yi1KSFd0UVNRVElPbFhKNWluaGR0d1dnRElQR20yVFlh?oc=5",
+    "domain": "문화일보",
+    "time": 1792852053000
+   },
+   {
+    "title": "\"이란, 미국인 공격 계획\" 첩보에… 美, 중동 4개국 대사관 인력 감축",
+    "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNcmxSc2ktSDlEYVlCSXF1OVgyMzJGeDFfY1FkVnIwcHVqdE42Ymdud2JlLW1DaGo2Y1doRGZkaFhKRUlyS1otU0oyazNzNjFRX0hrNWozUzRweVlDOTk5UHQxdlVsRURCdzUyMm1PekxfbnlzSTQ1U1RaY3ROTEJUdGw2OFo?oc=5",
+    "domain": "조선일보",
+    "time": 1792826352000
+   },
+   {
+    "title": "美, 중동 4개국 대사관 인력 감축…\"이란, 美관리 암살 음모\"(종합)",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE42RGk5T05QdUh2UUFyXzlPUllNNU8xRVVSemJVeE5OYnM3V1JsOGNXQzYyeVQwaS1BTjhQeG5PN3p6OXFvaE5QYzA3VTBBVjNvS2ZnaWxJR1JYVElWcjVlS9IBYEFVX3lxTE42RGk5T05QdUh2UUFyXzlPUllNNU8xRVVSemJVeE5OYnM3V1JsOGNXQzYyeVQwaS1BTjhQeG5PN3p6OXFvaE5QYzA3VTBBVjNvS2ZnaWxJR1JYVElWcjVlSw?oc=5",
+    "domain": "연합뉴스",
+    "time": 1792819769000
+   },
+   {
+    "title": "미국·이란 군사 긴장 재고조…중동 외교관 철수",
+    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1zVzBmYkpFNEpKTUwyTkQ5S2lUSWx4MlhkQkZnQ2wzb0dkS2NELWhNb2k1cC1lNUdxbk1OWWZFWlZ2bDRxUFdDbVZDTFFsRFJpdFgyOXhscE8?oc=5",
+    "domain": "블록미디어",
+    "time": 1792816271000
+   },
+   {
+    "title": "다카이치 내각, 미국 'GDP 3.5%' 요구에 인프라·AI 예산까지 방위비 포함 저울질",
+    "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1ZT0sycms5Y1lNVllNbmFUeklUUHcxbjZUU0VnMGNFTlRhQmIwTTNOSndCWjNtNDJrZW9fdVFJMFY1OHVaT3VDY1VmVG5qYk83eS1RVFkzNkpjOGVMSnZMRmRuTnFaeGZOQWlMYksteHh1ME5MQVFwUnZ3?oc=5",
+    "domain": "로이슈",
+    "time": 1792812529000
    }
   ],
   "DEU": [
+   {
+    "title": "2분기 경상수지 흑자, 독일·일본 합친 것보다 많아",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPUFp6Vks4aWZvcWNmOEFDelAzWHotc3NFVkU5eGZRU09MMmFCZWlNOXJDSV85LXR2Z2ZXMXFkekJnMU9fZGlnYTZrZUt0US1XbXB3ZncwR0JSdGVJQXFvS0hZN3RsLTZUOF9NTXZFaVdyU25vaXZFeHJneG9VR3hKOFY0NUo2YTJWYmNxczFR?oc=5",
+    "domain": "조선일보",
+    "time": 1792943160000
+   },
+   {
+    "title": "한국 경상흑자, ‘제조업 대국’ 독일·일본 합계보다도 많다",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE03Wm5PN0xXbnAycFZGWTlBV3AwNTAyOGs4WndSSVRJYW0xaS1RekZ0YWtZX3ZwSndYT01pTUFVNUNIRGpZZk1JQXgzZURxMC11bDZveXN0bmhzdlBONXVkWnNQQ29QVHVndGFVRHZYaw?oc=5",
+    "domain": "서울신문",
+    "time": 1792941300000
+   },
+   {
+    "title": "독일 빨래방·호텔 등 겨냥… LG전자, 세탁솔루션 공급",
+    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1OdFd2d3pYOEZFRjctV1cwZ0VaLUdlLXNWVVVHRkNNb1pVNTdiRV82VmJaYXA1SFFOOEpQa041VlJoejViWklsV3JkcTNqaE4teFN0U0pNOXJvQzNsS1BmTnlXREVHZjhEVHRqbmhmbENPc0huUTVyUUl1VQ?oc=5",
+    "domain": "서울신문",
+    "time": 1792940676000
+   },
+   {
+    "title": "2분기 韓 경상수지 흑자, 처음으로 '독일·일본 합산액' 넘겼다",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFAySnhuR29EaHpaR254VDJNdFRsSlJwYVdwLTIyZEhOWGtWcjlQU29iOXJIMzhDcG1adDNpM3hHWGlHOGtMM0N1cExuS3Z3N0VnX2lJSnRIZjk4RXd2ODBZcA?oc=5",
+    "domain": "아시아경제",
+    "time": 1792940386000
+   },
+   {
+    "title": "“독일·일본 합쳐도 한국보다 적었다”…경상흑자 첫 추월에 李대통령 반응",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5zVmlxNUstVWFNdVJHb2FKNE43NEdQcWpHdXRIV3pRYXV0enlRc1ZUMGZTRktiSzFlbkxVc1R0b1RPUXdqNEhuTWRoeVBXMWwtdUdqcVQ1VkczVzJ0Y2ViS0pka0w?oc=5",
+    "domain": "서울신문",
+    "time": 1792930041000
+   },
    {
     "title": "2분기 경상흑자, 독일·일본 합쳐도 한국이 더 컸다",
     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5xSTg0LWl6WDZoYjJPSzlJZkVBNG1hTVBHOG9mUmVMZnZLcFhQVlFPWjVqNmVCTHNvTG9meXJBcWtPdDhjbWx2S1FIcnR5TGRhVmktRE1ONk5ud9IBX0FVX3lxTE1WZzF2dHFZNG5RTENndXdDaXVGT2RSTEJnUGdOUHNlQmNkNEROQmVnRWYxTExyZXZiVDlEUlhhRm5ZZlpPZG1vTFZMeGFqbDNzVkNxcGRSVVdQY2I1bXZJ?oc=5",
@@ -719,40 +749,10 @@
     "time": 1792926000000
    },
    {
-    "title": "이재명 대통령 “올 2분기 경상수지 흑자 독일·일본 합계보다 많아...이 기회 살려 잠재성장률 올려야”",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1MbXVpRWVZbXRQNktvR1JtN3pHeXcxRkVNUjMzek1GMEhuVlB0NlpVNWdIOWlIRzY1a2tLVjVoT0V6Vjg0SHRzSVZzaW5QWlM0QkpneTlrS1cwRE9mUFdIZWNubw?oc=5",
-    "domain": "시사뉴스",
-    "time": 1792925472000
-   },
-   {
     "title": "한국 경상흑자, '독일·일본' 합계 제쳤다…사상 처음",
     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1oa3F6OVZtbzVVOUNmWTYtREs3MUp4LTV6ZEFpaU5BZkhoaTBMczh5NWNUX2N3MnNUTHZQeWY5eHpJd2xVSTZyWUp6Tmd4OUVobVd3N3VtR0J2VFUxYTRtUDNscUZndmlMR09SQWNnQVAxeXFD?oc=5",
     "domain": "연합뉴스 한민족센터",
     "time": 1792924214000
-   },
-   {
-    "title": "한국 경상흑자, ’독일·일본’ 합계 제쳤다…사상 처음",
-    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1lTUJVelh3c3BTSEt4TGd2YXBzOTZSUG82NlVSZWJYMG1VM09iUm1RSjdKNUphTVktZFlZR2VCYTBRNmNTaEdFa3hlNE5Hdm5jTERMNVZvR1Niamx2WGdIci1sa09GTEU?oc=5",
-    "domain": "연합뉴스TV",
-    "time": 1792924140000
-   },
-   {
-    "title": "한국 경상흑자, '독일·일본' 합계보다 많아...\"반도체 이후 성장 동력 투자해야\"",
-    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE42Y0w3TjMxX2gxXy16X0FyeTZkakhuNjJCcTFyeWdFeFFuaG1ISG5ZTUczd21wWVlGb003MEMwb201aFRfY29vMmRWS3NScEJ0UWZGUE9ZOVFKQUI1NVE?oc=5",
-    "domain": "YTN",
-    "time": 1792922760000
-   },
-   {
-    "title": "유럽 서머타임 종료…프랑스·독일과 한국 시차 8시간",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwZWxsWk4zOVBFQ012OHNTWUZpNjVyMENfN0pTamJYUE4xbERVM0lEaHRJODQwTjlpWHBOVE5wTGlfX2F2VV95a0pVSjhCM09JN0o0YlhtWVVTemVQVkZxag?oc=5",
-    "domain": "아시아경제",
-    "time": 1792922476000
-   },
-   {
-    "title": "\"일본·독일도 한국 밑\"…반도체 호황에 경상수지 '세계 2위'",
-    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAzWFJrQnZtdlZjV1VmVmI3ODhrLWhxLVVCeENXUUw0QVhFVGRaRDk3b2h1ZURXc0xTaFE4WkIzUklMaDhVWllmSlpKRjY3Szd1YmJDaEJOM0c1dw?oc=5",
-    "domain": "한국경제",
-    "time": 1792921433000
    }
   ],
   "UZB": [
@@ -808,76 +808,76 @@
  },
  "world": [
   {
+   "title": "\"전도연, 오스카 주연상 후보 가능성\"…외신 '가능한 사랑' 주목",
+   "url": "https://www.yna.co.kr/view/AKR20261026001900075",
+   "domain": "연합뉴스",
+   "time": 1792952203000
+  },
+  {
+   "title": "베네수 野지도자 마차도 비밀리 귀국…트럼프 \"美, 베네수 장악\"",
+   "url": "https://www.yna.co.kr/view/AKR20261026001700071",
+   "domain": "연합뉴스",
+   "time": 1792951591000
+  },
+  {
+   "title": "네타냐후 \"이란, 총선 방해 공격 징후…우리를 시험하지 말라\"",
+   "url": "https://www.yna.co.kr/view/AKR20261026001800099",
+   "domain": "연합뉴스",
+   "time": 1792950338000
+  },
+  {
+   "title": "\"2027 다카르 랠리, 사우디서 개최 안 해…개최지 추후 발표\"",
+   "url": "https://www.yna.co.kr/view/AKR20261026001200099",
+   "domain": "연합뉴스",
+   "time": 1792947267000
+  },
+  {
+   "title": "美 S&P500 3분기 순익 30%↑전망…엔비디아·마이크론이 ⅓ 차지",
+   "url": "https://www.yna.co.kr/view/AKR20261026000700072",
+   "domain": "연합뉴스",
+   "time": 1792943605000
+  },
+  {
+   "title": "2년전 트럼프 밀어준 히스패닉과 20대…이번엔 대거 등 돌리나",
+   "url": "https://www.yna.co.kr/view/AKR20261026000500071",
+   "domain": "연합뉴스",
+   "time": 1792943362000
+  },
+  {
+   "title": "사우디 리야드공항 재개 첫날…후티 공격 지속에 제한적 운항(종합2보)",
+   "url": "https://www.yna.co.kr/view/AKR20261026000300099",
+   "domain": "연합뉴스",
+   "time": 1792943154000
+  },
+  {
+   "title": "중간선거 패배 때 트럼프의 '플랜B'는…\"모조리 거부권 행사\"",
+   "url": "https://www.yna.co.kr/view/AKR20261026000400071",
+   "domain": "연합뉴스",
+   "time": 1792942888000
+  },
+  {
+   "title": "[르포] 엇갈린 브라질 표심…\"변화 위해 한표\" vs \"역전 기대\"",
+   "url": "https://www.yna.co.kr/view/AKR20261026000200087",
+   "domain": "연합뉴스",
+   "time": 1792942630000
+  },
+  {
+   "title": "영국 국방장관 \"전쟁 대비할 시간 1천일 남았다\"",
+   "url": "https://www.yna.co.kr/view/AKR20261025052500098",
+   "domain": "연합뉴스",
+   "time": 1792940543000
+  },
+  {
+   "title": "앙숙 트럼프·오바마, 중간선거 막판 \"네가 무능\" 정면충돌",
+   "url": "https://www.yna.co.kr/view/AKR20261025052100071",
+   "domain": "연합뉴스",
+   "time": 1792938842000
+  },
+  {
    "title": "푸틴, 파리 등 유럽 소요 사태에 \"지도자 무능 때문\"",
    "url": "https://www.yna.co.kr/view/AKR20261025051700108",
    "domain": "연합뉴스",
    "time": 1792935493000
-  },
-  {
-   "title": "케냐 남동부서 버스-트럭 교통사고…최소 22명 사망",
-   "url": "https://www.yna.co.kr/view/AKR20261025051600099",
-   "domain": "연합뉴스",
-   "time": 1792935446000
-  },
-  {
-   "title": "'2년간 반정부시위' 세르비아 총선…부치치 장기집권 끝날까",
-   "url": "https://www.yna.co.kr/view/AKR20261025049900108",
-   "domain": "연합뉴스",
-   "time": 1792933986000
-  },
-  {
-   "title": "불가리아, 경제난 속 대선…친러 집권당 첫 시험대",
-   "url": "https://www.yna.co.kr/view/AKR20261025051300108",
-   "domain": "연합뉴스",
-   "time": 1792932122000
-  },
-  {
-   "title": "프랑스 시위, 약탈 재연 면했지만…산발 충돌에 1천명 체포",
-   "url": "https://www.yna.co.kr/view/AKR20261025048200098",
-   "domain": "연합뉴스",
-   "time": 1792927164000
-  },
-  {
-   "title": "골드만, 코스피 목표 1만2천→9천…\"그래도 60% 이상 상승 여력\"",
-   "url": "https://www.yna.co.kr/view/AKR20261025048500009",
-   "domain": "연합뉴스",
-   "time": 1792926621000
-  },
-  {
-   "title": "\"미군, 이란 공격안 국방장관에 보고…트럼프 승인 대기\"",
-   "url": "https://www.yna.co.kr/view/AKR20261025047900009",
-   "domain": "연합뉴스",
-   "time": 1792926113000
-  },
-  {
-   "title": "룰라냐 보우소나루냐…브라질 대선 결선투표 시작",
-   "url": "https://www.yna.co.kr/view/AKR20261025025200087",
-   "domain": "연합뉴스",
-   "time": 1792926001000
-  },
-  {
-   "title": "[게시판] 주조지아대사관, 오픈뱅킹 경제협력포럼",
-   "url": "https://www.yna.co.kr/view/AKR20261025047200108",
-   "domain": "연합뉴스",
-   "time": 1792925353000
-  },
-  {
-   "title": "이스탄불 교민들 지진·홍수 재난 대응 훈련",
-   "url": "https://www.yna.co.kr/view/AKR20261025046000108",
-   "domain": "연합뉴스",
-   "time": 1792924151000
-  },
-  {
-   "title": "\"애들 사탕값도 부담되네…\" 美고물가에 썰렁해진 핼러윈",
-   "url": "https://www.yna.co.kr/view/AKR20261025044800009",
-   "domain": "연합뉴스",
-   "time": 1792923432000
-  },
-  {
-   "title": "이란 외무 \"새 전쟁 일어나도 호르무즈 정책 안 바뀌어\"",
-   "url": "https://www.yna.co.kr/view/AKR20261025044500099",
-   "domain": "연합뉴스",
-   "time": 1792922922000
   }
  ],
  "errors": []
