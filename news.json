@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-21T23:25:28+00:00",
+ "updatedAt": "2026-11-22T06:59:13+00:00",
  "sources": [
   "Google 뉴스 한국어 검색 RSS (국가별 최근 7일)",
   "연합뉴스 국제 RSS"
@@ -808,77 +808,94 @@
  },
  "world": [
   {
-   "title": "엄지성, 감각적 패스로 동점골 배달…2경기 만에 시즌 4호 도움",
-   "url": "https://www.yna.co.kr/view/AKR20261122008500007",
+   "title": "미국 연말 항공대란 오나…예산협상 교착에 셧다운 우려",
+   "url": "https://www.yna.co.kr/view/AKR20261122034000009",
    "domain": "연합뉴스",
-   "time": 1795302781000
+   "time": 1795330543000
   },
   {
-   "title": "툭하면 대형 인터넷 장애사건…\"AI 발전에 1∼2년 특히 위험\"",
-   "url": "https://www.yna.co.kr/view/AKR20261122007900009",
+   "title": "美의 中통신사 제재 강화에…中 \"정상 간 공감대 위배\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122032200089",
    "domain": "연합뉴스",
-   "time": 1795302608000
+   "time": 1795328767000
   },
   {
-   "title": "공모 배분 탓? 직원 매도허용 때문?…앤트로픽 급락에 월가 공방",
-   "url": "https://www.yna.co.kr/view/AKR20261122006300072",
+   "title": "中 유인우주선 선저우 24호 발사 최종훈련…파키스탄인도 참여",
+   "url": "https://www.yna.co.kr/view/AKR20261122031900083",
    "domain": "연합뉴스",
-   "time": 1795301545000
+   "time": 1795328287000
   },
   {
-   "title": "아르헨서 경기 앞둔 축구선수 낙뢰 맞아 사망",
-   "url": "https://www.yna.co.kr/view/AKR20261122002400009",
+   "title": "세계의 날씨(11월22일)",
+   "url": "https://www.yna.co.kr/view/AKR20261122030100009",
    "domain": "연합뉴스",
-   "time": 1795301325000
+   "time": 1795327248000
   },
   {
-   "title": "[특파원시선] 더 거세진 트럼프식 외교…더 복잡해진 韓 외교 셈법",
-   "url": "https://www.yna.co.kr/view/AKR20261121004300071",
+   "title": "인도네시아 제과공장 화재…3명 사망·36명 실종",
+   "url": "https://www.yna.co.kr/view/AKR20261122029500084",
    "domain": "연합뉴스",
-   "time": 1795298821000
+   "time": 1795327233000
   },
   {
-   "title": "트럼프, SNS에 얄타회담·미중러 정상회담 사진 나란히 게시",
-   "url": "https://www.yna.co.kr/view/AKR20261122004700071",
+   "title": "\"쿠바서 '간첩 혐의' 억류 미국인 9년만에 석방\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122028900009",
    "domain": "연합뉴스",
-   "time": 1795298657000
+   "time": 1795326312000
   },
   {
-   "title": "[뉴욕증시-주간전망] AI 투매에 흔들린 월가…PCE 물가 분수령",
-   "url": "https://www.yna.co.kr/view/AKR20261122004800009",
+   "title": "방일객 최대지만…\"지자체 70%는 방문객·소비액 평균 이하\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122027400073",
    "domain": "연합뉴스",
-   "time": 1795298400000
+   "time": 1795324295000
   },
   {
-   "title": "지구에 잠시 '두번째 달' 생겼다…지름2ｍ 소행성 12월까지 동행",
-   "url": "https://www.yna.co.kr/view/AKR20261122004300009",
+   "title": "\"앨리스 황은 '얼굴노릇'만…엔비디아칩 中밀수 주도자는 50대 중국인\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122025700009",
    "domain": "연합뉴스",
-   "time": 1795297931000
+   "time": 1795322081000
   },
   {
-   "title": "FBI까지 해킹 피해…트럼프는 \"긍정적으로 보자\" 딴소리(종합)",
-   "url": "https://www.yna.co.kr/view/AKR20261122001051071",
+   "title": "[영상] '무기 운송 의심' 러 화물선 발트해서 피격…\"우크라 가능성\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122025900704",
    "domain": "연합뉴스",
-   "time": 1795295032000
+   "time": 1795321757000
   },
   {
-   "title": "기후총회 합의 난항…화석연료 퇴출·기후재원 놓고 결렬 위기",
-   "url": "https://www.yna.co.kr/view/AKR20261122002700099",
+   "title": "인도서 '가짜 술' 마시고 최소 11명 사망…\"메탄올 중독 증상\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122024100084",
    "domain": "연합뉴스",
-   "time": 1795294694000
+   "time": 1795319952000
   },
   {
-   "title": "바레인 \"이란, 민간 산업시설 공격…화재 발생\"",
-   "url": "https://www.yna.co.kr/view/AKR20261122001900099",
+   "title": "日자민 간사장, '정치자금 논란' 문부과학상 교체 가능성 시사",
+   "url": "https://www.yna.co.kr/view/AKR20261122023600073",
    "domain": "연합뉴스",
-   "time": 1795291620000
+   "time": 1795319124000
   },
   {
-   "title": "야당 공세 직면한 트럼프, 정부 계약업체 의회 자료제출도 제한",
-   "url": "https://www.yna.co.kr/view/AKR20261122002000071",
+   "title": "\"트럼프, 김정은에 만나자 제안했지만 北 '조건' 내걸어 무산\"",
+   "url": "https://www.yna.co.kr/view/AKR20261122023100009",
    "domain": "연합뉴스",
-   "time": 1795291546000
+   "time": 1795318388000
   }
  ],
- "errors": []
+ "errors": [
+  "NGA: HTTP Error 503: Service Unavailable",
+  "ETH: HTTP Error 503: Service Unavailable",
+  "COD: HTTP Error 503: Service Unavailable",
+  "IND: HTTP Error 503: Service Unavailable",
+  "PAK: HTTP Error 503: Service Unavailable",
+  "BGD: HTTP Error 503: Service Unavailable",
+  "IDN: HTTP Error 503: Service Unavailable",
+  "CHN: HTTP Error 503: Service Unavailable",
+  "KOR: HTTP Error 503: Service Unavailable",
+  "EGY: HTTP Error 503: Service Unavailable",
+  "DZA: HTTP Error 503: Service Unavailable",
+  "BRA: HTTP Error 503: Service Unavailable",
+  "MEX: HTTP Error 503: Service Unavailable",
+  "USA: HTTP Error 503: Service Unavailable",
+  "DEU: HTTP Error 503: Service Unavailable",
+  "UZB: HTTP Error 503: Service Unavailable"
+ ]
 }
